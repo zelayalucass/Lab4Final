@@ -9,13 +9,5 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent {
 
-  constructor(private router:Router)
-  {
 
-  }
-
-  public InitSession()
-  {
-      this.router.navigate(['/login']);
-  }
 }
