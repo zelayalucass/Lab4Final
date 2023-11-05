@@ -3,6 +3,7 @@
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
+  padding-top: 9rem;
 }
 
 /* Estilos del encabezado */
@@ -65,5 +66,26 @@
   color: #fff;
   padding: 10px;
   font-size: 14px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.bg-black {
+  background-color: white;
 }
 
