@@ -15,6 +15,6 @@ export class NavBarNotLoginComponent {
 
   public InitSession()
   {
-      this.router.navigate(['/login']);
+    this.router.navigate(['/auth']);
   }
 }
