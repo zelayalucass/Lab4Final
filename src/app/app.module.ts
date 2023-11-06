@@ -14,8 +14,7 @@ import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent
+    AppComponent
 
   ],
   imports: [
@@ -25,7 +24,7 @@ import { AuthModule } from './components/auth/auth.module';
     HttpClientModule,
     MatDialogModule,
     FormsModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

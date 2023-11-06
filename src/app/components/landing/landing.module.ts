@@ -7,14 +7,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CarruselComponent } from './carrusel/carrusel.component';
 
 @NgModule({
-  declarations: [
-    LandingComponent,
-    CarruselComponent
-  ],
-  imports: [
-    CommonModule,
-    LandingRoutingModule,
-    SharedModule,
-  ]
+    declarations: [
+        LandingComponent,
+        CarruselComponent
+    ],
+    imports: [
+        CommonModule,
+        LandingRoutingModule,
+        SharedModule
+    ]
 })
 export class LandingModule { }
