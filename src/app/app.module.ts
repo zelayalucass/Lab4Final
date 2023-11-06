@@ -10,12 +10,11 @@ import { AuthRoutingModule } from './components/auth/auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './components/auth/auth.module';
 import { LandingModule } from './components/landing/landing.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
-    NavBarNotLoginComponent,
     FooterComponent
   ],
   imports: [
@@ -24,7 +23,6 @@ import { LandingModule } from './components/landing/landing.module';
     AuthRoutingModule,
     HttpClientModule,
     MatDialogModule,
-    LandingModule,
     FormsModule,
     AuthModule
   ],
