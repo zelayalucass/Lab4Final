@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./carrusel.component.css']
 })
 export class CarruselComponent {
+  
+  /*
   customOptions: any = {
     loop: true,
     mouseDrag: true,
@@ -33,5 +35,5 @@ export class CarruselComponent {
     'ruta-a-imagen-2.jpg',
     'ruta-a-imagen-3.jpg',
     // Agrega más rutas de imágenes según sea necesario
-  ];
+  ];*/
 }
