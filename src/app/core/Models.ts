@@ -7,12 +7,11 @@ export class User implements IUser
     email: string | null;
     password: string | null;
 
-    constructor(private user?:any)
-    {
-        this.id = user != null? user.id             : undefined;
-        this.username = user != null? user.username : undefined;
-        this.email = user != null? user.email       : undefined;
-        this.password = user != null? user.password : undefined;
+    constructor(user?: User) {
+        this.id = user?.id == undefined ? null : user.id;
+        this.username = user?.username == undefined ? '' : user.username;
+        this.email = user?.email == undefined ? '' : user.email;
+        this.password = user?.password == undefined ? '' : user.password;
     }
     
 }

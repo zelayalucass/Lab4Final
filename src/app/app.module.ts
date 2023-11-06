@@ -6,9 +6,11 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
 import { NavBarNotLoginComponent } from './shared/nav-bar-not-login/nav-bar-not-login.component';
 import { FooterComponent } from './shared/footer/footer.component'
+import { AuthRoutingModule } from './components/auth/auth-routing.module';
+import { FormsModule } from '@angular/forms';
+import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,16 @@ import { FooterComponent } from './shared/footer/footer.component'
     NavBarNotLoginComponent,
     FooterComponent
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    AuthRoutingModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
