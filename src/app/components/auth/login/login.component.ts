@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from 'src/app/core/Models';
 import { ApiService } from 'src/app/core/services/api.service';
 import { lastValueFrom } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importa los módulos necesarios
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,16 @@ import { lastValueFrom } from 'rxjs';
 export class LoginComponent implements OnInit{
 
   public user:User = new User();
-  public persons: Array<User> = [];
+  public loginForm!: FormGroup; // Crea un FormGroup
+
   ngOnInit(): void {
-   
+    this.loginForm = this.formBuilder.group({
+      email: [this.user.email, [Validators.required, Validators.email]],
+      password: [this.user.password, [Validators.required]]
+    });
   }
 
-  constructor(private dialog: MatDialog, private router:Router, private auth: AuthService, private api:ApiService) {}
+  constructor(private dialog: MatDialog, private router:Router, private auth: AuthService, private api:ApiService,  private formBuilder: FormBuilder) {}
 
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {
@@ -59,22 +64,5 @@ export class LoginComponent implements OnInit{
      }
   }
 
-  public async getPersons() {
-
-    try {
-
-      let responseApi = this.api.getUsers();
-
-      const data = await lastValueFrom(responseApi);
-
-      this.persons = data.map((personData: any) => new User(personData));
-
-      debugger;
-      console.log(this.persons);
-      
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
 }
