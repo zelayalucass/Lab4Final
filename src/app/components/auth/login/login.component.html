@@ -1,28 +1,40 @@
 <div class="login-container">
   <div class="login-box">
-    <h2>Iniciar Sesión</h2>
+    <h2>Cinema <span class="span-titulo">Center</span></h2>
+    <h3>Iniciar Sesión</h3>
     <form [formGroup]="loginForm" (ngSubmit)="checkAuthLogin()">
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" formControlName="email" placeholder="Tu email" (focus)="focusedField = 'email'" (blur)="focusedField = null">
+        <div class="form-group-button"> 
+        <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+          email
+        </mat-icon>
+        <label for="email">Email</label>   
+        </div>
+          <input type="email" id="email" name="email" formControlName="email" placeholder="Tu email" (focus)="focusedField = 'email'" (blur)="focusedField = null">  
+     </div>
+
+      <div class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
+        *Email es requerido.
+      </div>
+      <div class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required') || focusedField === 'email' && loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')" >
+        *Debe ser una dirección de correo electrónico válida.
       </div>
       <div class="form-group">
-        <label for="password">Contraseña</label>
+        <div class="form-group-button"> 
+          <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+            password
+          </mat-icon>
+          <label for="password">Contraseña</label>
+          </div>
         <input type="password" id="password" name="password" formControlName="password" placeholder="Tu contraseña" (focus)="focusedField = 'password'">
       </div>
-      <div class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
-        Email es requerido.
-      </div>
-      <div class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')">
-        Debe ser una dirección de correo electrónico válida.
-      </div>
       <div class="error-message" *ngIf="loginForm.get('email')?.valid && loginForm.get('password')?.touched &&  focusedField !== 'email' && loginForm.get('password')?.hasError('required')">
-        Contraseña es requerida.
+        *Contraseña es requerida.
       </div>
       <button type="submit" [disabled]="!loginForm.valid">Iniciar Sesión</button>    
     </form>
     <div class="registrarse">
-      <p>¿No tienes cuenta? <a class="btn-registro" (click)="openRegisterDialog()">Registrate Aqui</a></p>
+      <p>¿No tienes cuenta? <a class="btn-registro" (click)="openRegisterDialog(); clearForm()">Registrate Aqui</a></p>
     </div>
   </div>
 </div>

@@ -2,22 +2,22 @@
 <h2 mat-dialog-title class="custom-dialog-title">Regitro de Usuario</h2>
 <div class="login-container">
     <div>
-        <form (ngSubmit)="registerUser()" class="login-box">
+        <form (ngSubmit)="registerUser()" class="login-box" [formGroup]="loginForm">
           <!-- Tu formulario de edición de tareas aquí -->
           <div class="form-group">
-            <label for="username">username</label>
-            <input type="text" id="username" name="username"  placeholder="Ingrese su Usuario" [(ngModel)]="userRegister.username" required>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"  placeholder="Ingrese su Usuario"  formControlName="username" required>
           </div>
           <div class="form-group">
-              <label for="email">email</label>
-              <input type="email" id="email" name="email" placeholder="Ingrese su Email" [(ngModel)]="userRegister.email"  required>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Ingrese su Email"  formControlName="email" required>
           </div>
           <div class="form-group">
-              <label for="password">password</label>
-              <input type="password" id="password" name="password" placeholder="Ingrese su Contraseña" [(ngModel)]="userRegister.password"  required>
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Ingrese su Contraseña" formControlName="password" required>
           </div>
           <button name="buttonnotForm" type="submit">Guardar Cambios</button>
-          <button (click)="closeDialog()" >Cancelar</button>  
+          <button type="button" (click)="closeDialog()" >Cancelar</button>  
         </form>      
       </div>
 </div>
