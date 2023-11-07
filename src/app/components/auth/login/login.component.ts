@@ -24,21 +24,6 @@ export class LoginComponent implements OnInit{
       email: [this.user.email, [Validators.required, Validators.email]],
       password: [this.user.password, [Validators.required]]
     });
-
-    // Configura un listener para el campo de correo electrónico
-    this.loginForm.get('email')?.valueChanges.subscribe((email) => {
-      if (!email) {
-        // Borra los errores de ambos campos si el campo de correo electrónico está vacío
-        this.loginForm.get('email')?.setErrors(null);
-        this.loginForm.get('password')?.setErrors(null);
-      }
-    });
-
-    // Configura un listener para el evento focusout del campo de correo electrónico
-    this.loginForm.get('email')?.valueChanges.subscribe(() => {
-      this.loginForm.get('email')?.updateValueAndValidity(); // Actualiza la validación en focusout
-    });
-
     
   }
 
@@ -46,8 +31,8 @@ export class LoginComponent implements OnInit{
  
   constructor(private dialog: MatDialog, private router:Router, private auth: AuthService, private api:ApiService,  private formBuilder: FormBuilder) {}
  
-  hasError(controlName: string, errorName: string): boolean {
-    return this.loginForm.get(controlName)?.hasError(errorName) || false;
+  getError(controlName: string, errorName: string): string {
+    return this.loginForm.get(controlName)?.getError(errorName);
   }
 
   openRegisterDialog(): void {
@@ -62,6 +47,7 @@ export class LoginComponent implements OnInit{
 
   public NavigateToRegister()
   {
+
     this.router.navigate(['/auth/register'])
   }
   
@@ -69,8 +55,8 @@ export class LoginComponent implements OnInit{
   {
      try
      {
-        this.user.email = this.loginForm.get('email')?.value;
-        this.user.password = this.loginForm.get('password')?.value;
+      this.user.email = this.loginForm.get('email')?.value;
+      this.user.password = this.loginForm.get('password')?.value;
         const check = await this.auth.checkAuth(this.user.email!,this.user.password!);
         if(await check)
         {   
@@ -86,6 +72,17 @@ export class LoginComponent implements OnInit{
       
      }
   }
+
+  clearForm() {
+    this.loginForm.reset();
+    this.loginForm.markAsUntouched();
+    this.focusedField = null;
+        // Borra los errores en el formulario
+    this.loginForm.setErrors(null);
+    this.loginForm.get('email')?.setErrors(null);
+    this.loginForm.get('password')?.setErrors(null);
+  }
+  
 
 
 }
