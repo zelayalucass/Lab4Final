@@ -9,14 +9,10 @@ import { FooterComponent } from './shared/footer/footer.component'
 import { AuthRoutingModule } from './components/auth/auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './components/auth/auth.module';
-import { LandingModule } from './components/landing/landing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
-    NavBarNotLoginComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +20,8 @@ import { LandingModule } from './components/landing/landing.module';
     AuthRoutingModule,
     HttpClientModule,
     MatDialogModule,
-    LandingModule,
     FormsModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
