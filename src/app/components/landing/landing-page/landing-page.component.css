@@ -8,7 +8,8 @@
   
   /* Estilos del encabezado */
   .landing-header {
-    background-color: #007BFF;
+    background-color: #333;
+    opacity: 0.5; /* Elemento con 50% de transparencia */
     color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -25,7 +26,7 @@
   }
   
   .landing-header button {
-    background-color: #0056b3;
+    background-color: #333;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -59,9 +60,6 @@
   .product p {
     font-size: 16px;
   }
-  
-  
-  
   .navbar {
     display: flex;
     justify-content: flex-end;

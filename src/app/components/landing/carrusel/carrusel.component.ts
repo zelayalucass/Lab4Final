@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-carrusel',
@@ -7,29 +8,31 @@ import { Component } from '@angular/core';
 })
 export class CarruselComponent {
   
-  /*
-  customOptions: any = {
+  customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
-    touchDrag: true,
+    touchDrag: false,
     pullDrag: false,
-    dots: true,
+    dots: false,
     navSpeed: 700,
-    navText: ['<', '>'],
+    navText: ['', ''],
     responsive: {
       0: {
         items: 1
       },
-      600: {
+      400: {
+        items: 2
+      },
+      740: {
         items: 3
       },
-      1000: {
-        items: 5
-      }
+      940: {
+        items: 4
+      },
     },
     nav: true
-  };
-
+  }
+  /*
   images: string[] = [
     'ruta-a-imagen-1.jpg',
     'ruta-a-imagen-2.jpg',
