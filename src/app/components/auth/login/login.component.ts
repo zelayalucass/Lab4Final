@@ -69,6 +69,8 @@ export class LoginComponent implements OnInit{
   {
      try
      {
+        this.user.email = this.loginForm.get('email')?.value;
+        this.user.password = this.loginForm.get('password')?.value;
         const check = await this.auth.checkAuth(this.user.email!,this.user.password!);
         if(await check)
         {   
