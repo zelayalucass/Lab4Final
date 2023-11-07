@@ -24,7 +24,6 @@ export class AuthService {
     {
       console.log(error);
     }
-
     return users.length == 1;
 
   }

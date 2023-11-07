@@ -17,10 +17,10 @@ export class ApiService {
 
 
    public getToAuth(email:string, password:string) : Observable<User[]>{
-    return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}&password=${password}`)
+    return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}&password=${password}`);
    }
 
-   public getUser() : Observable<User[]>
+   public getUsers() : Observable<User[]>
    {
     return this.http.get<User[]>(`${this.baseUrl}/users`);
    }

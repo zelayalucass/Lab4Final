@@ -1,5 +1,5 @@
 {
-  "productos":[
+  "productos": [
     {
       "id": "1",
       "description": "Smartphone",
@@ -61,12 +61,24 @@
       "stock": "275"
     }
   ],
-  "users":[
+  "users": [
     {
       "id": 0,
+      "username": "pepe",
       "email": "test@test.com",
-      "pass": "test"
+      "password": "test"
+    },
+    {
+      "id": 1,
+      "username": "LucasZelaya",
+      "email": "lucas@gmail.com",
+      "password": "lucas"
+    },
+    {
+      "id": 2,
+      "username": "pepe",
+      "email": "p@p.com",
+      "password": "lucas"
     }
-
   ]
 }

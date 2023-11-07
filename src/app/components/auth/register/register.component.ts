@@ -14,16 +14,34 @@ export class RegisterComponent{
   userRegister: User = new User();
   dialog: any;
   // Permite pasarle como parámetro datos a un componente abierto a travez de matDialog.
-  constructor(private dialogRef: MatDialogRef<RegisterComponent>) {}
+  constructor(private dialogRef: MatDialogRef<RegisterComponent>, private api:ApiService) {}
 
   closeDialog(): void {
     this.dialogRef.close();
   }
 
-  public checkAuth()
+  public registerUser()
   {
-    debugger
-    console.log(this.userRegister);
+
+    try
+    {
+      this.api.addUser(this.userRegister).subscribe(
+        {
+          next:() =>{
+            alert("Usuario creado con exito");
+            this.closeDialog();
+          },
+          error: () => {
+            alert("No se pudo crear el usuario");
+          }
+        }
+      )
+    }catch(error)
+    {
+      console.log(error);
+      
+    }
+
     
   }
 
