@@ -1,2 +1,23 @@
 
- 
+.carousel-inner {
+    cursor: grab;
+  }
+  .carousel-inner:active {
+    cursor: grabbing;
+  }
+
+  .carousel-caption {
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.cardMovie:hover .carousel-caption{
+  transform: translateY(-10px); /* Eleva el área del título y descripción en 5px al pasar el mouse */
+  background-color: rgba(0, 0, 0, 0.6);
+}
+  .carousel-caption p.descripcion {
+    display: none; /* Ocultar el título y la descripción por defecto */
+}
+.cardMovie:hover .carousel-caption p.descripcion
+{
+  display: block; /* Mostrar el título y la descripción al pasar el mouse sobre la carta */
+}
