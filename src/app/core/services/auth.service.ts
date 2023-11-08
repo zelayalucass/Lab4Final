@@ -27,4 +27,42 @@ export class AuthService {
     return users.length == 1;
 
   }
+  public async ValidateEmail(email:string) : Promise<boolean>
+  {
+    let users:User[] = [];
+    try
+    {
+        let apiResponse = this.api.getUser4Email(email);
+
+        users = await lastValueFrom(apiResponse);
+
+
+    }catch(error)
+    {
+      console.log(error);
+      
+    }   
+    return users.length >= 1;
+  }
+
+  public async ValidateUserName(username:string) : Promise<boolean>
+  {
+    let users:User[] = [];
+    try
+    {
+        let apiResponse = this.api.getUser4UserName(username);
+
+        users = await lastValueFrom(apiResponse);
+
+
+    }catch(error)
+    {
+      console.log(error);
+      
+    }   
+    return users.length >= 1;
+  }
 }
+
+
+

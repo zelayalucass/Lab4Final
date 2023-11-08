@@ -59,12 +59,11 @@
 label {
 display: block;
 font-weight: bold;
-margin-left: 1.5rem;
 }
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 95%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -105,4 +104,13 @@ button {
 
   font-size: 18px;
   margin-bottom: 20px;
+}
+.error-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  color: red;
+  font-size: 11px; /* Puedes ajustar el tamaño de fuente según tus necesidades */
+  font-family: 'MontserratM', sans-serif;
+ 
 }

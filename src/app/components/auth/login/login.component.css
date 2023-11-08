@@ -96,7 +96,8 @@ button:hover {
   justify-content: left;
   color: red;
   font-size: 11px; /* Puedes ajustar el tamaño de fuente según tus necesidades */
-  font-family: MontserratM;
+  font-family: 'MontserratM', sans-serif;
+ 
 }
 
 #fotoEmailicon{
