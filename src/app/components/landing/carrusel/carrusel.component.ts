@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Movie } from 'src/app/core/Models';
 import { MovieService } from 'src/app/core/services/movie.service';
-import { Movie } from 'src/app/core/Movie';
 
 @Component({
   selector: 'app-carrusel',

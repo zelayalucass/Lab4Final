@@ -4,6 +4,7 @@ import { IMovie } from "./Interface";
 import { ITicket } from "./Interface";
 import { IShowtime } from "./Interface";
 import { OriginalLanguage } from "./original-language";
+
 export class User implements IUser
 {
     id: number | null;
