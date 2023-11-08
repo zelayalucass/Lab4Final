@@ -1,3 +1,4 @@
+@import 'material-icons/iconfont/material-icons.css';
 .custom-dialog-title {
     font-size: 20px;
     background-color: #2196F3;
@@ -39,13 +40,18 @@
   }
   .form-group {
     text-align: left;
-    margin: 5px 0;
+    margin: 10px 0;
+  }
+  .form-group-button{
+    display: flex;
+    flex-direction: row;
+    align-items: self-end;
   }
   .login-box {
     background-color: #f4f4f4;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 20px 50px 100px 50px rgba(10, 199, 233, 0.1);
     padding: 20px;
     text-align: center;
   }
@@ -53,7 +59,7 @@
 label {
 display: block;
 font-weight: bold;
-margin-bottom: 5px;
+margin-left: 1.5rem;
 }
 input[type="text"],
 input[type="email"],
@@ -80,3 +86,23 @@ button {
   button:hover {
     background-color: #0056b3;
   }
+
+  #fotoEmailicon{
+    width: 12%;
+  }
+
+.span-titulo
+{
+    color: rgb(21, 129, 251);
+}
+
+.login-box h2 {
+  font-size: 24px;
+  margin: 0 0 2px;
+}
+
+.login-box h3 {
+
+  font-size: 18px;
+  margin-bottom: 20px;
+}
