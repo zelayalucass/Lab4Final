@@ -1,44 +1,34 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { Movie } from '../Models';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieService {
 
-  private baseUrl: string = "http://localhost:3000/movies";
+export class MovieService  {
+  private authToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjEyYzVjNDc2YjFmOGRkNDMyZjk1OWZjNjI3NDNiZCIsInN1YiI6IjY1NDgwZjM5NmJlYWVhMDBhYzIwZWI0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SFaZXQUqs3Zz1v3otDywJcl3-LmadS9t-3z7hYPT4i4';
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  public getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.baseUrl);
+  getTopMovie() //: Promise<any>
+  {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    });
+    const url = 'https://api.themoviedb.org/3/movie/now_playing?language=esp&page=1';
+    
+    return this.httpClient.get(url,{headers}) //.toPromise();
   }
 
-  public getMovieById(id: number): Observable<Movie> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.get<Movie>(url);
-  }
+  getImageToUrl(urlImg : string)
+  {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    });
+    const url = 'https://api.themoviedb.org/3' + {urlImg}
 
-  public deleteMovie(id: number): Observable<boolean> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<boolean>(url).pipe(
-      map(res => true),
-      catchError(error => {
-        console.error("Error deleting movie:", error);
-        return new Observable<boolean>();
-      })
-    );
-  }
-
-  public editMovie(id: number, updatedMovie: Movie): Observable<boolean> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.put<boolean>(url, updatedMovie);
-  }
-
-  public addMovie(newMovie: Movie): Observable<boolean> {
-    return this.http.post<boolean>(this.baseUrl, newMovie);
+    return this.httpClient.get(url,{headers})
   }
 }
