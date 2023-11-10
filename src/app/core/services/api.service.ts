@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { map, catchError, of } from 'rxjs';
-import { User } from '../Models';
+import { map, catchError, of, tap } from 'rxjs';
+import { Cinema, User } from '../Models';
 
 
 @Injectable({
@@ -60,6 +60,25 @@ export class ApiService {
       const url = `${this.baseUrl}/users`;
       return this.http.post<boolean>(url,user);
    }
+
+   getCases(): Observable<Cinema[]> {
+    return this.http.get<Cinema[]>(`${this.baseUrl}/cines`)
+      .pipe(
+        tap(cinema => console.log('fetched cinemas')),
+        catchError(this.handleError('getCases', []))
+      );
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 
    
 }

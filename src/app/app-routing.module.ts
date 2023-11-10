@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: ()=> import("./components/auth/auth-routing.module").then(m=>m.AuthRoutingModule)
   },
   {
+    path:'cine',
+    loadChildren: ()=> import("./components/cine/cine-routing.module").then(m=>m.CineRoutingModule)
+  },
+  {
     path: '',
     redirectTo:'landing',
     pathMatch: 'full'
