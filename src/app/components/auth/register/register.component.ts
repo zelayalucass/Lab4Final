@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit{
       this.userRegister.username = this.loginForm.get('username')?.value;
       this.userRegister.email = this.loginForm.get('email')?.value;
       this.userRegister.password = this.loginForm.get('password')?.value;
+      this.userRegister.isAdmin = false;
 
       if(this.loginForm.invalid) return;
 

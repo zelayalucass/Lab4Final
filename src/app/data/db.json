@@ -66,31 +66,36 @@
       "id": 0,
       "username": "pepe",
       "email": "test@test.com",
-      "password": "test"
+      "password": "test",
+      "isAdmin": false
     },
     {
       "id": 1,
       "username": "LucasZelaya",
       "email": "lucas@gmail.com",
-      "password": "lucas"
+      "password": "lucas",
+      "isAdmin": false
     },
     {
       "id": 2,
-      "username": "pepe",
-      "email": "p@p.com",
-      "password": "lucas"
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "isAdmin": true
     },
     {
       "id": 3,
       "username": "aa",
       "email": "a@a.com",
-      "password": "a"
+      "password": "a",
+      "isAdmin": false
     },
     {
       "id": 4,
-      "username": "lucas",
+      "username": "lucas zelaya",
       "email": "lucas2@gmail.com",
-      "password": "lucas"
+      "password": "lucas",
+      "isAdmin": false
     }
   ]
 }

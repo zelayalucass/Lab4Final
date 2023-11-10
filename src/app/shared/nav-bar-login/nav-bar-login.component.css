@@ -1,0 +1,91 @@
+.span-titulo
+{
+    color: rgb(21, 129, 251);
+}
+.titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-top: 2rem;
+    width: 80%;
+}
+.usuario{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 2rem;
+    margin-bottom: 5rem;
+    margin-top: 0.5rem;
+    width: auto;
+}
+.contenedor-nav{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    flex-direction: row;
+    justify-content: center;
+    width: 100% !important;
+    height: 8rem;
+
+}
+
+.header-titulo{
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 30%;
+    
+}
+
+.navegacion{
+    display: flex;
+    flex-direction : row;
+    justify-content:flex-end;
+    width: 68%;
+    margin-top: 1rem;
+    margin-left: -5rem;
+}
+
+button
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+.navegacion a{
+    text-decoration: none;
+    color: black;
+    font-family: "Raleway", sans-serif;
+    padding-right: 3rem;
+    margin-top: 1rem;
+}
+
+hr{
+    border: .1rem solid rgb(129, 117, 117);
+    margin-top: -.5rem;
+}
+
+button{
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 1rem;
+    height: 4rem;
+    margin-top: 1rem;
+    width: 5%;
+    margin-right: 0.5%;
+    text-align: center;
+
+}
+
+.logo-app
+{
+    display: flex;
+    justify-content: flex-start;
+    width: 20%;
+    height: 8rem;
+
+}

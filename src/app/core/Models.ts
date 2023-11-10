@@ -11,12 +11,15 @@ export class User implements IUser
     username: string | null;
     email: string | null;
     password: string | null;
+    isAdmin : boolean | null;
 
     constructor(user?: User) {
         this.id = user?.id == undefined ? null : user.id;
         this.username = user?.username == undefined ? '' : user.username;
         this.email = user?.email == undefined ? '' : user.email;
         this.password = user?.password == undefined ? '' : user.password;
+        this.isAdmin = user?.isAdmin == undefined ? false : user.isAdmin;
+
     }    
 }
 

@@ -35,6 +35,10 @@ export class ApiService {
     return this.http.get<User[]>(`${this.baseUrl}/users?username=${username}`);
    }
 
+   public getUser4Identication(id:number) : Observable<User[]>
+   {
+    return this.http.get<User[]>(`${this.baseUrl}/users?id=${id}`);
+   }
    public deleteUser(id:number) : Observable<boolean>
    {
     const url = `${this.baseUrl}/users/${id}`;

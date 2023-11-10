@@ -1,4 +1,5 @@
-    <app-nav-bar-not-login></app-nav-bar-not-login>
+    <app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
+    <app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
 <div class="landing-page">
   <div class="landing-header">
     <app-carrusel ></app-carrusel>

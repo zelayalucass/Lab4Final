@@ -9,6 +9,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CardMovieComponent } from './card-movie/card-movie.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { AuthModule } from '../auth/auth.module';
 @NgModule({
     declarations: [
         LandingComponent,
@@ -21,7 +22,8 @@ import {MatCardModule} from '@angular/material/card';
         SharedModule,
         CarouselModule,
         MatButtonModule,
-        MatCardModule
+        MatCardModule,
+        AuthModule
     ]
 })
 export class LandingModule { }
