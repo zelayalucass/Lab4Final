@@ -45,7 +45,6 @@ ngOnInit()
 {
   this.movieService.getTopMovie().subscribe((data :  any)=>{
     this.movies = data['results'];
-    console.log(data['results'])
   })
 }
 
