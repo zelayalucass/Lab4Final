@@ -8,8 +8,15 @@
   </div>
   <div class="landing-main">
       <section>
-          <div class="product">
-              <app-search  />
+          <div class="product centrar">
+            <div class="row w-100 " >
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                      <app-search   />
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <app-filter (selected)="getGenreSelected($event)" />
+              </div>
+            </div>
           </div>
           <div class="product">
               <app-card-movie />

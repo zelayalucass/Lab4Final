@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/footer/footer.component'
 import { AuthRoutingModule } from './components/auth/auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './components/auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthModule } from './components/auth/auth.module';
     MatDialogModule,
     FormsModule,
     AuthModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

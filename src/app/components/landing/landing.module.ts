@@ -15,12 +15,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { FilterComponent } from './filter/filter.component';
+
 @NgModule({
     declarations: [
         LandingComponent,
         CarruselComponent,
         CardMovieComponent,
-        SearchComponent
+        SearchComponent,
+        FilterComponent
     ],
     imports: [
         CommonModule,

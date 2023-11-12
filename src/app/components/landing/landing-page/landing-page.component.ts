@@ -12,14 +12,21 @@ import { MovieService } from 'src/app/core/services/movie.service';
   styleUrls: ['./landing-page.component.css'],
 })
 export class LandingComponent implements OnInit  {
-
+  idGenre: number = 0;
   movies : Movie[] = []
 
   ngOnInit(): void {
   }
   
-   getMovies(listMovies : Movie){
-    this.movies.push(listMovies);
-   }
+  getMovies(listMovies : Movie){
+  this.movies.push(listMovies);
+  }
+
+  getGenreSelected(idGenre : number)
+  {
+    this.idGenre = idGenre;
+    console.log("id Genero buscado")
+    console.log(this.idGenre)
+  }
 
 }

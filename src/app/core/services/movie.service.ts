@@ -21,7 +21,7 @@ export class MovieService  {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`
     });
-    const url = 'https://api.themoviedb.org/3/movie/now_playing?language=esp&page=1';
+    const url = 'https://api.themoviedb.org/3/movie/now_playing?language=es&page=1';
     
     return this.httpClient.get(url,{headers}) //.toPromise();
   }
@@ -41,8 +41,7 @@ export class MovieService  {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`
     });
-    console.log(title);
-    const url = `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1`;
+    const url = `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=es-US&page=1`;
 
     return this.httpClient.get(url,{headers});
   }
@@ -50,5 +49,14 @@ export class MovieService  {
   //Observable que actualiza la lista de elementos bsucados por el search
   actualizarListaPeliculas(movieList: Movie[]) {
     this.listaPeliculasSource.next(movieList);
+  }
+
+  getAllGenres()
+  {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    });
+    const url = `https://api.themoviedb.org/3/genre/movie/list?language=es`;
+    return this.httpClient.get(url,{headers});
   }
 }

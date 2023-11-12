@@ -79,5 +79,11 @@
   .bg-black {
     background-color: white;
   }
+
+  .centrar
+  {
+    display: flex;
+    align-items: center;
+  }
   
   
