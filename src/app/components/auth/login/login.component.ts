@@ -19,6 +19,14 @@ export class LoginComponent implements OnInit{
   public loginForm!: FormGroup; // Crea un FormGroup
   public focusedField: string | null = null; 
 
+  setUserIdInLocalStorage(userId: number): void {    
+    localStorage.setItem('userId', userId.toString());
+  }
+
+  setIsAdminInLocalStorage(isAdmin: boolean): void {
+      localStorage.setItem('isAdmin', String(isAdmin));
+    }
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [this.user.email, [Validators.required, Validators.email]],
@@ -37,7 +45,7 @@ export class LoginComponent implements OnInit{
 
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {
-      width: '300px', height : '460px' // Ajusta el ancho según tus necesidades
+      width: '400px', height : '560px' // Ajusta el ancho según tus necesidades
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -57,10 +65,20 @@ export class LoginComponent implements OnInit{
      {
       this.user.email = this.loginForm.get('email')?.value;
       this.user.password = this.loginForm.get('password')?.value;
-        const check = await this.auth.checkAuth(this.user.email!,this.user.password!);
+      const check = await this.auth.checkAuth(this.user.email!,this.user.password!);
         if(await check)
         {   
+          let userLogin = await this.auth.getUser(this.user.email!,this.user.password!);
+          
+          debugger;console.log(userLogin);
+          
+           // Almacena el ID del usuario en el localStorage
+           this.setUserIdInLocalStorage(userLogin.id!);
+           // Almacena la información de administrador (si es administrador) en el localStorage
+           this.setIsAdminInLocalStorage(userLogin.isAdmin!);
+  
           this.router.navigate(['/landing']);
+              // Recarga la página para reflejar los cambios
         }
         else
         {

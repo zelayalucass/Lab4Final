@@ -1,0 +1,37 @@
+
+<nav class="contenedor-nav"style="background-color: #e3f2fd; padding: 10px 0">
+    <div class="header-titulo">
+        <img class="logo-app" src="assets/iconoCine2.png" alt="Logo"  >
+        <header class="titulo">
+            <h2>CineMaster <span class="span-titulo">Plus+</span></h2>
+        </header>
+    </div>
+    <div class="navegacion">
+        <!--Admin--> 
+        <div class="usuario">
+            <h2>¡Bienvenido <span class="span-titulo">{{userLogged.username!.toUpperCase()}}!</span> </h2>
+        </div>
+        <ng-container  *ngIf="isAdmin; else userLinks"> 
+            <a href="">Inicio</a>
+            <a href="">ABM Funciones</a>
+            <a href="">Administrar Cines</a>
+            <a href="">Ver Usuarios</a>
+        </ng-container>
+        <!--User-->
+        <ng-template #userLinks>
+            <a href="">Inicio</a>
+            <a href="">Compras</a>
+            <a href="">Tickets Pendientes</a>
+            <a href="">Perfil</a>
+        </ng-template>
+
+    </div>
+    <button class="btn btn-outline-success" (click)="CloseSession()">Cerrar Sesión</button> 
+
+
+   
+</nav>
+
+
+
+

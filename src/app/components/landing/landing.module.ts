@@ -16,7 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FilterComponent } from './filter/filter.component';
-
+import { AuthModule } from '../auth/auth.module';
 @NgModule({
     declarations: [
         LandingComponent,
@@ -33,7 +33,8 @@ import { FilterComponent } from './filter/filter.component';
         MatButtonModule,
         MatCardModule,
         FormsModule,
-        MatFormFieldModule, MatInputModule, MatSelectModule,MatIconModule,MatTooltipModule
+        MatFormFieldModule, MatInputModule, MatSelectModule,MatIconModule,MatTooltipModule,
+        AuthModule
     ]
 })
 export class LandingModule { }

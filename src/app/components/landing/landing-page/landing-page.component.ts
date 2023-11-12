@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Movie } from 'src/app/core/Models';
 import { MovieService } from 'src/app/core/services/movie.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 @Component({
@@ -11,11 +12,15 @@ import { MovieService } from 'src/app/core/services/movie.service';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
 })
+
 export class LandingComponent implements OnInit  {
   idGenre: number = 0;
   movies : Movie[] = []
 
+  isUserLoggedIn: boolean = false;
+  constructor(private auth: AuthService) {}
   ngOnInit(): void {
+    this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
   }
   
   getMovies(listMovies : Movie){

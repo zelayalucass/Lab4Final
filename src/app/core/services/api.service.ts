@@ -25,6 +25,20 @@ export class ApiService {
     return this.http.get<User[]>(`${this.baseUrl}/users`);
    }
 
+   public getUser4Email(email:string) : Observable<User[]>
+   {
+    return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}`);
+   }
+
+   public getUser4UserName(username:string) : Observable<User[]>
+   {
+    return this.http.get<User[]>(`${this.baseUrl}/users?username=${username}`);
+   }
+
+   public getUser4Identication(id:number) : Observable<User[]>
+   {
+    return this.http.get<User[]>(`${this.baseUrl}/users?id=${id}`);
+   }
    public deleteUser(id:number) : Observable<boolean>
    {
     const url = `${this.baseUrl}/users/${id}`;
