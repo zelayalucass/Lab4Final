@@ -1,32 +1,29 @@
-    <app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
-    <app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
+
+<app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
+<app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
+
 <div class="landing-page">
   <div class="landing-header">
-    <app-carrusel ></app-carrusel>
+    <!--
+    <app-carrusel />
+
+    -->
   </div>
   <div class="landing-main">
       <section>
-          <h2>Nuestros Productos Destacados</h2>
-          <div class="product">
-              <img src="product1.jpg" alt="Producto 1">
-              <h3>Smartphone de Última Generación</h3>
-              <p>Descubre la potencia y la innovación en tus manos. ¡No te quedes atrás en tecnología!</p>
+          <div class="product centrar">
+            <div class="row w-100 " >
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                      <app-search   />
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <app-filter (selected)="getGenreSelected($event)" />
+              </div>
+            </div>
           </div>
           <div class="product">
-              <img src="product2.jpg" alt="Producto 2">
-              <h3>Computadora Portátil Ultraligera</h3>
-              <p>Trabaja y juega en cualquier lugar con nuestra computadora ultraportátil.</p>
+              <app-card-movie />
           </div>
-          <div class="product">
-            <img src="product2.jpg" alt="Producto 2">
-            <h3>Computadora Portátil Ultraligera</h3>
-            <p>Trabaja y juega en cualquier lugar con nuestra computadora ultraportátil.</p>
-        </div>
-        <div class="product">
-            <img src="product2.jpg" alt="Producto 2">
-            <h3>Computadora Portátil Ultraligera</h3>
-            <p>Trabaja y juega en cualquier lugar con nuestra computadora ultraportátil.</p>
-        </div>
           <!-- Agrega más productos destacados aquí -->
       </section>
   </div>

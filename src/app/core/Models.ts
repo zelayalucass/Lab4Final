@@ -1,4 +1,4 @@
-import { IUser } from "./Interface";
+import { IGenre, IUser } from "./Interface";
 import { ICinema } from "./Interface";
 import { IMovie } from "./Interface";
 import { ITicket } from "./Interface";
@@ -101,5 +101,16 @@ export class Showtime implements IShowtime {
         this.nombrePelicula = showtime?.nombrePelicula == undefined ? null : showtime.nombrePelicula;
         this.sala = showtime?.sala == undefined ? null : showtime.sala;
         this.horarios = showtime?.horarios == undefined ? null : showtime.horarios;
+    }
+}
+export class Genre implements IGenre
+{
+    id: number | null;
+    name: string | null;
+
+    constructor(genre? : Genre)
+    {
+        this.id = genre?.id == undefined ? null : genre.id;
+        this.name = genre?.name == undefined ? null : genre.name;
     }
 }
