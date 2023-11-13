@@ -1,0 +1,33 @@
+<!-- user-details.component.html -->
+
+<div class="login-container">
+  <div class="login-box">
+    <h2>CineMaster <span class="span-titulo">Plus+</span></h2>
+    <h3>Detalles del Usuario</h3>
+
+    <div *ngIf="user">
+      <div class="form-group">
+        <label for="id">ID:</label>
+        <div>{{ user?.id}}</div>
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <div>{{ user?.username }}</div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <div>{{ user?.email }}</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <div>{{ user?.password }}</div>
+      </div>
+      <div class="form-group">
+        <label for="isAdmin">isAdmin:</label>
+        <div>{{ user?.isAdmin ? 'Yes' : 'No' }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Estilos adicionales si es necesario -->
