@@ -8,6 +8,10 @@ const routes: Routes = [
     component:LandingComponent
   },
   {
+    path:"landing-page/:id",
+    component:LandingComponent
+  },
+  {
     path:"",
     redirectTo:"landing-page",
     pathMatch:"full"

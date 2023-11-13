@@ -27,11 +27,4 @@ export class LandingComponent implements OnInit  {
   this.movies.push(listMovies);
   }
 
-  getGenreSelected(idGenre : number)
-  {
-    this.idGenre = idGenre;
-    console.log("id Genero buscado")
-    console.log(this.idGenre)
-  }
-
 }
