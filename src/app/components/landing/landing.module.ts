@@ -17,6 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FilterComponent } from './filter/filter.component';
 import { AuthModule } from '../auth/auth.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 @NgModule({
     declarations: [
         LandingComponent,
@@ -33,7 +35,7 @@ import { AuthModule } from '../auth/auth.module';
         MatButtonModule,
         MatCardModule,
         FormsModule,
-        MatFormFieldModule, MatInputModule, MatSelectModule,MatIconModule,MatTooltipModule,
+        MatFormFieldModule, MatInputModule, MatSelectModule,MatIconModule,MatTooltipModule,MatDatepickerModule,MatNativeDateModule,
         AuthModule
     ]
 })

@@ -59,4 +59,12 @@ export class MovieService  {
     const url = `https://api.themoviedb.org/3/genre/movie/list?language=es`;
     return this.httpClient.get(url,{headers});
   }
+
+  getAllByGenre( idGenre : number, year : number){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    });
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=1&sort_by=popularity.desc&with_genres=${idGenre}&year=${year}`;
+    return this.httpClient.get(url,{headers});
+  }
 }
