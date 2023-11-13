@@ -1,9 +1,9 @@
 
-<div class="row w-100 centrar">
-    <div class="col-lg-6">
-        <mat-form-field class=" w-100">
+<div class="row w-100">
+    <div class="col-lg-8 centrar">
+        <mat-form-field style="width: 70%;">
             <mat-label>Generos</mat-label>
-            <mat-select [(value)]="idGenre" (selectionChange)="enviarVariable()">
+            <mat-select [(value)]="idGenre" (selectionChange)="GetByGenre()">
                 <div *ngIf="genreList">
                     <div *ngFor="let genre of genreList">
                         <mat-option [value]="genre.id">{{genre.name}}</mat-option>
@@ -11,5 +11,15 @@
                 </div>
             </mat-select>
         </mat-form-field>
+    </div>
+    <div class="col-lg-4 centrar">
+        <mat-form-field>
+            <mat-label>Selecciona un año</mat-label>
+            <mat-select [(value)]="selectedYear" (selectionChange)="GetByYear()">
+                <div *ngFor="let year of years">
+                    <mat-option  [value]="year">{{ year }}</mat-option>
+                </div>
+            </mat-select>
+          </mat-form-field>
     </div>
 <div>
