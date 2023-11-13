@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .centrar
+  {
+    display: flex;
+    align-items: center;
+  }
+  
+  

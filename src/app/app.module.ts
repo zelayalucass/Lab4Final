@@ -10,7 +10,10 @@ import { AuthRoutingModule } from './components/auth/auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './components/auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+<<<<<<< HEAD
 
+=======
+>>>>>>> a36cdf0f337d7a1957bc6449b8694f4665686018
 
 @NgModule({
   declarations: [
@@ -25,7 +28,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     AuthModule,
     BrowserAnimationsModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

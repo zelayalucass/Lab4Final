@@ -48,3 +48,8 @@ export interface ICinema {
     sala: number | null;
     horarios: string | null;
  }
+
+ export interface IGenre{
+   id: number | null;
+   name: string | null;
+  }

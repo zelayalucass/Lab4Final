@@ -1,0 +1,15 @@
+
+<div class="row w-100 ">
+    <div class="col-lg-10 ">
+        <mat-form-field  class="w-100">
+            <mat-label>Buscar</mat-label>
+            <input matInput [(ngModel)]="movieToSearch" >
+        </mat-form-field>
+    </div>
+    <div class="col-lg-2 " >
+        <button mat-fab color="primary" (click)="searchMovie()">
+            <mat-icon>search</mat-icon>
+        </button>    
+    </div>
+</div>
+
