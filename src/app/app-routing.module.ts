@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: ()=> import("./components/auth/auth-routing.module").then(m=>m.AuthRoutingModule)
   },
   {
+    path:'showtime',
+    loadChildren: ()=> import("./components/showtime/showtime.module").then(m=>m.ShowtimeModule)
+  },
+  {
     path: '',
     redirectTo:'landing',
     pathMatch: 'full'
