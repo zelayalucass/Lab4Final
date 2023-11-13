@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CinePageComponent } from './cine-page.component';
+import { HomeCineComponent } from './home-cine.component';
 
-describe('CinePageComponent', () => {
-  let component: CinePageComponent;
-  let fixture: ComponentFixture<CinePageComponent>;
+describe('HomeCineComponent', () => {
+  let component: HomeCineComponent;
+  let fixture: ComponentFixture<HomeCineComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CinePageComponent]
+      declarations: [HomeCineComponent]
     });
-    fixture = TestBed.createComponent(CinePageComponent);
+    fixture = TestBed.createComponent(HomeCineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

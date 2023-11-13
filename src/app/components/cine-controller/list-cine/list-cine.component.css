@@ -5,7 +5,10 @@
     font-size: 20px;
 }
 
-
+.contenedor-principal
+{
+    padding-top: 20rem;
+}
 .datatable-container{
     font-family: 'Noto Sans', sans-serif;
     background-color: var(--dt-background-color-container);

@@ -7,7 +7,8 @@ import { ApiService } from 'src/app/core/services/api.service';
   templateUrl: './list-cine.component.html',
   styleUrls: ['./list-cine.component.css']
 })
-export class ListCineComponent implements OnInit {
+export class ListCineComponent implements OnInit{
+
   ngOnInit(): void {
     this.api.getCases().subscribe({
       next: (res) => {
@@ -42,8 +43,8 @@ export class ListCineComponent implements OnInit {
     this.cinetToDelete.emit(id);
   }
 
-  public EditProduct(user :Cinema)
+  public EditProduct(cinema :Cinema)
   {
-    this.cineToEdit.emit(user);
+    this.cineToEdit.emit(cinema);
   }
 }

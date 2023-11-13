@@ -1,32 +1,32 @@
 {
   "cines": [
     {
-      "idCinema": "1",
+      "idCinema": 1,
       "nombre": "Smartphone",
       "direccion": "599.99",
       "cantidadSalas": "250"
     },
     {
-      "idCinema": "2",
-      "nombne": "Laptop",
+      "idCinema": 2,
+      "nombre": "Laptop",
       "direccion": "999.99",
       "cantidadSalas": "150"
     },
     {
-      "idCinema": "3",
-      "nombne": "Smart TV",
+      "idCinema": 3,
+      "nombre": "Smart TV",
       "direccion": "799.99",
       "cantidadSalas": "100"
     },
     {
-      "idCinema": "4",
-      "nombne": "Tablet",
+      "idCinema": 4,
+      "nombre": "Tablet",
       "direccion": "349.99",
       "cantidadSalas": "200"
     },
     {
-      "idCinema": "5",
-      "nombne": "Smartwatch",
+      "idCinema": 5,
+      "nombre": "Smartwatch",
       "direccion": "199.99",
       "cantidadSalas": "300"
     }
