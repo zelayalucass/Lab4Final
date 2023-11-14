@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Cinema } from '../Models';
 
@@ -9,36 +9,62 @@ import { Cinema } from '../Models';
 })
 export class CinemaService {
 
-  private baseUrl: string = "http://localhost:3000/cines";
+  private baseUrl: string = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
 
   public getCinemas(): Observable<Cinema[]> {
-    return this.http.get<Cinema[]>(this.baseUrl);
+    const url = `${this.baseUrl}/cines`
+    return this.http.get<Cinema[]>(url);
   }
 
   public getCinemaById(id: number): Observable<Cinema> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/cines/${id}`;
     return this.http.get<Cinema>(url);
   }
 
   public deleteCinema(id: number): Observable<boolean> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<boolean>(url).pipe(
-      map(res => true),
-      catchError(error => {
-        console.error("Error deleting cine:", error);
-        return new Observable<boolean>();
-      })
+  
+    const url = `${this.baseUrl}/cines/${id}`;
+    return this.http.delete<boolean>(url).pipe
+    (
+      map(res => {return true}),
+      catchError(error => of(false))
     );
   }
 
   public editCinema(id: number, updatedCine: Cinema): Observable<boolean> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/cines/${id}`;
     return this.http.put<boolean>(url, updatedCine);
   }
 
   public addCinema(newCine: Cinema): Observable<boolean> {
-    return this.http.post<boolean>(this.baseUrl, newCine);
+    debugger;
+    console.log(newCine);
+    const url = `${this.baseUrl}/cines`;
+    return this.http.post<boolean>(url, newCine);
+  }
+
+  public getCines4Name(name:string) : Observable<Cinema[]>
+  {
+   return this.http.get<Cinema[]>(`${this.baseUrl}/cines?nombre=${name}`);
+  }
+
+  public async ValidateName(name:string) : Promise<boolean>
+  {
+    let cines:Cinema[] = [];
+    try
+    {
+        let apiResponse = this.getCines4Name(name);
+
+        cines = await lastValueFrom(apiResponse);
+
+
+    }catch(error)
+    {
+      console.log(error);
+      
+    }   
+    return cines.length >= 1;
   }
 }

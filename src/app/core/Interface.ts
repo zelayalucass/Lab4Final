@@ -9,7 +9,7 @@ export interface IUser{
 }
 
 export interface ICinema {
-    idCinema: number | null;
+    id: number | null;
     nombre: string | null;
     direccion: string | null;
     cantidadSalas: number | null;
