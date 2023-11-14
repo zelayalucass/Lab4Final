@@ -4,7 +4,7 @@
             <div class="tools">
                 <ul>
                     <li>
-                        <button>
+                        <button (click)="openRegisterDialog()">
                             AGREGAR CINE
                             <i class="material-icons">add_circle</i>
                         </button>
@@ -27,17 +27,17 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of listaCines">
-                    <td>{{item.idCinema}}</td>
+                    <td>{{item.id}}</td>
                     <td>{{item.nombre}}</td>
                     <td>{{item.direccion}}</td>
                     <td>{{item.cantidadSalas}}</td>
                     <td>
-                        <button class="botonMaterial" (click)="EditProduct(item)" >
+                        <button class="botonMaterial" (click)="EditCine(item)" >
                             <i class="material-icons">edit</i>
                         </button>            
                     </td>
                     <td>
-                        <button class="botonMaterial" (click)="DeleteProduct(item.idCinema!)">
+                        <button class="botonMaterial" (click)="DeleteCine(item.id!)">
                             <i class="material-icons">delete</i>
                         </button>            
                     </td>

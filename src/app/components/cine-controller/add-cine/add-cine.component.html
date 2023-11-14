@@ -1,1 +1,53 @@
-<p>add-cine works!</p>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>CineMaster <span class="span-titulo">Plus+</span></h2>
+        <h3>Alta de Cine</h3>
+        <form (ngSubmit)="registerUser()" class="login-box" [formGroup]="loginForm">
+          <!-- Tu formulario de edición de tareas aquí -->
+          <div class="form-group">
+            <div class="form-group-button"> 
+            <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+              people
+            </mat-icon>
+            <label for="username">Nombre del Cine</label>   
+            </div>
+              <input type="text" id="username" name="username" formControlName="username" placeholder="Enter your Username" (blur)="ValidateUserName()">  
+         </div>
+         <div class="error-message" *ngIf="loginForm.get('username')?.hasError('minlength')?.valueOf()">
+          *El Nombre de Usuario debe tener MINIMO 5 caracteres.
+        </div>
+         <div class="error-message" *ngIf="loginForm.get('username')?.hasError('userNameExists') && !loginForm.get('username')?.hasError('required')">
+          *Este Nombre de Usuario NO esta disponible.
+        </div>
+        <div class="error-message" *ngIf="loginForm.get('username')?.touched  && loginForm.get('username')?.hasError('required')">
+          *El Nombre de Usuario es requerido.
+        </div>
+
+        
+          <div class="form-group">
+            <div class="form-group-button"> 
+            <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+              email
+            </mat-icon>
+            <label for="email">Direccion</label>   
+            </div>
+              <input type="email" id="email" name="email" formControlName="email" placeholder="Enter your Email" (blur)="ValidateEmail()">  
+            </div>
+         <div class="error-message" *ngIf="loginForm.get('email')?.hasError('emailExists')">
+          *Este correo electrónico ya existe.
+        </div>
+        <div class="error-message" *ngIf="loginForm.get('email')?.touched  && loginForm.get('email')?.hasError('required')">
+          *El Email es requerido.
+        </div>
+        <div class="error-message" *ngIf="loginForm.get('email')?.hasError('email')">
+          *Respetar Formato del Email.
+        </div>
+         
+          <button name="buttonnotForm" type="submit">Guardar Cambios</button>
+          <button type="button" (click)="closeDialog()" >Cancelar</button>  
+        </form>      
+      </div>
+</div>
+
+

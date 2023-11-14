@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Cinema } from 'src/app/core/Models';
 import { ApiService } from 'src/app/core/services/api.service';
+import { AddCineComponent } from '../add-cine/add-cine.component';
 
 @Component({
   selector: 'app-list-cine',
@@ -10,40 +12,38 @@ import { ApiService } from 'src/app/core/services/api.service';
 export class ListCineComponent implements OnInit{
 
   ngOnInit(): void {
-    this.api.getCases().subscribe({
-      next: (res) => {
-        this.data = res;
-        console.log(this.data);
-        this.isLoadingResults = false;
-      },
-      error: (e) => {
-        console.log(e);
-        this.isLoadingResults = false;
-      },
-      complete: () => console.info('complete')
-    });
+
   }
 
-  constructor(private api:ApiService)
+  constructor(private api:ApiService, private dialog: MatDialog)
   {
     
   }
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open(AddCineComponent, {
+      width: '400px', height : '560px' // Ajusta el ancho según tus necesidades
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Puedes manejar acciones después de cerrar el diálogo aquí
+    });
+  }
 
   @Input() listaCines:Array<Cinema> = [];
-  @Output() cinetToDelete: EventEmitter<number> = new EventEmitter();
+  @Output() cineToDelete: EventEmitter<number> = new EventEmitter();
   @Output() cineToEdit: EventEmitter<Cinema> = new EventEmitter();
 
-  displayedColumns: string[] = ['name', 'age', 'status'];
-  data: Cinema[] = [];
+
+
   isLoadingResults = true;
   
 
-  public DeleteProduct(id :number)
+  public DeleteCine(id :number)
   {
-    this.cinetToDelete.emit(id);
+    this.cineToDelete.emit(id);
   }
 
-  public EditProduct(cinema :Cinema)
+  public EditCine(cinema :Cinema)
   {
     this.cineToEdit.emit(cinema);
   }

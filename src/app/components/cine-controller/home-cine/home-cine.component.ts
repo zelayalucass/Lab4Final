@@ -15,20 +15,19 @@ export class HomeCineComponent implements OnInit {
   public cines: Array<Cinema> = [];
 
   isUserLoggedIn: boolean = false;
-  constructor(private auth: AuthService, private api:CinemaService)
+  constructor(private auth: AuthService, private apiCine:CinemaService, private api:ApiService)
   {
     this.getCines();
   }
   ngOnInit(): void {
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
-    this.getCines();
   }
 
   public async getCines()
   {
     try
     {
-        let apiResponde = this.api.getCinemas();
+        let apiResponde = this.apiCine.getCinemas();
        
         let data = await lastValueFrom(apiResponde);
         
@@ -40,5 +39,29 @@ export class HomeCineComponent implements OnInit {
       console.log(error);
     }
   }
+
+public DeteleCine(id:number)
+{
+  this.apiCine.deleteCinema(id).subscribe(
+    {
+      next: (res) => {
+        debugger
+        console.log(res);
+        
+        if(res)
+        {
+          this.getCines();
+          alert("Eliminado con exito");
+        }
+        else
+        {
+          alert("No se pudo Eliminar");
+        } 
+      },
+      error: () => alert("No se pudo Eliminar")
+    }
+  )
+}
+
 
 }

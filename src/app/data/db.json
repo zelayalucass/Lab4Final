@@ -1,36 +1,4 @@
 {
-  "cines": [
-    {
-      "idCinema": 1,
-      "nombre": "Smartphone",
-      "direccion": "599.99",
-      "cantidadSalas": "250"
-    },
-    {
-      "idCinema": 2,
-      "nombre": "Laptop",
-      "direccion": "999.99",
-      "cantidadSalas": "150"
-    },
-    {
-      "idCinema": 3,
-      "nombre": "Smart TV",
-      "direccion": "799.99",
-      "cantidadSalas": "100"
-    },
-    {
-      "idCinema": 4,
-      "nombre": "Tablet",
-      "direccion": "349.99",
-      "cantidadSalas": "200"
-    },
-    {
-      "idCinema": 5,
-      "nombre": "Smartwatch",
-      "direccion": "199.99",
-      "cantidadSalas": "300"
-    }
-  ],
   "users": [
     {
       "id": 0,
@@ -66,6 +34,39 @@
       "email": "lucas2@gmail.com",
       "password": "lucas",
       "isAdmin": false
+    },
+    {
+      "id": 6,
+      "username": "test2",
+      "email": "test@gmail.com",
+      "password": "test2",
+      "isAdmin": false
+    }
+  ],
+  "cines": [
+    {
+      "id": 1,
+      "nombre": "Smartphone",
+      "direccion": "599.99",
+      "cantidadSalas": 250
+    },
+    {
+      "id": 2,
+      "nombre": "Laptop",
+      "direccion": "999.99",
+      "cantidadSalas": 150
+    },
+    {
+      "id": 3,
+      "nombre": "Smart TV",
+      "direccion": "799.99",
+      "cantidadSalas": 100
+    },
+    {
+      "id": 5,
+      "nombre": "Smartwatch",
+      "direccion": "199.99",
+      "cantidadSalas": 300
     }
   ]
 }
