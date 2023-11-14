@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: ()=> import("./components/cine-controller/cine-controller.module").then(m=>m.CineControllerModule)
   },
   {
+    path:'user',
+    loadChildren: ()=> import("./components/users/users.module").then(m=>m.UsersModule)
+  },
+  {
     path: '',
     redirectTo:'landing',
     pathMatch: 'full'
