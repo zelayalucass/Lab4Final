@@ -38,9 +38,7 @@ export class NavBarLoginComponent implements OnInit{
   public CloseSession()
   {
     this.clearLocalStorage();
-    debugger;
     this.router.navigate(['/landing']);
-    location.reload();
   }
 
   public async getUserLogged()
