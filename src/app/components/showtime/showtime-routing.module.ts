@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShowtimeListComponent } from './showtime-list/showtime-list.component';
+import { HomeShowtimeComponent } from './home-showtime/home-showtime.component';
 
 const routes: Routes = [
   {
-    path:"list",
-    component:ShowtimeListComponent
+    path:"home",
+    component:HomeShowtimeComponent
   },
   {
     path:"",
-    redirectTo:"list",
+    redirectTo:"home",
     pathMatch:"full"
   }
 ];
