@@ -61,24 +61,8 @@ export class ApiService {
       return this.http.post<boolean>(url,user);
    }
 
-   getCases(): Observable<Cinema[]> {
-    return this.http.get<Cinema[]>(`${this.baseUrl}/cines`)
-      .pipe(
-        tap(cinema => console.log('fetched cinemas')),
-        catchError(this.handleError('getCases', []))
-      );
-  }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-  
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-  
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
+
 
    
 }
