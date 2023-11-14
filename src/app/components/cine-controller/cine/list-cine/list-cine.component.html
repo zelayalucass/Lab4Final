@@ -4,7 +4,7 @@
             <div class="tools">
                 <ul>
                     <li>
-                        <button>
+                        <button (click)="openRegisterDialog()">
                             AGREGAR CINE
                             <i class="material-icons">add_circle</i>
                         </button>
@@ -23,31 +23,37 @@
                 <th>Direccion</th>
                 <th>Salas</th>
                 <th>Editar</th>
-                <th>Eliminar</th>          
+                <th>Eliminar</th>  
+                <th>Salas</th>        
             </thead>
             <tbody>
                 <tr *ngFor="let item of listaCines">
-                    <td>{{item.idCinema}}</td>
+                    <td>{{item.id}}</td>
                     <td>{{item.nombre}}</td>
                     <td>{{item.direccion}}</td>
                     <td>{{item.cantidadSalas}}</td>
                     <td>
-                        <button class="botonMaterial" (click)="EditProduct(item)" >
+                        <button class="botonMaterial" (click)="EditCine(item)" >
                             <i class="material-icons">edit</i>
                         </button>            
                     </td>
                     <td>
-                        <button class="botonMaterial" (click)="DeleteProduct(item.idCinema!)">
+                        <button class="botonMaterial" (click)="DeleteCine(item.id!)">
                             <i class="material-icons">delete</i>
                         </button>            
                     </td>
-                </tr>
-                               
+                    <td>
+                        <button class="botonMaterial">
+                            <i class="material-icons">forward</i>
+                        </button>
+                    </td>
+                </tr>           
             </tbody>
         </table>
     
     
         <div class="footer-tools">
+            <span>Total Cines: {{CountList()}}</span>
             <!--<div class="list-items">
                 Show
                 <select name="n-entries" id="n-entries" class="n-entries">

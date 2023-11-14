@@ -24,13 +24,13 @@ export class User implements IUser
 }
 
 export class Cinema implements ICinema {
-    idCinema: number | null;
+    id: number | null;
     nombre: string | null;
     direccion: string | null;
     cantidadSalas: number | null;
 
     constructor(cinema?: Cinema){
-        this.idCinema = cinema?.idCinema == undefined ? null : cinema.idCinema;
+        this.id = cinema?.id == undefined ? null : cinema.id;
         this.nombre = cinema?.nombre == undefined ? null : cinema.nombre;
         this.direccion = cinema?.direccion == undefined ? null : cinema.direccion;
         this.cantidadSalas = cinema?.cantidadSalas == undefined ? null : cinema.cantidadSalas;
