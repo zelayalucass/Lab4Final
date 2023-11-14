@@ -1,1 +1,44 @@
-<p>edit-cine works!</p>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>CineMaster <span class="span-titulo">Plus+</span></h2>
+        <h3>Alta de Cine</h3>
+        <form (ngSubmit)="EditProduct()" class="login-box" [formGroup]="loginForm">
+          <!-- Tu formulario de edición de tareas aquí -->
+          <div class="form-group">
+            <div class="form-group-button"> 
+            <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+              movie
+            </mat-icon>
+            <label for="name">Nombre del Cine</label>   
+            </div>
+              <input type="text" id="name" name="name" formControlName="name" placeholder="Enter your name" (blur)="ValidateName()">  
+         </div>
+         <div class="error-message" *ngIf="loginForm.get('name')?.hasError('nameExists') && !loginForm.get('name')?.hasError('required')">
+          *Este Nombre NO esta disponible.
+        </div>
+        <div class="error-message" *ngIf="loginForm.get('name')?.touched  && loginForm.get('name')?.hasError('required')">
+          *El Nombre deL Cine es requerido.
+        </div>
+
+        
+          <div class="form-group">
+            <div class="form-group-button"> 
+            <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+              forward
+            </mat-icon>
+            <label for="direction">Direccion</label>   
+            </div>
+              <input type="text" id="direction" name="direction" formControlName="direction" placeholder="Enter your direction" >  
+            </div>
+        <div class="error-message" *ngIf="loginForm.get('direction')?.touched  && loginForm.get('direction')?.hasError('required')">
+          *El Email es requerido.
+        </div>
+                   <button name="buttonnotForm" type="submit">Guardar Cambios</button>
+          <button type="button" (click)="closeDialog()" >Cancelar</button>  
+        </form>      
+      </div>
+</div>
+
+
+

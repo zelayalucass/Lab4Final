@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, lastValueFrom, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Cinema } from '../Models';
 
@@ -39,7 +39,32 @@ export class CinemaService {
   }
 
   public addCinema(newCine: Cinema): Observable<boolean> {
+    debugger;
+    console.log(newCine);
     const url = `${this.baseUrl}/cines`;
-    return this.http.post<boolean>(this.baseUrl, newCine);
+    return this.http.post<boolean>(url, newCine);
+  }
+
+  public getCines4Name(name:string) : Observable<Cinema[]>
+  {
+   return this.http.get<Cinema[]>(`${this.baseUrl}/cines?nombre=${name}`);
+  }
+
+  public async ValidateName(name:string) : Promise<boolean>
+  {
+    let cines:Cinema[] = [];
+    try
+    {
+        let apiResponse = this.getCines4Name(name);
+
+        cines = await lastValueFrom(apiResponse);
+
+
+    }catch(error)
+    {
+      console.log(error);
+      
+    }   
+    return cines.length >= 1;
   }
 }

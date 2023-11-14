@@ -21,7 +21,7 @@
     color: var(--dt-text-color);
     width: 100rem;
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 18px;
     box-sizing: border-box;
     border-radius: 2rem;
     border: solid 0rem var(--highlight-color);
@@ -125,6 +125,7 @@ width: 50%;
     border: 0 ;
     background: transparent;
     cursor: pointer;
+    margin-left: 1rem;
 }
 
 .datatable-container .header-tools .tools ul li button:hover,

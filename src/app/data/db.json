@@ -67,6 +67,12 @@
       "nombre": "Smartwatch",
       "direccion": "199.99",
       "cantidadSalas": 300
+    },
+    {
+      "id": 6,
+      "nombre": "Aldrey",
+      "direccion": "Sarmiento 2023",
+      "cantidadSalas": 0
     }
   ]
 }

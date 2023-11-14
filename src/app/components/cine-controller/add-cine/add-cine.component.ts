@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/app/core/Models';
+import { Cinema, User } from 'src/app/core/Models';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { CinemaService } from 'src/app/core/services/cinema.service';
 
 @Component({
   selector: 'app-add-cine',
@@ -12,43 +13,45 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class AddCineComponent implements OnInit {
 
-  userRegister: User = new User();
+  cineRegister: Cinema = new Cinema();
   dialog: any;
   public loginForm!:FormGroup;
-  constructor(private dialogRef: MatDialogRef<AddCineComponent>, private api:ApiService,private auth:AuthService ,private formBuilder:FormBuilder) {}
+  @Output() userToCreate: EventEmitter<Cinema>= new EventEmitter();
+  
+  constructor(private dialogRef: MatDialogRef<AddCineComponent>, private api:CinemaService,private auth:AuthService ,private formBuilder:FormBuilder) {}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-        username: [this.userRegister.username, [Validators.required, Validators.minLength(5)]],
-        email: [this.userRegister.email, [Validators.required, Validators.email]],
-        password: [this.userRegister.password,[Validators.required,Validators.minLength(5)]]
+      name: [this.cineRegister.nombre, [Validators.required, Validators.minLength(5)]],
+        direction: [this.cineRegister.direccion, [Validators.required]]
     })};
 
-  public registerUser()
+
+  public registerCine()
   {
     try
     {
-      this.userRegister.username = this.loginForm.get('username')?.value;
-      this.userRegister.email = this.loginForm.get('email')?.value;
-      this.userRegister.password = this.loginForm.get('password')?.value;
-      this.userRegister.isAdmin = false;
-
+      this.cineRegister.nombre = this.loginForm.get('name')?.value;
+      this.cineRegister.direccion = this.loginForm.get('direction')?.value;
+      this.cineRegister.cantidadSalas = 0;
+      
       if(this.loginForm.invalid) return;
 
-      this.api.addUser(this.userRegister).subscribe(
+      this.api.addCinema(this.cineRegister).subscribe(
         {
           next:() =>{
-            alert("Usuario creado con exito");
+            alert("Cine creado con exito");
             this.closeDialog();
           },
-          error: () => {
-            alert("No se pudo crear el usuario");
+          error: (error) => {
+            console.log(error);
+            alert("No se pudo crear el Cine");
           }
         }
       )
+
     }catch(error)
-    {
-      console.log(error);
-      
+    { 
+      console.log(error);   
     }
 
     
@@ -58,16 +61,16 @@ export class AddCineComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  public async ValidateEmail()
+  public async ValidateName()
   {
     try
-    {
-      this.userRegister.email = this.loginForm.get('email')?.value;
-      const emailExists = await this.auth.ValidateEmail(this.userRegister.email!);
+    {      
+      this.cineRegister.nombre = this.loginForm.get('name')?.value;
+      const nameExists = await this.api.ValidateName(this.cineRegister.nombre!);
 
-      if(await emailExists)
+      if(await nameExists)
       {
-        this.loginForm.get('email')?.setErrors({ emailExists: true });
+        this.loginForm.get('name')?.setErrors({ nameExists: true });
       }
 
     }catch(error)
@@ -77,23 +80,6 @@ export class AddCineComponent implements OnInit {
     }
   }
 
-  public async ValidateUserName()
-  {
-    try
-    {
-      this.userRegister.username = this.loginForm.get('username')?.value;
-      const userNameExists  = await this.auth.ValidateUserName(this.userRegister.username!);
 
-      if(await userNameExists )
-      {
-        this.loginForm.get('username')?.setErrors({ userNameExists: true });
-      }
-
-    }catch(error)
-    {
-      console.log(error);
-      
-    }
-  }
 
 }

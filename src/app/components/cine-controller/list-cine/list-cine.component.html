@@ -23,7 +23,8 @@
                 <th>Direccion</th>
                 <th>Salas</th>
                 <th>Editar</th>
-                <th>Eliminar</th>          
+                <th>Eliminar</th>  
+                <th>Salas</th>        
             </thead>
             <tbody>
                 <tr *ngFor="let item of listaCines">
@@ -41,13 +42,18 @@
                             <i class="material-icons">delete</i>
                         </button>            
                     </td>
-                </tr>
-                               
+                    <td>
+                        <button class="botonMaterial">
+                            <i class="material-icons">forward</i>
+                        </button>
+                    </td>
+                </tr>           
             </tbody>
         </table>
     
     
         <div class="footer-tools">
+            <span>Total Cines: {{CountList()}}</span>
             <!--<div class="list-items">
                 Show
                 <select name="n-entries" id="n-entries" class="n-entries">
