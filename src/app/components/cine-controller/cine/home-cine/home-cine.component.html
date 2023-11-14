@@ -1,5 +1,5 @@
 
 <app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
 <app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
-<app-list-cine [listaCines]="cines"></app-list-cine>
+<app-list-cine [listaCines]="cines" (cineToDelete)="DeteleCine($event)"  (cineToEdit)="EditCine($event)"></app-list-cine>
 <app-footer></app-footer>

@@ -8,15 +8,20 @@
 .contenedor-principal
 {
     padding-top: 20rem;
+    background-image: url('../../../../../assets/newYork.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat;
+    height: 100%;
 }
 .datatable-container{
     font-family: 'Noto Sans', sans-serif;
     background-color: var(--dt-background-color-container);
     border-radius: var(--dt-border-radius);
     color: var(--dt-text-color);
-    width: 80rem;
+    width: 100rem;
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 18px;
     box-sizing: border-box;
     border-radius: 2rem;
     border: solid 0rem var(--highlight-color);
@@ -120,6 +125,7 @@ width: 50%;
     border: 0 ;
     background: transparent;
     cursor: pointer;
+    margin-left: 1rem;
 }
 
 .datatable-container .header-tools .tools ul li button:hover,
