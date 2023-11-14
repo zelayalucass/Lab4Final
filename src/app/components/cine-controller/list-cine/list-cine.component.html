@@ -1,0 +1,77 @@
+<div class="contenedor-principal">
+    <div class="datatable-container mat-elevation-z20">
+        <div class="header-tools">
+            <div class="tools">
+                <ul>
+                    <li>
+                        <button>
+                            AGREGAR CINE
+                            <i class="material-icons">add_circle</i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="text" class="search-input" placeholder="*Ingrese lo que desea buscar aqui"> 
+            </div>   
+        </div>
+    
+        <table class="datatable">
+            <thead>
+                <th>Identificacion</th>
+                <th>Name</th>
+                <th>Direccion</th>
+                <th>Salas</th>
+                <th>Editar</th>
+                <th>Eliminar</th>          
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaCines">
+                    <td>{{item.idCinema}}</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.direccion}}</td>
+                    <td>{{item.cantidadSalas}}</td>
+                    <td>
+                        <button class="botonMaterial" (click)="EditProduct(item)" >
+                            <i class="material-icons">edit</i>
+                        </button>            
+                    </td>
+                    <td>
+                        <button class="botonMaterial" (click)="DeleteProduct(item.idCinema!)">
+                            <i class="material-icons">delete</i>
+                        </button>            
+                    </td>
+                </tr>
+                               
+            </tbody>
+        </table>
+    
+    
+        <div class="footer-tools">
+            <!--<div class="list-items">
+                Show
+                <select name="n-entries" id="n-entries" class="n-entries">
+                    <option value="15">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                </select>
+                Entries
+            </div>
+            <div class="pages">
+                <ul>
+                        <li><span class="active">1</span></li>
+                        <li><button>2</button></li>
+                        <li><button>3</button></li>
+                        <li><button>4</button></li>
+                        <li><button>...</button></li>
+                        <li><button>9</button></li>
+                        <li><button>10</button></li>
+                </ul>
+         </div>-->
+        </div>
+        
+        
+    </div>
+    
+</div>
+

@@ -9,7 +9,7 @@ import { Cinema } from '../Models';
 })
 export class CinemaService {
 
-  private baseUrl: string = "http://localhost:3000/cinemas";
+  private baseUrl: string = "http://localhost:3000/cines";
 
   constructor(private http: HttpClient) { }
 
