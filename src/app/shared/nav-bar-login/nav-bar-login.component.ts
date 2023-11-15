@@ -38,8 +38,10 @@ export class NavBarLoginComponent implements OnInit{
   public CloseSession()
   {
     this.clearLocalStorage();
-    this.router.navigate(['/']);
-    location.reload;
+    this.router.navigate(['/landing']).then(() => {
+      // Recargar la página después de la redirección para asegurar una carga limpia
+      location.reload();
+    });
   }
 
   public async getUserLogged()
