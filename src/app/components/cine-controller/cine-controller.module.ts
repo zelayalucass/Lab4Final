@@ -8,6 +8,10 @@ import { AddCineComponent } from './cine/add-cine/add-cine.component';
 import { EditCineComponent } from './cine/edit-cine/edit-cine.component';
 import { SharedModule } from "../../shared/shared.module";
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddSalaComponent } from './sala/add-sala/add-sala.component';
+import { ListSalaComponent } from './sala/list-sala/list-sala.component';
+import { EditSalaComponent } from './sala/edit-sala/edit-sala.component';
+import { HomeSalaComponent } from './sala/home-sala/home-sala.component';
 
 
 @NgModule({
@@ -15,7 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
         ListCineComponent,
         HomeCineComponent,
         AddCineComponent,
-        EditCineComponent
+        EditCineComponent,
+        AddSalaComponent,
+        ListSalaComponent,
+        EditSalaComponent,
+        HomeSalaComponent
     ],
     imports: [
         CommonModule,

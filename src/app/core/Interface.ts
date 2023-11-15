@@ -49,6 +49,16 @@ export interface ICinema {
     horarios: string | null;
  }
 
+ export interface ISala
+ {
+    id: number | null;
+    idCine: number | null;
+    nombreSala: string | null;
+    nombreCine: string | null;
+    butacas: number | null;
+
+ }
+
  export interface IGenre{
    id: number | null;
    name: string | null;
