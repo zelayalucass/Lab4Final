@@ -1,28 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Cinema, Showtime } from 'src/app/core/Models';
 import { AuthService } from 'src/app/core/services/auth.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
-
+import { ShowtimeService } from 'src/app/core/services/showtime.service';
 
 @Component({
   selector: 'app-home-showtime',
@@ -31,27 +11,65 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class HomeShowtimeComponent {
   isUserLoggedIn: boolean = false;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = [...ELEMENT_DATA];
+  public funciones: Array<Showtime> = [];
 
-  @ViewChild(MatTable) table: MatTable<PeriodicElement> | undefined;
-
-  constructor(private auth: AuthService) {}
-
-
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
-    this.table.renderRows();
-  }
-
-  removeData() {
-    this.dataSource.pop();
-    this.table.renderRows();
-  }
-
+  constructor(private auth: AuthService, private apiFunciones:ShowtimeService, private dialog:MatDialog) {}
+ 
   ngOnInit(): void {
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
   }
+
+  public async getCines()
+  {
+    try
+    {
+      /*
+        let apiResponde = this.apiFunciones.getShowtimes();
+       
+        let data = await lastValueFrom(apiResponde);
+        
+        this.cines = data.map((cine : any) => new Cinema(cine))
+*/        
+    }
+    catch(error)
+    {
+      console.log(error);
+    }
+  }
+
+public DeteleCine(id:number)
+{
+  this.apiFunciones.deleteShowtime(id).subscribe(
+    {
+      next: (res) => {
+        debugger
+        console.log(res);
+        
+        if(res)
+        {
+          this.getCines();
+          alert("Eliminado con exito");
+        }
+        else
+        {
+          alert("No se pudo Eliminar");
+        } 
+      },
+      error: () => alert("No se pudo Eliminar")
+    }
+  )
+}
+
+public EditCine(cine:Cinema)
+{
+    /*const dialogResult = this.dialog.open(EditCineComponent, {data : cine, height: '450px', width:'460px'})
+
+    dialogResult.afterClosed().subscribe(
+      result => this.getCines()
+    )*/
+}
+
+
+
 
 }

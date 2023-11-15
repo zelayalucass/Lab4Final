@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit{
 
   public NavigateToRegister()
   {
-
     this.router.navigate(['/auth/register'])
   }
   

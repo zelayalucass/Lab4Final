@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeShowtimeComponent } from './home-showtime/home-showtime.component';
+import { AddShowtimeComponent } from './add-showtime/add-showtime.component';
 
 const routes: Routes = [
   {
@@ -8,10 +9,10 @@ const routes: Routes = [
     component:HomeShowtimeComponent
   },
   {
-    path:"",
-    redirectTo:"home",
-    pathMatch:"full"
-  }
+    path: "add",
+    component: AddShowtimeComponent
+  },
+  
 ];
 
 @NgModule({

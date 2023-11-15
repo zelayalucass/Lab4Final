@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing-page/landing-page.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
     path:"landing-page",
-    component:LandingComponent
-  },
-  {
-    path:"landing-page/:id",
     component:LandingComponent
   },
   {
@@ -21,6 +18,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule ]
 })
 export class LandingRoutingModule { }

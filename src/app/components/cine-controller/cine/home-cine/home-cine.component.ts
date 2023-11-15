@@ -15,8 +15,8 @@ import { EditCineComponent } from '../edit-cine/edit-cine.component';
 export class HomeCineComponent implements OnInit {
 
   public cines: Array<Cinema> = [];
-
   isUserLoggedIn: boolean = false;
+  
   constructor(private auth: AuthService, private apiCine:CinemaService, private dialog:MatDialog)
   {
     this.getCines();
