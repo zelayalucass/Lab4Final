@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Movie, Showtime } from 'src/app/core/Models';
+import { Movie, Sala, Showtime } from 'src/app/core/Models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MovieService } from 'src/app/core/services/movie.service';
+import { SalaService } from 'src/app/core/services/sala.service';
 import { ShowtimeService } from 'src/app/core/services/showtime.service';
 
 @Component({
@@ -13,7 +14,8 @@ import { ShowtimeService } from 'src/app/core/services/showtime.service';
 
 export class AddShowtimeComponent implements OnInit{
   movieList: Movie[] = [];
-  movieTitle : string =""
+  salasList: Sala[] = [];
+  salaName : string =""
   public viewSalas : boolean = false
   public showtimeRegister: Showtime = new Showtime();
 
@@ -23,12 +25,16 @@ export class AddShowtimeComponent implements OnInit{
   @Output() userToCreate: EventEmitter<Showtime>= new EventEmitter();
   
   constructor(private api:ShowtimeService,private auth:AuthService
-     ,private formBuilder:FormBuilder, private movieServie:MovieService) {}
-
+     ,private formBuilder:FormBuilder, private movieServie:MovieService,private salaService : SalaService) {}
+     
   ngOnInit(): void {
 
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
 
+    this.salaService.getSalas().subscribe((data : any)=> {
+      this.salasList = data;
+    });
+    console.log(this.salasList);
     this.movieServie.listaPeliculas$.subscribe((lista)=>
     {
       this.movieList = lista.slice(0,10);
@@ -39,12 +45,19 @@ export class AddShowtimeComponent implements OnInit{
       direction: [this.showtimeRegister.sala, [Validators.required]]
     })};
 
-
-
     setTitle(title : string)
     {
-      console.log(title)
       this.showtimeRegister.nombrePelicula = title;
+    }
+    setSala(sala : Sala)
+    {
+      this.showtimeRegister.sala = sala.id;
+      this.salaName = sala.nombreSala != undefined ? sala.nombreSala : ""
+    }
+
+    onInputFocus(see : boolean) {
+      this.viewSalas = see;
+      // Realiza las acciones que desees cuando el input reciba el foco
     }
       /*
 
