@@ -11,6 +11,14 @@ import { Cinema, User } from '../Models';
 export class ApiService {
 
   private baseUrl:string = "http://localhost:3000";
+  private cineIdSubject = new BehaviorSubject<number | null>(null);
+  cineId$ = this.cineIdSubject.asObservable();
+
+  getCineActualViewCineFromSala(cineId: number) {
+    this.cineIdSubject.next(cineId);
+  }
+
+
   constructor(private http: HttpClient) {
 
    }

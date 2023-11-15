@@ -27,18 +27,18 @@
                 <th>Salas</th>        
             </thead>
             <tbody>
-                <tr *ngFor="let item of listaCines">
+                <tr *ngFor="let item of listaSalas">
                     <td>{{item.id}}</td>
-                    <td>{{item.nombre}}</td>
-                    <td>{{item.direccion}}</td>
-                    <td>{{item.cantidadSalas}}</td>
+                    <td>{{item.nombreCine}}</td>
+                    <td>{{item.nombreSala}}</td>
+                    <td>{{item.butacas}}</td>
                     <td>
-                        <button class="botonMaterial" (click)="EditCine(item)" >
+                        <button class="botonMaterial" (click)="EditSala(item)" >
                             <i class="material-icons">edit</i>
                         </button>            
                     </td>
                     <td>
-                        <button class="botonMaterial" (click)="DeleteCine(item.id!)">
+                        <button class="botonMaterial" (click)="DeleteSala(item.id!)">
                             <i class="material-icons">delete</i>
                         </button>            
                     </td>

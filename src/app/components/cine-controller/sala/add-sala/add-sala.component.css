@@ -1,0 +1,115 @@
+@import 'material-icons/iconfont/material-icons.css';
+.custom-dialog-title {
+    font-size: 20px;
+    background-color: #2196F3;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .custom-form {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  }
+
+  
+  .custom-button {
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 1rem;
+  }
+  
+  .custom-button:hover {
+    background-color: #0F5C9E;
+  }
+  
+  .invisible-div {
+    visibility: hidden;
+  }
+
+  .login-container {
+    padding: 10px;
+    text-align: center;
+  }
+  .form-group {
+    text-align: left;
+    margin: 10px 0;
+  }
+  .form-group-button{
+    display: flex;
+    flex-direction: row;
+    align-items: self-end;
+  }
+  .login-box {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 20px 50px 100px 50px rgba(10, 199, 233, 0.1);
+    padding: 20px;
+    text-align: center;
+  }
+
+label {
+display: block;
+font-weight: bold;
+}
+input[type="text"], select
+{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  #fotoEmailicon{
+    width: 12%;
+  }
+
+.span-titulo
+{
+    color: rgb(21, 129, 251);
+}
+
+.login-box h2 {
+  font-size: 24px;
+  margin: 0 0 2px;
+}
+
+.login-box h3 {
+
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.error-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  color: red;
+  font-size: 11px; /* Puedes ajustar el tamaño de fuente según tus necesidades */
+  font-family: 'MontserratM', sans-serif;
+ 
+}

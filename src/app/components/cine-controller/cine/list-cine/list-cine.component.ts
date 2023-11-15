@@ -18,7 +18,7 @@ export class ListCineComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  constructor(private router:Router,private api:ApiService, private dialog: MatDialog, public cine:CinemaService)
+  constructor(private dialog: MatDialog, public cine:CinemaService, public api:ApiService, private router:Router)
   {
     
   }
@@ -55,6 +55,11 @@ export class ListCineComponent implements OnInit{
   {
     this.cineToEdit.emit(cinema);
   }
+
+  public navegarASalas(cineId: number) {
+    this.api.getCineActualViewCineFromSala(cineId);
+    this.router.navigate(['cine/home-sala'])
+  }
 
 
 

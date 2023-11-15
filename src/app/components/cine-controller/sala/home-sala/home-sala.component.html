@@ -1,1 +1,4 @@
-<p>home-sala works!</p>
+<app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
+<app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
+<app-list-sala></app-list-sala>
+<app-footer></app-footer>

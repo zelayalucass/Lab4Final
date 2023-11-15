@@ -4,15 +4,15 @@ import { LandingComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
   {
-    path:"landing-page",
+    path:'landing-page',
     component:LandingComponent
   },
   {
-    path:"landing-page/:id",
+    path:'landing-page/:id',
     component:LandingComponent
   },
   {
-    path:"",
+    path:'',
     redirectTo:"landing-page",
     pathMatch:"full"
   }

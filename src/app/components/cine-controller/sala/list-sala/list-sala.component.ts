@@ -3,8 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CinemaService } from 'src/app/core/services/cinema.service';
 import { AddSalaComponent } from '../add-sala/add-sala.component';
-import { Cinema } from 'src/app/core/Models';
+import { Cinema, Sala } from 'src/app/core/Models';
 import { lastValueFrom } from 'rxjs';
+import { SalaService } from 'src/app/core/services/sala.service';
 
 @Component({
   selector: 'app-list-sala',
@@ -14,15 +15,17 @@ import { lastValueFrom } from 'rxjs';
 export class ListSalaComponent implements OnInit{
 
   isLoadingResults = true;
-
+  cineId: number | null;
 
   ngOnInit(): void {
-
+    this.api.cineId$.subscribe((cine) => {
+      this.cineId = cine;
+    })
   };
 
-  constructor(private api:ApiService, private dialog: MatDialog, public cine:CinemaService)
+  constructor(private api:ApiService, private dialog: MatDialog, public sala:SalaService)
   {
-    
+    this.cineId = null;
   }
 
 
@@ -32,41 +35,36 @@ export class ListSalaComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getCines();
+      this.getSalasByIdCine();
     });
   }
 
-  @Input() listaCines:Array<Cinema> = [];
-  @Output() cineToDelete: EventEmitter<number> = new EventEmitter();
-  @Output() cineToEdit: EventEmitter<Cinema> = new EventEmitter();
+  @Input() listaSalas:Array<Sala> = [];
+  @Output() salaToDelete: EventEmitter<number> = new EventEmitter();
+  @Output() salaToEdit: EventEmitter<Sala> = new EventEmitter();
 
-  public DeleteCine(id :number)
+  public DeleteSala(id :number)
   {
-    this.cineToDelete.emit(id);
+    this.salaToDelete.emit(id);
   }
 
   public CountList() : number
   {
-    return this.listaCines.length;
+    return this.listaSalas.length;
   }
 
-  public EditCine(cinema :Cinema)
+  public EditSala(sala :Sala)
   {
-    this.cineToEdit.emit(cinema);
+    this.salaToEdit.emit(sala);
   }
 
- 
-      
-
-
-
-  public async getCines()
+  public async getSalasByIdCine()
   {
     try
     {
-        let apiResponde = this.cine.getCinemas();       
+        let apiResponde = this.sala.getSalaByCinema(this.cineId!);       
         let data = await lastValueFrom(apiResponde);
-        this.listaCines = data.map((product : any) => new Cinema(product))
+        this.listaSalas = data.map((sala : any) => new Sala(sala))
     }
     catch(error)
    {

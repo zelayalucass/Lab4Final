@@ -18,9 +18,9 @@ export class SalaService {
     return this.http.get<Sala[]>(url);
   }
 
-  public getSalaByCinema(id: number): Observable<Sala> {
+  public getSalaByCinema(id: number): Observable<Sala[]> {
     const url = `${this.baseUrl}/sala?idCinema=${id}`;
-    return this.http.get<Sala>(url);
+    return this.http.get<Sala[]>(url);
   }
 
   public deleteSala(id: number, idSala: number): Observable<boolean> {
