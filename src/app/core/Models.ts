@@ -103,6 +103,7 @@ export class Showtime implements IShowtime {
         this.horarios = showtime?.horarios == undefined ? null : showtime.horarios;
     }
 }
+
 export class Genre implements IGenre
 {
     id: number | null;
