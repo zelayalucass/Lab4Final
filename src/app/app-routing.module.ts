@@ -21,6 +21,10 @@ const routes: Routes = [
     
   },
   {
+    path:'user',
+    loadChildren: ()=> import("./components/users/users.module").then(m=>m.UsersModule)
+  },
+  {
     path: '',
     redirectTo:'landing',
     pathMatch: 'full'
