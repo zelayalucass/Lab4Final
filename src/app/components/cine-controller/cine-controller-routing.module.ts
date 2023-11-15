@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeCineComponent } from './cine/home-cine/home-cine.component';
+import { AddCineComponent } from './cine/add-cine/add-cine.component';
+import { LoginComponent } from '../auth/login/login.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeCineComponent
+
   }
+
+
 ];
 
 @NgModule({

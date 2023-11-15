@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { AddCineComponent } from '../add-cine/add-cine.component'; 
 import { CinemaService } from 'src/app/core/services/cinema.service';
 import { lastValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-cine',
@@ -12,12 +13,12 @@ import { lastValueFrom } from 'rxjs';
   styleUrls: ['./list-cine.component.css']
 })
 export class ListCineComponent implements OnInit{
+ 
 
   ngOnInit(): void {
-
   }
 
-  constructor(private api:ApiService, private dialog: MatDialog, public cine:CinemaService)
+  constructor(private router:Router,private api:ApiService, private dialog: MatDialog, public cine:CinemaService)
   {
     
   }
@@ -34,6 +35,7 @@ export class ListCineComponent implements OnInit{
   @Input() listaCines:Array<Cinema> = [];
   @Output() cineToDelete: EventEmitter<number> = new EventEmitter();
   @Output() cineToEdit: EventEmitter<Cinema> = new EventEmitter();
+  
 
 
   isLoadingResults = true;
@@ -56,17 +58,19 @@ export class ListCineComponent implements OnInit{
 
 
 
-public async getCines()
-{
-  try
+
+  public async getCines()
   {
-      let apiResponde = this.cine.getCinemas();       
-      let data = await lastValueFrom(apiResponde);
-      this.listaCines = data.map((product : any) => new Cinema(product))
+    try
+    {
+        let apiResponde = this.cine.getCinemas();       
+        let data = await lastValueFrom(apiResponde);
+        this.listaCines = data.map((product : any) => new Cinema(product))
+    }
+    catch(error)
+    {
+      console.log(error);
+      
+    }
   }
-  catch(error)
-  {
-    
-    }
-  }
 }

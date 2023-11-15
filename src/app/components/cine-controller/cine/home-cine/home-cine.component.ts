@@ -16,6 +16,12 @@ export class HomeCineComponent implements OnInit {
 
   public cines: Array<Cinema> = [];
 
+  mostrarVistaCines = true;
+  
+  cambiarVista() {
+    this.mostrarVistaCines = !this.mostrarVistaCines;
+  }
+
   isUserLoggedIn: boolean = false;
   constructor(private auth: AuthService, private apiCine:CinemaService, private dialog:MatDialog)
   {

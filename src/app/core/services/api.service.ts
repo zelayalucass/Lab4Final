@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { map, catchError, of, tap } from 'rxjs';
+import { map, catchError, of, tap, BehaviorSubject } from 'rxjs';
 import { Cinema, User } from '../Models';
 
 
@@ -60,6 +60,7 @@ export class ApiService {
       const url = `${this.baseUrl}/users`;
       return this.http.post<boolean>(url,user);
    }
+
 
 
 

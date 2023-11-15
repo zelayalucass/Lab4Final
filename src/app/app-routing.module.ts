@@ -18,6 +18,7 @@ const routes: Routes = [
   {
     path:'cine',
     loadChildren: ()=> import("./components/cine-controller/cine-controller.module").then(m=>m.CineControllerModule)
+    
   },
   {
     path: '',
