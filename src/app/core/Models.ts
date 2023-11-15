@@ -1,4 +1,4 @@
-import { IGenre, IUser } from "./Interface";
+import { IGenre, ISala, IUser } from "./Interface";
 import { ICinema } from "./Interface";
 import { IMovie } from "./Interface";
 import { ITicket } from "./Interface";
@@ -71,7 +71,21 @@ export class Cinema implements ICinema {
         this.vote_count = movie?.vote_count == undefined ? 0 : movie.vote_count;
     }
  }
-
+ export class Sala implements ISala{
+    id: number | null;
+    idCine: number | null;
+    nombreSala: string | null;
+    nombreCine: string | null;
+    butacas: number | null;
+   
+    constructor(sala?: Sala){
+       this.id = sala?.id == undefined ? null : sala.id;
+       this.idCine = sala?.idCine == undefined ? null : sala.idCine;
+       this.nombreSala = sala?.nombreSala == undefined ? null : sala.nombreSala;
+       this.nombreCine = sala?.nombreCine == undefined ? null : sala.nombreCine;
+       this.butacas = sala?.butacas == undefined ? null : sala.butacas;
+    }
+}
  export class Ticket implements ITicket {
     idTicket: number | null;
     idUsuario: number | null;
@@ -103,6 +117,7 @@ export class Showtime implements IShowtime {
         this.horarios = showtime?.horarios == undefined ? null : showtime.horarios;
     }
 }
+
 export class Genre implements IGenre
 {
     id: number | null;
