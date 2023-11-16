@@ -58,6 +58,7 @@ export class ListCineComponent implements OnInit{
 
   public navegarASalas(cineId: number) {
     this.api.getCineActualViewCineFromSala(cineId);
+    localStorage.setItem('cineId', cineId.toString());
     this.router.navigate(['cine/home-sala'])
   }
 

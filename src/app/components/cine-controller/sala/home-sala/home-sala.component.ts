@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { SalaService } from 'src/app/core/services/sala.service';
 import { EditSalaComponent } from '../edit-sala/edit-sala.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CinemaService } from 'src/app/core/services/cinema.service';
 
 @Component({
   selector: 'app-home-sala',
@@ -14,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomeSalaComponent implements OnInit {
 
+  eliminadoConExito = false;
   isUserLoggedIn: boolean = false;
   cineId: number | null;
   listaSalas: Sala[] = [];
@@ -21,13 +23,21 @@ export class HomeSalaComponent implements OnInit {
   ngOnInit(): void {
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
     this.api.cineId$.subscribe((cine) => {
-
-      this.cineId = cine;
+      if(cine!=null)
+      {
+        this.cineId = cine;
+      }
+      else
+      {
+        const stringId = localStorage.getItem('cineId');
+        const cineIdNumber = Number(stringId) || 0
+        this.cineId = cineIdNumber;
+      }
       this.getSalasByIdCine();
     })
   }
 
-  constructor(private auth:AuthService,public sala:SalaService,private api:ApiService,private dialog:MatDialog){
+  constructor(private auth:AuthService,public sala:SalaService,private api:ApiService,private dialog:MatDialog, private cine:CinemaService){
     this.cineId = null;
   }
 
@@ -35,7 +45,6 @@ export class HomeSalaComponent implements OnInit {
   {
     try
     {
-        debugger;
         let apiResponde = this.sala.getSalaByCinema(this.cineId!);       
         let data = await lastValueFrom(apiResponde);
         this.listaSalas = data.map((sala : any) => new Sala(sala))
@@ -47,27 +56,81 @@ export class HomeSalaComponent implements OnInit {
     }
   }
 
-  public DeteleSala(id:number)
+public async DeteleSala(id:number)
 {
-  this.sala.deleteSala(id).subscribe(
+  /*this.sala.deleteSala(id).subscribe(
     {
       next: (res) => {
-        debugger
-        console.log(res);
-        
         if(res)
         {
           this.getSalasByIdCine();
           alert("Eliminado con exito");
+          this.eliminadoConExito = true;
         }
         else
         {
           alert("No se pudo Eliminar");
+          this.eliminadoConExito = false;
         } 
       },
       error: () => alert("No se pudo Eliminar")
     }
   )
+  
+
+
+  if(await this.eliminadoConExito)
+  {
+
+    const apiResponse = this.cine.getCinemaById(this.cineId!);
+    const data = await lastValueFrom(apiResponse);
+
+    if(data != null)
+    {
+      data.cantidadSalas! -= 1; 
+    }
+
+    this.cine.editCinema(data.id!,data).subscribe(
+      {
+        next: () =>  alert( `Se modifico la cantidad de salas en el cine ${data.nombre!} `),
+        error: () => alert(`Error al modficar la cantidad de salas en el cine ${data.nombre!} `)
+      }
+    )
+  }*/
+  try {
+    const res = await this.sala.deleteSala(id).toPromise();
+
+    if (res) {
+      await this.getSalasByIdCine();
+      alert("Eliminado con éxito");
+      this.eliminadoConExito = true;
+    } else {
+      alert("No se pudo Eliminar");
+      this.eliminadoConExito = false;
+    }
+
+    if (this.eliminadoConExito) {
+      const apiResponse = await this.cine.getCinemaById(this.cineId!).toPromise();
+      const data = apiResponse;
+
+      if (data != null) {
+        data.cantidadSalas! -= 1;
+        try {
+          await this.cine.editCinema(data.id!, data).toPromise();
+          alert(`Se modificó la cantidad de salas en el cine ${data.nombre!}`);
+        } 
+        catch (error) {
+          alert(`Error al modificar la cantidad de salas en el cine ${data.nombre!}`);
+        }
+      }
+
+
+    }
+  } 
+     
+catch (error) {
+    alert("Error al eliminar la sala");
+  }
 }
 
 public EditSala(sala:Sala)

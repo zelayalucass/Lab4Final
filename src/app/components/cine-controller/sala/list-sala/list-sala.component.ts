@@ -20,7 +20,20 @@ export class ListSalaComponent implements OnInit{
 
   ngOnInit(): void {
     this.api.cineId$.subscribe((cine) => {
-      this.cineId = cine;
+   
+      if(cine!=null)
+      {
+        this.cineId = cine;
+      }
+      else
+      {
+        const stringId = localStorage.getItem('cineId');
+        const cineIdNumber = Number(stringId) || 0
+        this.cineId = cineIdNumber;
+      }
+      
+     
+
     })
   };
 

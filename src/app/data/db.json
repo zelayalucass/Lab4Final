@@ -45,65 +45,66 @@
   ],
   "cines": [
     {
+      "id": 1,
+      "nombre": "Aldrey Sarmiento",
+      "direccion": "Sarmiento 2023",
+      "cantidadSalas": 2
+    },
+    {
       "id": 2,
-      "nombre": "Laptop",
-      "direccion": "999.99",
-      "cantidadSalas": 150
+      "nombre": "Shopping los Gallegos",
+      "direccion": "Belgrano 3300",
+      "cantidadSalas": 2
     },
     {
       "id": 3,
-      "nombre": "Smart TV",
-      "direccion": "799.99",
-      "cantidadSalas": 100
-    },
-    {
-      "id": 5,
-      "nombre": "Smartwatch",
-      "direccion": "199.99",
-      "cantidadSalas": 300
-    },
-    {
-      "id": 6,
-      "nombre": "Aldrey",
-      "direccion": "Sarmiento 2025",
-      "cantidadSalas": 0
+      "nombre": "Ambassador",
+      "direccion": "Cordoba 100",
+      "cantidadSalas": 2
     }
   ],
   "salas": [
     {
       "id": 1,
-      "idCine": 6,
-      "nombreSala": "ATMOS 24",
-      "nombreCine": "Aldrey",
-      "butacas": 1001
-    },
-    {
-      "id": 3,
-      "idCine": 5,
-      "nombreSala": "ATMOS",
-      "nombreCine": "Smartwatch",
+      "idCine": 1,
+      "nombreSala": "SALA 3D",
+      "nombreCine": "Aldrey Sarmiento",
       "butacas": 100
     },
     {
+      "id": 2,
+      "idCine": 1,
+      "nombreSala": "ATMOS",
+      "nombreCine": "Aldrey Sarmiento",
+      "butacas": 100
+    },
+    {
+      "id": 3,
+      "idCine": 2,
+      "nombreSala": "SALA 3D",
+      "nombreCine": "Shopping los Gallegos",
+      "butacas": 150
+    },
+    {
       "id": 4,
-      "idCine": 5,
-      "nombreSala": "ATMOS 2D",
-      "nombreCine": "Smartwatch",
+      "idCine": 2,
+      "nombreSala": "ATMOS",
+      "nombreCine": "Shopping los Gallegos",
       "butacas": 100
     },
     {
       "id": 5,
-      "idCine": 6,
-      "nombreSala": "ATMOS ",
-      "nombreCine": "Aldrey",
-      "butacas": 5
+      "idCine": 3,
+      "nombreSala": "SALA 3D",
+      "nombreCine": "Ambassador",
+      "butacas": 20
     },
     {
       "id": 6,
       "idCine": 3,
       "nombreSala": "ATMOS",
-      "nombreCine": "Smart TV",
-      "butacas": 2
+      "nombreCine": "Ambassador",
+      "butacas": 50
     }
   ]
 }

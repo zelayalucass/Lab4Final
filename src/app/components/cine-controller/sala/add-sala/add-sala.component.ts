@@ -19,6 +19,7 @@ export class AddSalaComponent implements OnInit{
   listaCines: Cinema[] = [];
   salaRegister: Sala = new Sala();
   dialog: any;
+  agregadoConExito = false;
   cineId:number| null = 0;
   public loginForm!:FormGroup;
   @Output() salaToCreate: EventEmitter<Sala>= new EventEmitter();
@@ -36,13 +37,23 @@ export class AddSalaComponent implements OnInit{
     })
 
     this.api.cineId$.subscribe((cine) => {
-      this.cineId = cine; 
-      this.loginForm.get('cineId')?.setValue(cine);
+
+      if(cine!=null)
+      {
+        this.cineId = cine;
+      }
+      else
+      {
+        const stringId = localStorage.getItem('cineId');
+        const cineIdNumber = Number(stringId) || 0
+        this.cineId = cineIdNumber;
+      }
+      this.loginForm.get('cineId')?.setValue(this.cineId);
     })
 
   };
 
-  public   validateButacas(control: AbstractControl): ValidationErrors | null {
+  public  validateButacas(control: AbstractControl): ValidationErrors | null {
     const butacasValue = parseInt(control.value, 10);
 
     if (isNaN(butacasValue) || butacasValue <= 0) {
@@ -52,10 +63,12 @@ export class AddSalaComponent implements OnInit{
     return null;
   }
 
-  public registerSala()
+  public async registerSala()
   {
     try
     {
+
+      if(this.loginForm.invalid!) return
       this.salaRegister.nombreSala = this.loginForm.get('sala')?.value;
       this.salaRegister.butacas = this.loginForm.get('butacas')?.value;
       const cineIdString = this.loginForm.get('cineId')?.value;
@@ -63,14 +76,13 @@ export class AddSalaComponent implements OnInit{
       this.salaRegister.idCine = cineIdNumber;
       this.salaRegister.nombreCine = this.listaCines.find(cine => cine.id === this.salaRegister.idCine)?.nombre || null;
       
-
-      
-      if(this.loginForm.invalid) return;
+ 
+      /*if(this.loginForm.invalid) return;
 
       this.sala.addSala(this.salaRegister).subscribe(
         {
           next:() =>{
-            alert("Sala creado con exito");
+            alert("Sala creada con exito");
             this.closeDialog();
           },
           error: (error) => {
@@ -79,6 +91,50 @@ export class AddSalaComponent implements OnInit{
           }
         }
       )
+
+      const apiResponse = this.cine.getCinemaById(this.cineId!);
+      const data = await lastValueFrom(apiResponse);
+
+      if(data != null)
+      {
+        data.cantidadSalas! += 1; 
+      }
+
+      this.cine.editCinema(data.id!,data).subscribe(
+        {
+          next: () =>  alert( `Se modifico la cantidad de salas en el cine ${this.salaRegister.nombreCine!} `),
+          error: () => alert(`Error al modficar la cantidad de salas en el cine ${this.salaRegister.nombreCine!} `)
+        }
+      )*/
+
+      let res = await this.sala.addSala(this.salaRegister).toPromise();
+      if (res) {
+        alert("Sala creada con exito");
+        this.closeDialog();
+        this.agregadoConExito = true;
+      } else {
+        alert("No se pudo crear el sala");
+        this.agregadoConExito = false;
+      }
+
+      if (this.agregadoConExito) {
+        const apiResponse = this.cine.getCinemaById(this.cineId!);
+        const data = await lastValueFrom(apiResponse);
+  
+        if(data != null)
+        {
+          data.cantidadSalas! += 1; 
+        }
+        try {
+          await this.cine.editCinema(data.id!, data).toPromise();
+          alert(`Se modificó la cantidad de salas en el cine ${data.nombre!}`);
+        } 
+        catch (error) {
+          alert(`Error al modificar la cantidad de salas en el cine ${data.nombre!}`);
+        }
+  
+  
+      }
 
     }catch(error)
     { 
