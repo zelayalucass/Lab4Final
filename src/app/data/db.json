@@ -46,7 +46,7 @@
   "cines": [
     {
       "id": 1,
-      "nombre": "Aldrey Sarmiento",
+      "nombre": "Aldrey",
       "direccion": "Sarmiento 2023",
       "cantidadSalas": 2
     },
@@ -59,7 +59,7 @@
     {
       "id": 3,
       "nombre": "Ambassador",
-      "direccion": "Cordoba 100",
+      "direccion": "Cordoba 1000",
       "cantidadSalas": 2
     }
   ],
@@ -68,14 +68,14 @@
       "id": 1,
       "idCine": 1,
       "nombreSala": "SALA 3D",
-      "nombreCine": "Aldrey Sarmiento",
+      "nombreCine": "Aldrey",
       "butacas": 100
     },
     {
       "id": 2,
       "idCine": 1,
       "nombreSala": "ATMOS",
-      "nombreCine": "Aldrey Sarmiento",
+      "nombreCine": "Aldrey",
       "butacas": 100
     },
     {
