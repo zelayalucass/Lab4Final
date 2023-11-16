@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     ShowtimeListComponent,
@@ -26,6 +27,6 @@ import { FormsModule } from '@angular/forms';
     ShowtimeRoutingModule,
     SharedModule,
     MatButtonModule,FormsModule,
-    MatCardModule,MatInputModule,MatFormFieldModule,MatListModule,LandingModule,MatSelectModule]
+    MatCardModule,MatInputModule,MatFormFieldModule,MatListModule,LandingModule,MatSelectModule,MatIconModule]
 })
 export class ShowtimeModule { }

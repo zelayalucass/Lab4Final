@@ -6,15 +6,16 @@
           <div class="tools">
               <ul>
                   <li>
+                    <div *ngIf="isAdmin">
                         <button (click)="NavigateToAdd()" >
                             Agregar Funcion
                             <i class="material-icons">add_circle</i>
                         </button>
+                    </div>
                   </li>
               </ul>
           </div>
           <div class="search">
-           
               <input type="text" class="search-input" placeholder="Buscar Funcion..." [(ngModel)]="funcionBuscada"  (input)="onInputChange()" > 
           </div>   
       </div>
@@ -23,27 +24,34 @@
               <th>Pelicula</th>
               <th>Sala</th>
               <th>Horario</th>
+              <th>Acciones</th>
+              <th></th>
           </thead>
           <tbody>
               <tr *ngFor="let item of listShows">
                   <td>{{item.nombrePelicula}}</td>
                   <td>{{item.sala}}</td>
                   <td>{{item.horarios}}</td>
-                  <td>
-                      <button class="botonMaterial" (click)="EditCine(item)" >
-                          <i class="material-icons">edit</i>
-                      </button>            
-                  </td>
-                  <td>
-                      <button class="botonMaterial" (click)="DeleteShowtime(item.id!)">
-                          <i class="material-icons">delete</i>
-                      </button>            
-                  </td>
-                  <td>
-                      <button class="botonMaterial">
-                          <i class="material-icons">forward</i>
-                      </button>
-                  </td>
+                  <div *ngIf="isAdmin">
+                    <td >
+                        <button class="botonMaterial" (click)="EditCine(item)" >
+                            <i class="material-icons">edit</i>
+                        </button>            
+                    </td>
+                    <td >
+                        <button class="botonMaterial" (click)="DeleteShowtime(item.id!)">
+                            <i class="material-icons">delete</i>
+                        </button>            
+                    </td>
+                  </div>
+                  <div *ngIf="!isAdmin" >
+                    <button class="botonMaterial">
+                        <span class="material-symbols-outlined">
+                            shopping_cart
+                            </span>
+                    </button> 
+                  </div>
+                  
               </tr>           
           </tbody>
       </table>
