@@ -1,16 +1,24 @@
 /* Structure */
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
 .example-container {
   position: relative;
   padding: 5px;
 }
 
-.example-loading-shade {
+.contenedor-principal {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 6;
   bottom: 56px;
   right: 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(184, 15, 15, 0.15);
   z-index: 1;
   display: flex;
   align-items: center;
@@ -21,9 +29,17 @@
   margin: 5px;
 }
 
+.datatable-container .header-tools {
+  border-bottom: solid 1px var(--dt-border-color);
+  padding: var(--dt-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Añade esta línea */
+}
 
 
-/*.material-icons {
+.material-icons {
   font-size: 20px;
 }
 
@@ -70,4 +86,4 @@
   border-radius: var(--dt-border-radius);
   border: solid 1px var(--dt-border-color);
   color: var(--dt-input-color);
-}*/
+}
