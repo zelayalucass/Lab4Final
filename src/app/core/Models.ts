@@ -103,18 +103,20 @@ export class Cinema implements ICinema {
 }
 
 export class Showtime implements IShowtime {
-    idFuncion: number | null;
+    id: number | null;
     idPelicula: number | null;
     nombrePelicula: string | null;
     sala: number | null;
     horarios: string | null;
+    entradasDisponible: number | null;
 
     constructor(showtime?: Showtime) {
-        this.idFuncion = showtime?.idFuncion == undefined ? null : showtime.idFuncion;
+        this.id = showtime?.id == undefined ? null : showtime.id;
         this.idPelicula = showtime?.idPelicula == undefined ? null : showtime.idPelicula;
         this.nombrePelicula = showtime?.nombrePelicula == undefined ? null : showtime.nombrePelicula;
         this.sala = showtime?.sala == undefined ? null : showtime.sala;
         this.horarios = showtime?.horarios == undefined ? null : showtime.horarios;
+        this.entradasDisponible = showtime?.entradasDisponible == undefined ? null : showtime.entradasDisponible;
     }
 }
 

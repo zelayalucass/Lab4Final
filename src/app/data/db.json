@@ -106,5 +106,35 @@
       "nombreCine": "Ambassador",
       "butacas": 50
     }
+
+  ],
+  "showtimes": [
+    {
+      "idFuncion": null,
+      "idPelicula": 385687,
+      "nombrePelicula": "Fast & Furious X",
+      "sala": 1,
+      "horarios": "20:00",
+      "id": 1,
+      "entradasDisponible": 10
+    },
+    {
+      "idFuncion": null,
+      "idPelicula": 1192293,
+      "nombrePelicula": "Fast and the Furious: Diesel Refueled",
+      "sala": 1,
+      "horarios": "18:00",
+      "id": 2,
+      "entradasDisponible": 10
+    },
+    {
+      "id": 3,
+      "idPelicula": 64833,
+      "nombrePelicula": "Jackie Chan: Fast, Funny and Furious",
+      "sala": 1,
+      "horarios": "23:00",
+      "entradasDisponible": 20
+    }
+
   ]
 }

@@ -17,6 +17,7 @@ export class HomeCineComponent implements OnInit {
 
   public cines: Array<Cinema> = [];
 
+
   mostrarVistaCines = true;
   
   cambiarVista() {

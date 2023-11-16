@@ -1,0 +1,89 @@
+/* Structure */
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .example-container {
+    position: relative;
+    padding: 5px;
+  }
+  
+  .contenedor-principal {
+    position: absolute;
+    top: 0;
+    left: 6;
+    bottom: 56px;
+    right: 0;
+    background: rgba(184, 15, 15, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mat-flat-button {
+    margin: 5px;
+  }
+  
+  .datatable-container .header-tools {
+    border-bottom: solid 1px var(--dt-border-color);
+    padding: var(--dt-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Añade esta línea */
+  }
+  
+  
+  .material-icons {
+    font-size: 20px;
+  }
+  
+  .contenedor-principal {
+    padding-top: 20rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+  
+  .datatable-container {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: var(--dt-background-color-container);
+    border-radius: var(--dt-border-radius);
+    color: var(--dt-text-color);
+    width: 100rem;
+    margin: 0 auto;
+    font-size: 18px;
+    box-sizing: border-box;
+    border-radius: 2rem;
+    border: solid 0rem var(--highlight-color);
+  }
+  
+  .datatable-container .header-tools {
+    border-bottom: solid 1px var(--dt-border-color);
+    padding: var(--dt-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .datatable-container .header-tools .search {
+    width: 30%;
+  }
+  
+  .datatable-container .header-tools .search .search-input {
+    width: 100%;
+    background-color: var(--dt-input-background-color);
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    box-sizing: border-box;
+    border-radius: var(--dt-border-radius);
+    border: solid 1px var(--dt-border-color);
+    color: var(--dt-input-color);
+  }

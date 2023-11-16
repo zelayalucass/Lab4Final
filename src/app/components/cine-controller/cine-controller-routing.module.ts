@@ -9,13 +9,11 @@ const routes: Routes = [
   {
     path: 'home-cine',
     component: HomeCineComponent
-
   },
   {
     path: 'home-sala',
     component: HomeSalaComponent
   }
-
 
 ];
 

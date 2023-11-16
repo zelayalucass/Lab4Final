@@ -1,4 +1,3 @@
-<app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
 <app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
-
-<app-footer></app-footer>
+<app-details-user (userToEdit)="EditUser($event)"></app-details-user>
+<app-footer *ngIf="isUserLoggedIn"></app-footer>

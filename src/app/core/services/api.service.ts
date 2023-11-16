@@ -19,7 +19,6 @@ export class ApiService {
   }
 
   constructor(private http: HttpClient) {
-
    }
 
    public getToAuth(email:string, password:string) : Observable<User[]>{
