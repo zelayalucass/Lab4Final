@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/core/Models';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { EditUserComponent } from '../edit-user/edit-user.component';
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
   selector: 'app-details-user',
@@ -15,8 +18,9 @@ export class DetailUserComponent implements OnInit {
   isAdmin: boolean = false;
   userId: number = 0;
   userLogged: User = new User();
+  router: any;
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private apiUser:ApiService, private dialog:MatDialog) {}
 
   ngOnInit(): void {
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
@@ -32,7 +36,6 @@ export class DetailUserComponent implements OnInit {
   public async getUserLogged() {
     try {
       const user = await this.auth.getUser4Identification(this.userId);
-debugger
       if (user !== null) {
         this.userLogged = user;
         // También puedes verificar si el usuario es un administrador aquí
@@ -42,7 +45,15 @@ debugger
       console.error('Error obteniendo datos del usuario:', error);
     }
   }
+
+  
   toggleShowPassword(): void {
     this.showPassword = !this.showPassword;
+  }
+
+  @Output() userToEdit: EventEmitter<User> = new EventEmitter();
+
+  editUser(user: User){
+    this.userToEdit.emit(user);
   }
 }

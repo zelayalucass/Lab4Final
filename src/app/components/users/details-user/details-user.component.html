@@ -7,7 +7,7 @@
     <div class="button-row">
       <a mat-flat-button color="primary" [routerLink]="['/user']"><mat-icon>account_circle</mat-icon></a>
     </div>
-    <div class="user-info">
+    <div class="user-info" >
       <p>ID: {{ userLogged.id }}</p>
       <p>Username: {{ userLogged.username }}</p>
       <p>Email: {{ userLogged.email }}</p>
@@ -20,5 +20,13 @@
     </p>
       <p>isAdmin: {{ userLogged.isAdmin ? 'Yes' : 'No' }}</p>
     </div>
+  
+    <!-- Botón de Edición -->
+  <div class="edit-button">
+    <button mat-flat-button color="accent" (click)="editUser(userLogged)">
+      <mat-icon>edit</mat-icon> Editar
+    </button>
   </div>
+
+</div>
   
