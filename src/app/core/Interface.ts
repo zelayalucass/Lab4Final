@@ -42,11 +42,12 @@ export interface ICinema {
  }
 
  export interface IShowtime{
-    idFuncion: number | null;
     idPelicula: number | null;
     nombrePelicula: string | null;
     sala: number | null;
     horarios: string | null;
+    entradasDisponible: number | null;
+
  }
 
  export interface ISala

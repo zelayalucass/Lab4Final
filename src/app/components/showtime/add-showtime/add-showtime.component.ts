@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { Movie, Sala, Showtime } from 'src/app/core/Models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MovieService } from 'src/app/core/services/movie.service';
@@ -13,108 +14,128 @@ import { ShowtimeService } from 'src/app/core/services/showtime.service';
 })
 
 export class AddShowtimeComponent implements OnInit{
-  movieList: Movie[] = [];
-  salasList: Sala[] = [];
-  salaName : string =""
+  public movieList: Movie[] = [];
+  public salasList: Sala[] = [];
+  public salaName : string =""
   public viewSalas : boolean = false
   public showtimeRegister: Showtime = new Showtime();
-
+  public horarios = this.generarHorarios();
+  
+  public horarioSeleccionado: string = '';
   public loginForm!:FormGroup;
   isUserLoggedIn: boolean = false;
-  
-  @Output() userToCreate: EventEmitter<Showtime>= new EventEmitter();
-  
-  constructor(private api:ShowtimeService,private auth:AuthService
-     ,private formBuilder:FormBuilder, private movieServie:MovieService,private salaService : SalaService) {}
+  isUpdate : boolean = false;
+
+  constructor(private route: ActivatedRoute,private api:ShowtimeService,private auth:AuthService
+     , private movieServie:MovieService,private salaService : SalaService) {}
      
   ngOnInit(): void {
-
-    this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
 
     this.salaService.getSalas().subscribe((data : any)=> {
       this.salasList = data;
     });
-    console.log(this.salasList);
     this.movieServie.listaPeliculas$.subscribe((lista)=>
     {
       this.movieList = lista.slice(0,10);
     });
 
-    this.loginForm = this.formBuilder.group({
-      name: [this.showtimeRegister.nombrePelicula, [Validators.required, Validators.minLength(5)]],
-      direction: [this.showtimeRegister.sala, [Validators.required]]
-    })};
+    this.route.params.subscribe(params => {
+      
+    var id = parseInt(params['id']);
+      this.api.getShowtimeById(id).subscribe((data : Showtime ) => 
+      {
+        this.isUpdate=true;
+        this.showtimeRegister = data;
+        this.horarioSeleccionado = data.horarios != null ? data.horarios : ""
 
-    setTitle(title : string)
+        var sala = this.salasList.filter(s =>s.id === data.sala!)
+        this.setSala(sala[0])
+      })
+    });
+    this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
+    };
+
+    setTitle(movie : Movie)
     {
-      this.showtimeRegister.nombrePelicula = title;
+      this.showtimeRegister.nombrePelicula = movie.title;
+      this.showtimeRegister.idPelicula = movie.id;
     }
     setSala(sala : Sala)
     {
       this.showtimeRegister.sala = sala.id;
+      this.showtimeRegister.entradasDisponible = sala.butacas;
       this.salaName = sala.nombreSala != undefined ? sala.nombreSala : ""
     }
 
     onInputFocus(see : boolean) {
       this.viewSalas = see;
-      // Realiza las acciones que desees cuando el input reciba el foco
     }
-      /*
 
-  public registerCine()
-  {
-    try
-    {
-      this.cineRegister.nombre = this.loginForm.get('name')?.value;
-      this.cineRegister.direccion = this.loginForm.get('direction')?.value;
-      this.cineRegister.cantidadSalas = 0;
-      
-      if(this.loginForm.invalid) return;
-
-      this.api.addCinema(this.cineRegister).subscribe(
-        {
-          next:() =>{
-            alert("Cine creado con exito");
-            this.closeDialog();
-          },
-          error: (error) => {
-            console.log(error);
-            alert("No se pudo crear el Cine");
-          }
-        }
-      )
-
-    }catch(error)
-    { 
-      console.log(error);   
-    }
-    
-  }
-
-  closeDialog(): void {
-    this.dialogRef.close();
-  }
-
-  public async ValidateName()
-  {
-    try
-    {      
-      this.cineRegister.nombre = this.loginForm.get('name')?.value;
-      const nameExists = await this.api.ValidateName(this.cineRegister.nombre!);
-
-      if(await nameExists)
-      {
-        this.loginForm.get('name')?.setErrors({ nameExists: true });
+    generarHorarios(): any[] {
+      const horarios = [];
+      for (let hora = 16; hora <= 23; hora++) {
+        const horario24 = `${hora}:00`;
+        horarios.push({ value: horario24, viewValue: horario24 });
       }
+      return horarios;
+    }
 
-    }catch(error)
+    public registerShowtime()
     {
-      console.log(error);
+      try
+      {
+        if(this.showtimeRegister.sala != null && this.showtimeRegister.idPelicula != null && this.showtimeRegister.horarios!=null){
+          if(!this.isUpdate)
+          {
+            this.api.addShowtime(this.showtimeRegister).subscribe(
+              {
+                next:() =>{
+                  alert("Funcion creado con exito");
+                },
+                error: (error) => {
+                  console.log(error);
+                  alert("No se pudo crear la funcion");
+                }
+              }
+            )
+          }else{
+
+            this.api.editShowtime(this.showtimeRegister.id!,this.showtimeRegister).subscribe(
+              {
+                next:() =>{
+                  alert("Funcion modificada con exito");
+                },
+                error: (error) => {
+                  console.log(error);
+                  alert("No se modificar la funcion");
+                }
+              }
+            )
+          }
+          
+        }else{
+          alert("Rellene todos los campos ");
+        }
+        
+      }catch(error)
+      { 
+        console.log(error);   
+      }
       
     }
-  }
 
-*/
+    setHorario()
+    {
+      this.showtimeRegister.horarios = this.horarioSeleccionado
+    }
 
+    cancel()
+    {
+      this.showtimeRegister = new Showtime();
+      this.salaName =  ""
+      this.horarioSeleccionado = ""
+    }
+
+    
 
 }

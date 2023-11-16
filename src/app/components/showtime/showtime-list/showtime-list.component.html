@@ -1,15 +1,11 @@
 <app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
 <app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
-
 <div class="contenedor-principal">
   <div class="datatable-container mat-elevation-z20">
       <div class="header-tools">
           <div class="tools">
               <ul>
                   <li>
-                    <!--
-                      (click)="openRegisterDialog()
-                    -->
                         <button (click)="NavigateToAdd()" >
                             Agregar Funcion
                             <i class="material-icons">add_circle</i>
@@ -18,7 +14,8 @@
               </ul>
           </div>
           <div class="search">
-              <input type="text " class="search-input" placeholder="Buscar Funcion..."> 
+           
+              <input type="text" class="search-input" placeholder="Buscar Funcion..." [(ngModel)]="funcionBuscada"  (input)="onInputChange()" > 
           </div>   
       </div>
       <table class="datatable">
@@ -28,7 +25,7 @@
               <th>Horario</th>
           </thead>
           <tbody>
-              <tr *ngFor="let item of listaCines">
+              <tr *ngFor="let item of listShows">
                   <td>{{item.nombrePelicula}}</td>
                   <td>{{item.sala}}</td>
                   <td>{{item.horarios}}</td>
@@ -38,7 +35,7 @@
                       </button>            
                   </td>
                   <td>
-                      <button class="botonMaterial" (click)="DeleteCine(item.idFuncion!)">
+                      <button class="botonMaterial" (click)="DeleteShowtime(item.id!)">
                           <i class="material-icons">delete</i>
                       </button>            
                   </td>
@@ -50,34 +47,9 @@
               </tr>           
           </tbody>
       </table>
-  
-  
       <div class="footer-tools">
-          <span>Total Cines: {{CountList()}}</span>
-          <!--<div class="list-items">
-              Show
-              <select name="n-entries" id="n-entries" class="n-entries">
-                  <option value="15">5</option>
-                  <option value="10" selected>10</option>
-                  <option value="15">15</option>
-              </select>
-              Entries
-          </div>
-          <div class="pages">
-              <ul>
-                      <li><span class="active">1</span></li>
-                      <li><button>2</button></li>
-                      <li><button>3</button></li>
-                      <li><button>4</button></li>
-                      <li><button>...</button></li>
-                      <li><button>9</button></li>
-                      <li><button>10</button></li>
-              </ul>
-       </div>-->
+          <span>Total Funciones: {{CountList()}}</span>
       </div>
-      
-      
   </div>
-  
 </div>
 
