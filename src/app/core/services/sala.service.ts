@@ -17,6 +17,10 @@ export class SalaService {
     const url = `${this.baseUrl}/salas`
     return this.http.get<Sala[]>(url);
   }
+  public getSalaById(id: number): Observable<Sala> {
+    const url = `${this.baseUrl}/sala?id=${id}`;
+    return this.http.get<Sala>(url);
+  }
 
   public getSalaByCinema(id: number): Observable<Sala> {
     const url = `${this.baseUrl}/sala?idCinema=${id}`;

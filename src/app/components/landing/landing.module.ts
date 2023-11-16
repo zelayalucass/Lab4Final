@@ -37,6 +37,9 @@ import {MatNativeDateModule} from '@angular/material/core';
         FormsModule,
         MatFormFieldModule, MatInputModule, MatSelectModule,MatIconModule,MatTooltipModule,MatDatepickerModule,MatNativeDateModule,
         AuthModule
+    ],
+    exports:[
+        SearchComponent
     ]
 })
 export class LandingModule { }
