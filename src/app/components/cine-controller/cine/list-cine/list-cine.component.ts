@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-cine.component.css']
 })
 export class ListCineComponent implements OnInit{
- 
+  public funcionBuscada : string = '';
 
   ngOnInit(): void {
   }
@@ -62,7 +62,20 @@ export class ListCineComponent implements OnInit{
     this.router.navigate(['cine/home-sala'])
   }
 
-
+  public onInputChange()
+  {
+    // Filtra las funciones que contienen la palabra buscada
+    if(this.funcionBuscada == ""){
+      this.getCines()
+    }else
+    {
+      this.listaCines = this.listaCines.filter(cine => {
+        // Convierte la función a cadena y busca la palabra
+        return cine.nombre!.toLowerCase().includes(this.funcionBuscada.toLowerCase());
+        });
+    }
+    
+  }
 
 
   public async getCines()

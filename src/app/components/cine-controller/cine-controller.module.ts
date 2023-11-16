@@ -7,7 +7,7 @@ import { HomeCineComponent } from './cine/home-cine/home-cine.component';
 import { AddCineComponent } from './cine/add-cine/add-cine.component';
 import { EditCineComponent } from './cine/edit-cine/edit-cine.component';
 import { SharedModule } from "../../shared/shared.module";
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddSalaComponent } from './sala/add-sala/add-sala.component';
 import { ListSalaComponent } from './sala/list-sala/list-sala.component';
 import { EditSalaComponent } from './sala/edit-sala/edit-sala.component';
@@ -36,7 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
         MatIconModule,
         ReactiveFormsModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        FormsModule
     ]
 })
 export class CineControllerModule { }
