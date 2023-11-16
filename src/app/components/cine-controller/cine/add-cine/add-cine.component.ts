@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { zip } from 'rxjs';
 import { Cinema, User } from 'src/app/core/Models';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -65,6 +66,7 @@ export class AddCineComponent implements OnInit {
   {
     try
     {      
+
       this.cineRegister.nombre = this.loginForm.get('name')?.value;
       const nameExists = await this.api.ValidateName(this.cineRegister.nombre!);
 

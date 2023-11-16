@@ -19,13 +19,18 @@ export class SalaService {
   }
 
   public getSalaByCinema(id: number): Observable<Sala[]> {
-    const url = `${this.baseUrl}/sala?idCinema=${id}`;
+    const url = `${this.baseUrl}/salas?idCine=${id}`;
     return this.http.get<Sala[]>(url);
   }
 
-  public deleteSala(id: number, idSala: number): Observable<boolean> {
+  public getSalas4Name(nombre: string, idCine:number): Observable<Sala[]> {
+    const url = `${this.baseUrl}/salas?idCine=${idCine}&&nombreSala=${nombre}`;
+    return this.http.get<Sala[]>(url);
+  }
+
+  public deleteSala(id: number): Observable<boolean> {
   
-    const url = `${this.baseUrl}/sala?id=${id}&idSala=${idSala}`;
+    const url = `${this.baseUrl}/salas/${id}`;
     return this.http.delete<boolean>(url).pipe
     (
       map(res => {return true}),
@@ -33,15 +38,32 @@ export class SalaService {
     );
   }
 
+  public async ValidateName(name:string,id:number) : Promise<boolean>
+  {
+    let salas:Sala[] = [];
+    try
+    {  
+      debugger; 
+        let apiResponse = this.getSalas4Name(name,id);
 
-  public editSala(id: number, idSala: number, updatedSala: Sala): Observable<boolean> {
-    const url = `${this.baseUrl}/sala?id=${id}&idSala=${idSala}`;
+        salas = await lastValueFrom(apiResponse);
+
+
+    }catch(error)
+    {
+      console.log(error);
+      
+    }   
+    return salas.length >= 1;
+  }
+
+
+  public editSala(id: number, updatedSala: Sala): Observable<boolean> {
+    const url = `${this.baseUrl}/salas/${id}`;
     return this.http.put<boolean>(url, updatedSala);
   }
 
   public addSala(newSala: Sala): Observable<boolean> {
-    debugger;
-    console.log(newSala);
     const url = `${this.baseUrl}/salas`;
     return this.http.post<boolean>(url, newSala);
   }

@@ -18,16 +18,21 @@ export class EditCineComponent implements OnInit {
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private api:CinemaService, private formBuilder: FormBuilder,private dialogRef: MatDialogRef<EditCineComponent>) {}
   ngOnInit(): void {
+    debugger;
     this.cineRegister =  { ...this.data};  
     this.nombreAnterior =  `${this.cineRegister.nombre}`;
+  
     this.loginForm = this.formBuilder.group({
       name: [this.cineRegister.nombre, [Validators.required, Validators.minLength(5)]],
-        direction: [this.cineRegister.direccion, [Validators.required]]
+        direccion: [this.cineRegister.direccion, [Validators.required]]
     })};
 
 
     public EditProduct()
     {
+      if(this.loginForm.invalid) return;
+      this.cineRegister.direccion = this.loginForm.get('direccion')?.value;
+
       this.api.editCinema(this.cineRegister.id!,this.cineRegister).subscribe(
         {
           next: () => this.dialogRef.close(true),

@@ -45,12 +45,6 @@
   ],
   "cines": [
     {
-      "id": 1,
-      "nombre": "Smartphone",
-      "direccion": "599.99",
-      "cantidadSalas": 250
-    },
-    {
       "id": 2,
       "nombre": "Laptop",
       "direccion": "999.99",
@@ -71,11 +65,45 @@
     {
       "id": 6,
       "nombre": "Aldrey",
-      "direccion": "Sarmiento 2023",
+      "direccion": "Sarmiento 2025",
       "cantidadSalas": 0
     }
   ],
-  "salas": [ 
-    
+  "salas": [
+    {
+      "id": 1,
+      "idCine": 6,
+      "nombreSala": "ATMOS 24",
+      "nombreCine": "Aldrey",
+      "butacas": 1001
+    },
+    {
+      "id": 3,
+      "idCine": 5,
+      "nombreSala": "ATMOS",
+      "nombreCine": "Smartwatch",
+      "butacas": 100
+    },
+    {
+      "id": 4,
+      "idCine": 5,
+      "nombreSala": "ATMOS 2D",
+      "nombreCine": "Smartwatch",
+      "butacas": 100
+    },
+    {
+      "id": 5,
+      "idCine": 6,
+      "nombreSala": "ATMOS ",
+      "nombreCine": "Aldrey",
+      "butacas": 5
+    },
+    {
+      "id": 6,
+      "idCine": 3,
+      "nombreSala": "ATMOS",
+      "nombreCine": "Smart TV",
+      "butacas": 2
+    }
   ]
 }

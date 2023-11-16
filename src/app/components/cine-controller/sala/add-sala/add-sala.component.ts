@@ -1,10 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
-import { Cinema } from 'src/app/core/Models';
+import { Cinema, Sala } from 'src/app/core/Models';
+import { ApiService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CinemaService } from 'src/app/core/services/cinema.service';
+import { SalaService } from 'src/app/core/services/sala.service';
 
 @Component({
   selector: 'app-add-sala',
@@ -15,42 +17,65 @@ export class AddSalaComponent implements OnInit{
 
   selectedValue: string;
   listaCines: Cinema[] = [];
-  cineRegister: Cinema = new Cinema();
+  salaRegister: Sala = new Sala();
   dialog: any;
+  cineId:number| null = 0;
   public loginForm!:FormGroup;
-  @Output() userToCreate: EventEmitter<Cinema>= new EventEmitter();
+  @Output() salaToCreate: EventEmitter<Sala>= new EventEmitter();
   
-  constructor(private dialogRef: MatDialogRef<AddSalaComponent>, private cine:CinemaService,private auth:AuthService ,private formBuilder:FormBuilder) {
+  constructor(private api:ApiService,private dialogRef: MatDialogRef<AddSalaComponent>, private cine:CinemaService,private sala:SalaService ,private formBuilder:FormBuilder) {
     this.selectedValue ="";
     this.getCines();
   }
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      name: [this.cineRegister.nombre, [Validators.required, Validators.minLength(5)]],
-        direction: [this.cineRegister.direccion, [Validators.required]]
+      cineId: [this.salaRegister.idCine, Validators.required],
+      sala: [this.salaRegister.nombreSala, [Validators.required, Validators.minLength(5)]],
+      butacas: [this.salaRegister.butacas, [Validators.required, this.validateButacas.bind(this)]]
     })
+
+    this.api.cineId$.subscribe((cine) => {
+      this.cineId = cine; 
+      this.loginForm.get('cineId')?.setValue(cine);
+    })
+
   };
 
+  public   validateButacas(control: AbstractControl): ValidationErrors | null {
+    const butacasValue = parseInt(control.value, 10);
 
-  public registerCine()
+    if (isNaN(butacasValue) || butacasValue <= 0) {
+      return { 'butacasInvalidas': true };
+    }
+
+    return null;
+  }
+
+  public registerSala()
   {
     try
     {
-      this.cineRegister.nombre = this.loginForm.get('name')?.value;
-      this.cineRegister.direccion = this.loginForm.get('direction')?.value;
-      this.cineRegister.cantidadSalas = 0;
+      this.salaRegister.nombreSala = this.loginForm.get('sala')?.value;
+      this.salaRegister.butacas = this.loginForm.get('butacas')?.value;
+      const cineIdString = this.loginForm.get('cineId')?.value;
+      const cineIdNumber = Number(cineIdString) || 0
+      this.salaRegister.idCine = cineIdNumber;
+      this.salaRegister.nombreCine = this.listaCines.find(cine => cine.id === this.salaRegister.idCine)?.nombre || null;
+      
+
       
       if(this.loginForm.invalid) return;
 
-      this.cine.addCinema(this.cineRegister).subscribe(
+      this.sala.addSala(this.salaRegister).subscribe(
         {
           next:() =>{
-            alert("Cine creado con exito");
+            alert("Sala creado con exito");
             this.closeDialog();
           },
           error: (error) => {
             console.log(error);
-            alert("No se pudo crear el Cine");
+            alert("No se pudo crear el sala");
           }
         }
       )
@@ -67,16 +92,20 @@ export class AddSalaComponent implements OnInit{
     this.dialogRef.close();
   }
 
+  
   public async ValidateName()
   {
     try
     {      
-      this.cineRegister.nombre = this.loginForm.get('name')?.value;
-      const nameExists = await this.cine.ValidateName(this.cineRegister.nombre!);
+      debugger;
+      const cineIdString = this.loginForm.get('cineId')?.value;
+      const cineIdNumber = Number(cineIdString) || 0
+      this.salaRegister.nombreSala = this.loginForm.get('sala')?.value;
+      const nameExists = await this.sala.ValidateName(this.salaRegister.nombreSala!,cineIdNumber!);
 
       if(await nameExists)
       {
-        this.loginForm.get('name')?.setErrors({ nameExists: true });
+        this.loginForm.get('sala')?.setErrors({ nameExists: true });
       }
 
     }catch(error)
@@ -85,6 +114,7 @@ export class AddSalaComponent implements OnInit{
       
     }
   }
+
 
   public async getCines()
   {

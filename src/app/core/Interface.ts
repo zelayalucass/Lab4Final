@@ -47,6 +47,7 @@ export interface ICinema {
     nombrePelicula: string | null;
     sala: number | null;
     horarios: string | null;
+    
  }
 
  export interface ISala

@@ -6,6 +6,7 @@ import { AddSalaComponent } from '../add-sala/add-sala.component';
 import { Cinema, Sala } from 'src/app/core/Models';
 import { lastValueFrom } from 'rxjs';
 import { SalaService } from 'src/app/core/services/sala.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-sala',
@@ -23,7 +24,7 @@ export class ListSalaComponent implements OnInit{
     })
   };
 
-  constructor(private api:ApiService, private dialog: MatDialog, public sala:SalaService)
+  constructor(private api:ApiService, private dialog: MatDialog, public sala:SalaService, private router:Router)
   {
     this.cineId = null;
   }
@@ -31,12 +32,17 @@ export class ListSalaComponent implements OnInit{
 
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(AddSalaComponent, {
-      width: '400px', height : '450px' // Ajusta el ancho según tus necesidades
+      width: '400px', height : '570px' // Ajusta el ancho según tus necesidades
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.getSalasByIdCine();
     });
+  }
+
+  public navigateToBack()
+  {
+    this.router.navigate(['cine/home-cine'])
   }
 
   @Input() listaSalas:Array<Sala> = [];

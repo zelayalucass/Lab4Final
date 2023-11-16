@@ -60,7 +60,7 @@ label {
 display: block;
 font-weight: bold;
 }
-input[type="text"], select
+input[type="text"],input[type="number"], select
 {
   width: 100%;
   padding: 10px;

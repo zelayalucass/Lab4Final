@@ -18,11 +18,9 @@ export class ApiService {
     this.cineIdSubject.next(cineId);
   }
 
-
   constructor(private http: HttpClient) {
 
    }
-
 
    public getToAuth(email:string, password:string) : Observable<User[]>{
     return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}&password=${password}`);

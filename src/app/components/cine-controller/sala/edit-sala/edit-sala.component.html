@@ -1,1 +1,55 @@
-<p>edit-sala works!</p>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>CineMaster <span class="span-titulo">Plus+</span></h2>
+        <h3>Alta de Cine</h3>
+        <form (ngSubmit)="EditSala()" class="login-box" [formGroup]="loginForm">
+          <!-- Tu formulario de edición de tareas aquí -->
+          <div class="form-group">
+            <div class="form-group-button"> 
+            
+              <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+              grade icon
+              </mat-icon>          
+              <label for="sala">SALA</label>   
+            </div>
+               <input type="text" id="sala" name="sala" formControlName="sala" placeholder="Enter your sala name" (blur)="ValidateName()" >  
+          </div>
+        
+              <div class="error-message" *ngIf="loginForm.get('sala')?.touched  && loginForm.get('sala')?.hasError('required')">
+               *El nombre de la sala es requerido.
+              </div>
+              <div class="error-message" *ngIf="loginForm.get('sala')?.hasError('nameExists') && !loginForm.get('sala')?.hasError('required')">
+                *Este Nombre NO esta disponible.
+              </div>
+              <div class="error-message" *ngIf="loginForm.get('sala')?.hasError('minlength')?.valueOf()">
+                *El nombre del cine debe tener MINIMO 5 caracteres.
+              </div>
+
+        
+              <div class="form-group">
+                <div class="form-group-button"> 
+                
+                  <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
+                  chair
+                  </mat-icon>          
+                  <label for="butacas">Butacas</label>   
+                </div>
+                   <input type="number" id="butacas" name="butacas" formControlName="butacas" placeholder="Enter your disponibility" (blur)="ValidateName()" >  
+              </div>
+            
+                <div class="error-message" *ngIf="loginForm.get('butacas')?.touched && (loginForm.get('butacas')?.hasError('required') || loginForm.get('butacas')?.hasError('butacasInvalidas'))">
+                *La cantidad de asientos disponible es requerida y debe ser mayor a cero.
+                </div>
+
+          <button name="buttonnotForm" type="submit">Guardar Cambios</button>
+          <button type="button" (click)="closeDialog()" >Cancelar</button>  
+        </form>      
+      </div>
+</div>
+
+
+
+
+
+

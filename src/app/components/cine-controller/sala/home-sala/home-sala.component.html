@@ -1,4 +1,4 @@
 <app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
 <app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
-<app-list-sala></app-list-sala>
+<app-list-sala [listaSalas]="listaSalas"  (salaToDelete)="DeteleSala($event)"  (salaToEdit)="EditSala($event)"></app-list-sala>
 <app-footer></app-footer>

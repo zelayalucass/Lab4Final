@@ -4,6 +4,12 @@
             <div class="tools">
                 <ul>
                     <li>
+                        <button (click)="navigateToBack()">
+                            VOLVER AL CINE
+                            <i class="material-icons">home</i>
+                        </button>
+                    </li>
+                    <li>
                         <button (click)="openRegisterDialog()">
                             AGREGAR SALA
                             <i class="material-icons">add_circle</i>
@@ -23,8 +29,7 @@
                 <th>Sala</th>
                 <th>Butacas</th>
                 <th>Editar</th>
-                <th>Eliminar</th>  
-                <th>Salas</th>        
+                <th>Eliminar</th>        
             </thead>
             <tbody>
                 <tr *ngFor="let item of listaSalas">
@@ -41,11 +46,6 @@
                         <button class="botonMaterial" (click)="DeleteSala(item.id!)">
                             <i class="material-icons">delete</i>
                         </button>            
-                    </td>
-                    <td>
-                        <button class="botonMaterial">
-                            <i class="material-icons">back</i>
-                        </button>
                     </td>
                 </tr>           
             </tbody>
