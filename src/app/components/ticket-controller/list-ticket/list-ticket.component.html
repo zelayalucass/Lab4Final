@@ -1,1 +1,60 @@
-<p>list-ticket works!</p>
+<div class="contenedor-principal">
+    <div class="datatable-container mat-elevation-z20">
+        <div class="header-tools">
+            <div class="tools">
+                <ul>
+                    <li>
+                        <button >
+                            AGREGAR Ticket
+                            <i class="material-icons">add_circle</i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="text" class="search-input" placeholder="*Ingrese lo que desea buscar aqui"> 
+            </div>   
+        </div>
+    
+        <table class="datatable">
+            <thead>
+                <th>Identificacion</th>
+                <th>Name</th>
+                <th>Direccion</th>
+                <th>Salas</th>
+                <th>Editar</th>
+                <th>Eliminar</th>  
+                <th>Salas</th>        
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaTickets">
+                    <td>{{item.id}}</td>
+                    <td>{{item.idFuncion}}</td>
+                    <td>{{item.fecha}}</td>
+                    <td>{{item.cantidadEntradas}}</td>
+                    <td>
+                        <button class="botonMaterial"  >
+                            <i class="material-icons">edit</i>
+                        </button>            
+                    </td>
+                    <td>
+                        <button class="botonMaterial" >
+                            <i class="material-icons">delete</i>
+                        </button>            
+                    </td>
+                    <td>
+                        <button class="botonMaterial">
+                            <i class="material-icons">forward</i>
+                        </button>
+                    </td>
+                </tr>           
+            </tbody>
+        </table>
+    
+    
+        <div class="footer-tools">
+            <span>Total Cines: {{CountList()}}</span>
+        </div>
+    </div>
+</div>
+

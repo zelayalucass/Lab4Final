@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css?Noto+Sans&display=swap");
+
+
+.material-icons{
+    font-size: 20px;
+}
+
+.contenedor-principal
+{
+    padding-top: 20rem;
+    background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.datatable-container{
+    font-family: 'Noto Sans', sans-serif;
+    background-color: var(--dt-background-color-container);
+    border-radius: var(--dt-border-radius);
+    color: var(--dt-text-color);
+    width: 100rem;
+    margin: 0 auto;
+    font-size: 18px;
+    box-sizing: border-box;
+    border-radius: 2rem;
+    border: solid 0rem var(--highlight-color);
+}
+
+.datatable-container .header-tools
+{
+    border-bottom: solid 1px var(--dt-border-color);
+    padding: var(--dt-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.datatable-container .header-tools .search{
+    width: 30%;
+}
+
+.datatable-container .header-tools .search .search-input{
+    width: 100%;
+    background-color: var(--dt-input-background-color);
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    box-sizing: border-box;
+    border-radius: var(--dt-border-radius);
+    border: solid 1px var(--dt-border-color);
+    color: var(--dt-input-color);
+
+}
+
+.datatable-container .header-tools .tools{
+    width: 70%;
+}
+
+.datatable-container .header-tools .tools ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.datatable-container .header-tools .tools ul li{
+display: inline-block;
+margin: 0 2px;
+align-items: baseline;
+}
+
+.datatable-container .footer-tools{
+    padding: var(--dt-padding);
+    display: flex;
+    align-items: baseline;
+}
+
+.datatable-container .footer-tools .list-items{
+width: 50%;
+margin-left: 10px;
+}
+
+.datatable-container .footer-tools .pages{
+margin-left: auto;
+margin-right: 0;
+width: 50%;
+}
+
+.datatable-container .footer-tools .pages ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items:  baseline;
+    justify-content: flex-end;
+}
+
+.datatable-container .footer-tools .pages ul li{
+    display: inline-block;
+    margin: 0 var(--dt-padding-xs);
+}
+
+.datatable-container .footer-tools .pages ul li button,
+.datatable-container .header-tools .tools ul li button{
+    color: white ; 
+    width: 100% ;
+    box-sizing: border-box ;
+    border: 0 ;
+    border-radius: 3px ;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    
+}
+
+.datatable-container .header-tools .tools ul li button i{
+  display:flex;
+  padding-left: 1rem;
+}
+
+.botonMaterial
+{
+    color: white ; 
+    border: 0 ;
+    background: transparent;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.datatable-container .header-tools .tools ul li button:hover,
+.datatable-container .footer-tools .pages ul li button:hover{
+background: var(--dt-bg-active-button);
+color: var(--dt-text-color-active-button);
+}
+
+.datatable-container .footer-tools .pages ul li span.active{
+    background-color: var(--dt-bg-color);
+    border-radius: var(--dt-border-radius);
+}
+
+.datatable-container .footer-tools .pages ul li button,
+.datatable-container .footer-tools .pages ul li span,
+.datatable-container .header-tools .tools ul li button{
+    padding: var(--dt-padding-s) var(--dt-padding);
+}
+
+.datatable-container .datatable{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.datatable-container .datatable,
+.datatable-container .datatable th,
+.datatable-container .datatable td{
+    padding: var(--dt-padding) var(--dt-padding);
+}
+
+.datatable-container .datatable th{
+    font-weight: bolder;
+    text-align: left;
+    border-bottom: solid 1px var(--dt-border-color);
+}
+
+.datatable-container .datatable td{
+    border-bottom: solid 1px var(--dt-border-color);      
+}
+
+.datatable-container .datatable tbody tr:nth-child(even)
+{
+    background-color: var(--dt-even-row-color);
+}
+
+.datatable-container .datatable tbody tr:hover
+{
+    background-color: var(--dt-hover-cell-color);
+}
+
+.datatable-container .datatable tbody tr .available::after,
+.datatable-container .datatable tbody tr .away::after
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.datatable-container .datatable tbody tr .available::after
+{
+ content: 'Available';
+ color: var(--dt-status-available-color);
+}
+
+.datatable-container .datatable tbody tr .away::after
+{
+ content: 'Disable';
+ color: var(--dt-status-away-color);
+}
+
+.datatable-container .datatable tbody tr .available::before,
+.datatable-container .datatable tbody tr .away::before
+{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    margin-right: 10px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.datatable-container .datatable tbody tr .available::before
+{
+   background-color: var(--dt-status-available-color);
+}
+
+.datatable-container .datatable tbody tr .away::before
+{
+   background-color: var(--dt-status-away-color);
+}

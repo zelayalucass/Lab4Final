@@ -36,6 +36,15 @@ export class MovieService  {
     return this.httpClient.get(url,{headers})
   }
 
+  getMovieById(id : number) : Observable<Movie>
+  {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    });
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=es`
+    return this.httpClient.get<Movie>(url,{headers})
+  }
+
   getMovieToTitle(title : string)
   {
     const headers = new HttpHeaders({

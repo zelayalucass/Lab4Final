@@ -25,17 +25,14 @@ export class LoginComponent implements OnInit{
 
   setIsAdminInLocalStorage(isAdmin: boolean): void {
       localStorage.setItem('isAdmin', String(isAdmin));
-    }
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [this.user.email, [Validators.required, Validators.email]],
       password: [this.user.password, [Validators.required]]
     });
-    
   }
-
-    // Función para verificar si el campo de contraseña está lleno
  
   constructor(private dialog: MatDialog, private router:Router, private auth: AuthService, private api:ApiService,  private formBuilder: FormBuilder) {}
  

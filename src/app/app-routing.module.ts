@@ -26,6 +26,10 @@ const routes: Routes = [
     loadChildren: ()=> import("./components/users/users.module").then(m=>m.UsersModule)
   },
   {
+    path:'ticket',
+    loadChildren: ()=> import("./components/ticket-controller/ticket-controller.module").then(m=>m.TicketControllerModule)
+  },
+  {
     path: '',
     redirectTo:'landing',
     pathMatch: 'full'

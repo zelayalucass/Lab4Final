@@ -14,7 +14,7 @@
         <ng-container  *ngIf="isAdmin; else userLinks"> 
             <a href="">Inicio</a>
 
-            <a href="">ABM Funciones</a>
+            <a href="/showtime/home">ABM Funciones</a>
             <a href="/cine/home-cine">Administrar Cines</a>
             <a href="/showtime/home">ABM Funciones</a>
             <a href="/user/list">Ver Usuarios</a>
@@ -22,7 +22,7 @@
         <!--User-->
         <ng-template #userLinks>
             <a href="">Inicio</a>
-            <a href="">Ver Funciones</a>
+            <a href="/showtime/home">Ver Funciones</a>
             <a href="">Compras</a>
             <a href="/user/home">Perfil</a>
         </ng-template>

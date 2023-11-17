@@ -1,3 +1,4 @@
+import { tick } from "@angular/core/testing";
 import { IGenre, ISala, IUser } from "./Interface";
 import { ICinema } from "./Interface";
 import { IMovie } from "./Interface";
@@ -87,14 +88,16 @@ export class Cinema implements ICinema {
     }
 }
  export class Ticket implements ITicket {
-    idTicket: number | null;
+    id: number | null;
     idUsuario: number | null;
     idFuncion: number | null;
     fecha: Date | null;
     cantidadEntradas: number | null;
+    nombrePelicula: string | null;
 
     constructor(ticket?: Ticket) {
-        this.idTicket = ticket?.idTicket == undefined ? null : ticket.idTicket;
+        this.nombrePelicula = ticket?.nombrePelicula == undefined ? null : ticket.nombrePelicula
+        this.id = ticket?.id == undefined ? null : ticket.id;
         this.idUsuario = ticket?.idUsuario == undefined ? null : ticket.idUsuario;
         this.idFuncion = ticket?.idFuncion == undefined ? null : ticket.idFuncion;
         this.fecha = ticket?.fecha == undefined ? null : ticket.fecha;
@@ -109,9 +112,13 @@ export class Showtime implements IShowtime {
     sala: number | null;
     horarios: string | null;
     entradasDisponible: number | null;
-
+    fecha : Date | null
+    precio : number | null
+    
     constructor(showtime?: Showtime) {
+        this.precio = showtime?.precio == undefined ? null : showtime.precio;
         this.id = showtime?.id == undefined ? null : showtime.id;
+        this.fecha = showtime?.fecha == undefined ? null : showtime.fecha
         this.idPelicula = showtime?.idPelicula == undefined ? null : showtime.idPelicula;
         this.nombrePelicula = showtime?.nombrePelicula == undefined ? null : showtime.nombrePelicula;
         this.sala = showtime?.sala == undefined ? null : showtime.sala;

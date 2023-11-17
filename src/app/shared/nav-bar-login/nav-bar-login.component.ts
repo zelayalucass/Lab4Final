@@ -58,4 +58,10 @@ export class NavBarLoginComponent implements OnInit{
     localStorage.removeItem('userId');
     localStorage.removeItem('isAdmin');
   }
+
+
+  goToFunciones()
+  {
+    this.router.navigate(['/showtime/home'])
+  }
 }

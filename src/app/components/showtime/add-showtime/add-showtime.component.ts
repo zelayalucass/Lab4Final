@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
 import { Movie, Sala, Showtime } from 'src/app/core/Models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MovieService } from 'src/app/core/services/movie.service';
@@ -20,6 +20,7 @@ export class AddShowtimeComponent implements OnInit{
   public viewSalas : boolean = false
   public showtimeRegister: Showtime = new Showtime();
   public horarios = this.generarHorarios();
+  public fechaSeleccionada: Date = new Date();
   
   public horarioSeleccionado: string = '';
   public loginForm!:FormGroup;
@@ -27,7 +28,7 @@ export class AddShowtimeComponent implements OnInit{
   isUpdate : boolean = false;
 
   constructor(private route: ActivatedRoute,private api:ShowtimeService,private auth:AuthService
-     , private movieServie:MovieService,private salaService : SalaService) {}
+     , private movieServie:MovieService,private salaService : SalaService, private navegador : Router) {}
      
   ngOnInit(): void {
 
@@ -40,7 +41,6 @@ export class AddShowtimeComponent implements OnInit{
     });
 
     this.route.params.subscribe(params => {
-      
     var id = parseInt(params['id']);
       this.api.getShowtimeById(id).subscribe((data : Showtime ) => 
       {
@@ -52,6 +52,7 @@ export class AddShowtimeComponent implements OnInit{
         this.setSala(sala[0])
       })
     });
+
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
     };
 
@@ -99,7 +100,6 @@ export class AddShowtimeComponent implements OnInit{
               }
             )
           }else{
-
             this.api.editShowtime(this.showtimeRegister.id!,this.showtimeRegister).subscribe(
               {
                 next:() =>{
@@ -131,11 +131,7 @@ export class AddShowtimeComponent implements OnInit{
 
     cancel()
     {
-      this.showtimeRegister = new Showtime();
-      this.salaName =  ""
-      this.horarioSeleccionado = ""
+      this.navegador.navigate(["/showtime/home"])
     }
-
-    
 
 }

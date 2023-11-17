@@ -1,0 +1,66 @@
+<app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
+<app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
+<div class="contenedor-principal">
+    <div class="datatable-container mat-elevation-z20">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-12 col-md-6 co-sm-12 d-flex justify-content-center">
+                <div class="card mb-3" style="max-width: 880px;">
+                    <div class="row g-0">
+                      <div class="col-md-4 col-lg-4">
+                        <div *ngIf="movie.poster_path" >
+                            <img  class="img-fluid rounded-start"  [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" >
+                        </div>
+                      </div>
+                      <div class="col-md-8 col-lg-8">
+                        <div class="card-body">
+                          <h1 class="card-title">{{movie.original_title}}</h1>
+                            <p class="card-text">
+                                Cine : {{sala.nombreCine}}
+                            </p>
+                            <br>
+                            <p class="card-text">
+                                Sala : {{sala.nombreSala}} 
+                            </p>
+                            <br>
+
+                            <p class="card-text">
+                                Precio : ${{funcion.precio}} Por Entrada
+                            </p>
+                            <br>
+
+                            <p class="card-text">
+                                Butacas Disponibles : {{funcion.entradasDisponible}}
+                            </p>
+                            <br>
+                            <div class="row d-flex justify-content-end ">
+                                <div class="col-lg-12">
+                                    <mat-form-field appearance="outline" class="w-50">
+                                        <mat-label>Cantidad a comprar</mat-label>
+                                        <input [(ngModel)]="cantAComprar" type="number" matInput >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h2 style="color: black;">
+                                        Total a Pagar : {{getTotal()}}
+                                    </h2>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="row d-flex justify-content-end">
+                                        <div class="col-lg-3">
+                                            <button mat-raised-button color="primary" (click)="grabarCompra()">Comprar </button>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <button mat-raised-button color="warn" (click)="gotToInicio()">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <app-footer />
