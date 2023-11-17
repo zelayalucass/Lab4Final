@@ -37,7 +37,7 @@ export interface ICinema {
     id: number | null;    
     idUsuario: number | null;
     idFuncion: number | null;
-    fecha: Date | null;
+    fecha: string | null;
     nombrePelicula : string | null;
     cantidadEntradas: number | null;
  }
@@ -48,7 +48,7 @@ export interface ICinema {
     sala: number | null;
     horarios: string | null;
     entradasDisponible: number | null;
-    fecha : Date | Date
+    fecha : string | null
  }
 
  export interface ISala
