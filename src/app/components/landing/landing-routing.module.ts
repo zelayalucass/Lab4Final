@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing-page/landing-page.component';
-import { SearchComponent } from './search/search.component';
+import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
   {
@@ -9,15 +9,14 @@ const routes: Routes = [
     component:LandingComponent
   },
   {
-    path:'landing-page/:id',
-    component:LandingComponent
+    path:"detail/:id",
+    component:DetailComponent
   },
   {
-    path:"",
-    redirectTo:"landing-page",
-    pathMatch:"full"
+    path:'',
+    redirectTo:'landing-page',
+    pathMatch: 'full'
   }
-
 ];
 
 @NgModule({

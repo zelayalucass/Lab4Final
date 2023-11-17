@@ -48,7 +48,7 @@ export interface ICinema {
     sala: number | null;
     horarios: string | null;
     entradasDisponible: number | null;
-    fecha : Date | null
+    fecha : Date | Date
  }
 
  export interface ISala
