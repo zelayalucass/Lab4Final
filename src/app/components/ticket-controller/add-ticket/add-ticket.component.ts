@@ -76,6 +76,7 @@ export class AddTicketComponent implements OnInit{
       ticket.idFuncion = this.idFuncion;
       ticket.idUsuario = parseInt(localStorage.getItem('userId')!);
       ticket.fecha = this.funcion.fecha
+      ticket.nombrePelicula = this.movie.title
       this.ticketService.addTicket(ticket).subscribe(
         {
           next: (res) => {

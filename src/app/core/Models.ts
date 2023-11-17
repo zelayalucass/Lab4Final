@@ -1,3 +1,4 @@
+import { tick } from "@angular/core/testing";
 import { IGenre, ISala, IUser } from "./Interface";
 import { ICinema } from "./Interface";
 import { IMovie } from "./Interface";
@@ -92,8 +93,10 @@ export class Cinema implements ICinema {
     idFuncion: number | null;
     fecha: Date | null;
     cantidadEntradas: number | null;
+    nombrePelicula: string | null;
 
     constructor(ticket?: Ticket) {
+        this.nombrePelicula = ticket?.nombrePelicula == undefined ? null : ticket.nombrePelicula
         this.id = ticket?.id == undefined ? null : ticket.id;
         this.idUsuario = ticket?.idUsuario == undefined ? null : ticket.idUsuario;
         this.idFuncion = ticket?.idFuncion == undefined ? null : ticket.idFuncion;
