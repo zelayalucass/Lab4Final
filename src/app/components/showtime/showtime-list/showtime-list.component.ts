@@ -73,7 +73,12 @@ export class ShowtimeListComponent implements OnInit{
 
   public goToAddTicket(showtime :Showtime)
   {
-    this.router.navigate(['/ticket/add', showtime.id]);
+    if(this.isUserLoggedIn)
+    {
+      this.router.navigate(['/ticket/add', showtime.id]);
+    }else{
+      this.router.navigate(['/auth/login']);
+    }
   }
 
   public onInputChange()
