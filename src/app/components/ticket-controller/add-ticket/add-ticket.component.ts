@@ -75,7 +75,7 @@ export class AddTicketComponent implements OnInit{
       ticket.cantidadEntradas = this.cantAComprar
       ticket.idFuncion = this.idFuncion;
       ticket.idUsuario = parseInt(localStorage.getItem('userId')!);
-      ticket.fecha = this.funcion.fecha
+      ticket.fecha = this.funcion.fecha //conjugacion fecha + horario
       ticket.nombrePelicula = this.movie.title
       this.ticketService.addTicket(ticket).subscribe(
         {
