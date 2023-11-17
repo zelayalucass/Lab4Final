@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ShowtimeService } from 'src/app/core/services/showtime.service';
 import { SalaService } from 'src/app/core/services/sala.service';
 import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-showtime-list',
@@ -15,12 +16,15 @@ import { Observable } from 'rxjs';
 export class ShowtimeListComponent implements OnInit{
 
   isUserLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   listShows : Showtime[] = []
   public funcionBuscada : string = '';
 
   constructor(private auth: AuthService, private router:Router, private showtimeService : ShowtimeService, private salaService : SalaService) {}
 
   ngOnInit(): void {
+    this.isAdmin = localStorage.getItem('isAdmin') == "true" ? true : false;
+    console.log(this.isAdmin)
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
     this.getFunciones()
   }
@@ -67,6 +71,11 @@ export class ShowtimeListComponent implements OnInit{
   public EditCine(showtime :Showtime)
   {
     this.router.navigate(['/showtime/add', showtime.id]);
+  }
+
+  public goToAddTicket(showtime :Showtime)
+  {
+    this.router.navigate(['/ticket/add', showtime.id]);
   }
 
   public onInputChange()

@@ -18,21 +18,21 @@ export class FilterComponent implements OnInit {
 
   constructor(private movieService : MovieService)
   {
-
+    /*
+    this.movieService.getAllGenres().subscribe((data : any )=>
+    {
+      this.genreList = data['genres'];
+    })
+    this.InitializeYears()*/
   }
 
 ngOnInit(): void {
-  this.movieService.getAllGenres().subscribe((data : any )=>
-  {
-    this.genreList = data['genres'];
-  })
-  this.InitializeYears()
+  
 }
 
 GetByGenre() {
   this.movieService.getAllByGenre(this.idGenre, this.selectedYear).subscribe((data : any )=> {
     this.movieslist = data["results"];
-    console.log(this.movieslist);
     this.movieService.actualizarListaPeliculas(this.movieslist);
   })
 }
@@ -40,7 +40,6 @@ GetByGenre() {
 GetByYear(){
   this.movieService.getAllByGenre(this.idGenre, this.selectedYear).subscribe((data : any )=> {
     this.movieslist = data["results"];
-    console.log(this.movieslist);
     this.movieService.actualizarListaPeliculas(this.movieslist);
   })
 }

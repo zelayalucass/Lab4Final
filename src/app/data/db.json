@@ -111,15 +111,6 @@
   "showtimes": [
     {
       "idFuncion": null,
-      "idPelicula": 385687,
-      "nombrePelicula": "Fast & Furious X",
-      "sala": 1,
-      "horarios": "20:00",
-      "id": 1,
-      "entradasDisponible": 10
-    },
-    {
-      "idFuncion": null,
       "idPelicula": 1192293,
       "nombrePelicula": "Fast and the Furious: Diesel Refueled",
       "sala": 1,
@@ -134,6 +125,64 @@
       "sala": 1,
       "horarios": "23:00",
       "entradasDisponible": 20
+    },
+    {
+      "id": 4,
+      "fecha": "2023-11-15T03:00:00.000Z",
+      "idPelicula": 9799,
+      "nombrePelicula": "A todo gas",
+      "sala": 1,
+      "horarios": "18:00",
+      "entradasDisponible": 3
+    },
+    {
+      "id": 5,
+      "fecha": "2023-11-12T03:00:00.000Z",
+      "idPelicula": 346698,
+      "nombrePelicula": "Barbie",
+      "sala": 1,
+      "horarios": "17:00",
+      "entradasDisponible": 15
+    },
+    {
+      "precio": 200,
+      "id": 6,
+      "fecha": "2023-11-17T03:00:00.000Z",
+      "idPelicula": 9615,
+      "nombrePelicula": "A todo gas: Tokyo Race",
+      "sala": 1,
+      "horarios": "18:00",
+      "entradasDisponible": 13
+    }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "idUsuario": 3,
+      "idFuncion": 4,
+      "fecha": "2023-11-15T03:00:00.000Z",
+      "cantidadEntradas": "3"
+    },
+    {
+      "id": 2,
+      "idUsuario": 3,
+      "idFuncion": 4,
+      "fecha": "2023-11-15T03:00:00.000Z",
+      "cantidadEntradas": "4"
+    },
+    {
+      "id": 3,
+      "idUsuario": 3,
+      "idFuncion": 5,
+      "fecha": "2023-11-12T03:00:00.000Z",
+      "cantidadEntradas": "5"
+    },
+    {
+      "id": 4,
+      "idUsuario": 3,
+      "idFuncion": 6,
+      "fecha": "2023-11-17T03:00:00.000Z",
+      "cantidadEntradas": "7"
     }
 
   ]

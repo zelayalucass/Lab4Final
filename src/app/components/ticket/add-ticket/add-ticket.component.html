@@ -1,0 +1,81 @@
+<app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
+<app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
+<div class="contenedor-principal">
+    <div class="datatable-container mat-elevation-z20">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-12 col-md-6 co-sm-12 d-flex justify-content-center">
+                <mat-card class="example-card w-100">
+                    <mat-card-header>
+                        <div *ngIf="movie.poster_path" >
+                            <img mat-card-xl-image [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path">
+                        </div>
+                      <mat-card-title-group style="margin-left: 20px;">
+                        <mat-card-title>
+                            <h1 style="color: black;">
+                                {{movie.original_title}}
+                            </h1>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            <br>
+                            <p>
+                                <b>
+                                    Cine : {{sala.nombreCine}}
+                                </b>
+                            </p>
+                        </mat-card-subtitle>
+                        <mat-card-subtitle>
+                            <br>
+                            <p>
+                                <b>
+                                    Sala : {{sala.nombreSala}} 
+                                </b>
+                            </p>
+                        </mat-card-subtitle>
+                        <mat-card-subtitle>
+                            <br>
+                            <p>
+                                <b>
+                                    Precio : ${{funcion.precio}} Por Entrada
+                                </b>
+                            </p>
+                        </mat-card-subtitle>
+                        <mat-card-subtitle>
+                            <br>
+                            <p>
+                                <b>
+                                    Butacas Disponibles : {{funcion.entradasDisponible}}
+                                </b>
+                            </p>
+                        </mat-card-subtitle>
+                      </mat-card-title-group>
+                    </mat-card-header>
+                    <div class="row d-flex justify-content-end m-3">
+                        <div class="col-lg-12 d-flex justify-content-end">
+                            <mat-form-field appearance="outline" class="w-50">
+                                <mat-label>Cantidad a comprar</mat-label>
+                                <input [(ngModel)]="cantAComprar" matInput >
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12 d-flex justify-content-end">
+                            <p>
+                                <b>
+                                    <h1 style="color: black;">
+                                        Total a Pagar : {{getTotal()}}
+                                    </h1>
+                                </b>
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <button mat-raised-button color="primary" (click)="grabarCompra()">Comprar</button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <button mat-raised-button color="warn" (click)="gotToInicio()">Cancelar</button>
+                        </div>
+                    </div>
+                  </mat-card>
+                  
+            </div>
+        </div>
+    </div>
+  </div>
+  <app-footer />
