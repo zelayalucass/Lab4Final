@@ -11,10 +11,9 @@ import { TicketService } from 'src/app/core/services/ticket.service';
   styleUrls: ['./home-ticket.component.css']
 })
 export class HomeTicketComponent implements OnInit{
-
-  public tickets: Array<Ticket> = [];
-  
   isUserLoggedIn: boolean = false;
+  public tickets: Array<Ticket> = [];
+    
   constructor(private auth: AuthService, private apiTicket:TicketService, private dialog:MatDialog)
   {
     this.getTickets();
@@ -22,7 +21,7 @@ export class HomeTicketComponent implements OnInit{
 
 
   ngOnInit(): void {
-  throw new Error('Method not implemented.');
+    this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
 }
 
 public async getTickets()
