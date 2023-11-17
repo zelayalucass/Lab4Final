@@ -22,7 +22,6 @@ export class ShowtimeListComponent implements OnInit{
 
   ngOnInit(): void {
     this.isAdmin = localStorage.getItem('isAdmin') == "true" ? true : false;
-    console.log(this.isAdmin)
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
     this.getFunciones()
   }
@@ -73,11 +72,19 @@ export class ShowtimeListComponent implements OnInit{
 
   public goToAddTicket(showtime :Showtime)
   {
-    if(this.isUserLoggedIn)
-    {
-      this.router.navigate(['/ticket/add', showtime.id]);
+    var fechaActual = new Date().toLocaleDateString()
+    var horaActual = `${new Date().getHours()}:${new Date().getMinutes()}`
+    var fechaFuncion = new Date(showtime.fecha).toLocaleDateString()
+
+    if ( fechaActual <= fechaFuncion && horaActual <= showtime.horarios! ) { //VALIDACION PARA NO COMPRAR TICKETS DE FUNCIONES QUE YA PASARON
+      if(this.isUserLoggedIn)
+      {
+        this.router.navigate(['/ticket/add', showtime.id]);
+      }else{
+        this.router.navigate(['/auth/login']);
+      }  
     }else{
-      this.router.navigate(['/auth/login']);
+      alert("¡ La funcion ya se realizo !")
     }
   }
 

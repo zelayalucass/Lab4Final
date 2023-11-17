@@ -112,13 +112,13 @@ export class Showtime implements IShowtime {
     sala: number | null;
     horarios: string | null;
     entradasDisponible: number | null;
-    fecha : Date | null
+    fecha : Date | Date
     precio : number | null
     
     constructor(showtime?: Showtime) {
         this.precio = showtime?.precio == undefined ? null : showtime.precio;
         this.id = showtime?.id == undefined ? null : showtime.id;
-        this.fecha = showtime?.fecha == undefined ? null : showtime.fecha
+        this.fecha = showtime?.fecha == undefined ? new Date() : showtime.fecha
         this.idPelicula = showtime?.idPelicula == undefined ? null : showtime.idPelicula;
         this.nombrePelicula = showtime?.nombrePelicula == undefined ? null : showtime.nombrePelicula;
         this.sala = showtime?.sala == undefined ? null : showtime.sala;
