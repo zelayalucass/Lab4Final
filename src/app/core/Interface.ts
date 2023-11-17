@@ -38,6 +38,7 @@ export interface ICinema {
     idUsuario: number | null;
     idFuncion: number | null;
     fecha: Date | null;
+    nombrePelicula : string | null;
     cantidadEntradas: number | null;
  }
 
