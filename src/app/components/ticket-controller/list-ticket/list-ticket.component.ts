@@ -11,8 +11,12 @@ import { TicketService } from 'src/app/core/services/ticket.service';
   styleUrls: ['./list-ticket.component.css']
 })
 export class ListTicketComponent implements OnInit{
+  isUserLoggedIn: any;
+  auth: any;
 
   ngOnInit(): void {
+    this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
+    
   }
 
   constructor(private api:ApiService, private dialog: MatDialog, public ticket:TicketService)
