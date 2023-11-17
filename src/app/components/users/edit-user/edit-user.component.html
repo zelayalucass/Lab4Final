@@ -1,8 +1,8 @@
-<div class="example-container mat-elevation-z8">
-    <button mat-flat-button color="primary" (click)="closeDialog()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <h2>Editar Datos del Usuario</h2>
+<div class="login-container">
+
+  <div class="login-box">
+    <h2>CineMaster <span class="span-titulo">Plus+</span></h2>
+    <h3>Editar Datos del Usuario</h3>
   
     <form [formGroup]="editForm" class="user-info">
       <div class="form-group">
@@ -13,11 +13,17 @@
           name="username"
           formControlName="username"
           class="form-control"
-          required
+          (blur)="ValidateUserName()"
         />
-        <div *ngIf="editForm.get('username')?.hasError('required') && editForm.get('username')?.touched">
-          Usuario requerido
-        </div>
+      </div>
+      <div class="error-message" *ngIf="editForm.get('username')?.hasError('minlength')?.valueOf()">
+        *El Nombre de Usuario debe tener MINIMO 5 caracteres.
+      </div>
+       <div class="error-message" *ngIf="editForm.get('username')?.hasError('userNameExists') && !editForm.get('username')?.hasError('required')">
+        *Este Nombre de Usuario NO esta disponible.
+      </div>
+      <div class="error-message" *ngIf="editForm.get('username')?.touched  && editForm.get('username')?.hasError('required')">
+        *El Nombre de Usuario es requerido.
       </div>
   
       <div class="form-group">
@@ -28,14 +34,17 @@
           name="email"
           formControlName="email"
           class="form-control"
-          required
+          (blur)="ValidateEmail()"
         />
-        <div *ngIf="editForm.get('email')?.hasError('required') && editForm.get('email')?.touched">
-          Email requerido
-        </div>
-        <div *ngIf="editForm.get('email')?.hasError('email') && editForm.get('email')?.touched">
-          Formato de email inválido
-        </div>
+      </div>
+      <div class="error-message" *ngIf="editForm.get('email')?.hasError('emailExists')">
+        *Este correo electrónico ya existe.
+      </div>
+      <div class="error-message" *ngIf="editForm.get('email')?.touched  && editForm.get('email')?.hasError('required')">
+        *El Email es requerido.
+      </div>
+      <div class="error-message" *ngIf="editForm.get('email')?.hasError('email')">
+        *Respetar Formato del Email.
       </div>
       
       <div class="form-group">
@@ -46,21 +55,25 @@
           name="password"
           formControlName="password"
           class="form-control"
-          required
+         
         />
-        <div *ngIf="editForm.get('password')?.hasError('required') && editForm.get('password')?.touched">
-          Contraseña requerida
-        </div>
+      </div>
+      <div class="error-message" *ngIf="editForm.get('password')?.touched  && editForm.get('password')?.hasError('required')">
+        *La Contraseña es requerida.
+      </div>
+      <div class="error-message" *ngIf="editForm.get('password')?.hasError('minlength')?.valueOf()">
+        *La Contraseña debe tener MINIMO 5 caracteres.
       </div>
   
       <!-- Otros campos según sea necesario -->
   
-      <!-- Botón de Edición -->
-      <div class="edit-button">
-        <button mat-flat-button color="accent" (click)="saveUser()">
-          <mat-icon>save</mat-icon> Guardar
-        </button>
-      </div>
+      <button class="main-btn"  (click)="saveUser()">Editar</button>
+      <button class="main-btn second material" (click)="closeDialog()">Cancelar</button>
+      
     </form>
+
+
+  </div>
+    
   </div>
   

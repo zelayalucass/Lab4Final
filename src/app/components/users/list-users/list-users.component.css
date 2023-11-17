@@ -1,17 +1,5 @@
 @import url("https://fonts.googleapis.com/css?Noto+Sans&display=swap");
 
-.contenedor
-{
-    padding-top: 10rem;
-}
-
-.centrar
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 .material-icons{
     font-size: 20px;
@@ -19,10 +7,7 @@
 
 .contenedor-principal
 {
-
     padding-top: 20rem;
-    background-image: url('../../../../assets/newYork.jpg');
-    padding-top: 15rem;
     background-image: url('../../../../assets/newYork.jpg');
     background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
     background-position: center; /* Centra la imagen en el contenedor */
@@ -34,7 +19,7 @@
     background-color: var(--dt-background-color-container);
     border-radius: var(--dt-border-radius);
     color: var(--dt-text-color);
-    width: 100rem;
+    width: 120rem;
     margin: 0 auto;
     font-size: 18px;
     box-sizing: border-box;
@@ -140,7 +125,7 @@ width: 50%;
     border: 0 ;
     background: transparent;
     cursor: pointer;
-    margin-left: 1rem;
+    margin-left: 4rem;
 }
 
 .datatable-container .header-tools .tools ul li button:hover,

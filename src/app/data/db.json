@@ -9,7 +9,7 @@
     },
     {
       "id": 1,
-      "username": "LucasZelaya",
+      "username": "Lucas Zelaya ",
       "email": "lucas@gmail.com",
       "password": "lucas",
       "isAdmin": false
@@ -46,7 +46,7 @@
   "cines": [
     {
       "id": 1,
-      "nombre": "Aldrey",
+      "nombre": "Aldrey Sarm.",
       "direccion": "Sarmiento 2023",
       "cantidadSalas": 2
     },
@@ -68,14 +68,14 @@
       "id": 1,
       "idCine": 1,
       "nombreSala": "SALA 3D",
-      "nombreCine": "Aldrey",
+      "nombreCine": "Aldrey Sarm.",
       "butacas": 100
     },
     {
       "id": 2,
       "idCine": 1,
       "nombreSala": "ATMOS",
-      "nombreCine": "Aldrey",
+      "nombreCine": "Aldrey Sarm.",
       "butacas": 100
     },
     {

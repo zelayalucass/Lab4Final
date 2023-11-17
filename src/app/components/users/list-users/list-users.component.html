@@ -1,0 +1,63 @@
+<app-nav-bar-not-login *ngIf="!isUserLoggedIn"></app-nav-bar-not-login>
+<app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
+<div class="contenedor-principal" >
+    <div class="datatable-container mat-elevation-z20">
+        <div class="header-tools">
+            <div class="tools">
+                <ul>
+                    <li>              
+                        LISTADO DE USUARIOS
+                        <i class="material-icons">account_circle</i>        
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="text" class="search-input" placeholder="*Busque aqui por Email o UserName" [(ngModel)]="funcionBuscada"  (input)="onInputChange()"> 
+            </div>   
+        </div>
+    
+        <table class="datatable">
+            <thead>
+                <th>Identificacion</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>PassWord</th>
+                <th>Admin</th>
+                <th>Hacer Admin</th>
+                <th>Ver PassWord</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaUsers">
+                    <td>{{item.id}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.email}}</td>
+                    <td><span *ngIf="selectedUser === item && showPassword">{{ item.password }}</span>
+                        <span *ngIf="selectedUser !== item || !showPassword">*****</span></td>
+                    <td>{{item.isAdmin}}</td>
+                    <td>
+                        <button class="botonMaterial" >
+                            <i *ngIf="item.isAdmin" class="material-icons" (click)="cancelarAdmin(item)">cancel</i>
+                            <i *ngIf="!item.isAdmin" class="material-icons" (click)="hacerAdim(item)">check</i>
+                        </button>            
+                    </td>
+                    <td>
+                        <button class="botonMaterial" (click)="toggleShowPassword(item)" >
+                            <i class="material-icons">{{ showPassword ? 'visibility_off' : 'visibility' }}</i>
+                        </button>            
+                    </td>
+                </tr>           
+            </tbody>
+        </table>
+    
+    
+        <div class="footer-tools">
+            <span>Total Usuarios: {{CountUsers()}}</span>
+
+        </div>
+        
+        
+    </div>
+    
+</div>
+<app-footer></app-footer>
+
