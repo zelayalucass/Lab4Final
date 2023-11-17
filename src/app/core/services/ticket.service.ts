@@ -7,7 +7,7 @@ import { Ticket } from '../Models';
 @Injectable({
   providedIn: 'root'
 })
-export class CinemaService {
+export class TicketService {
 
   private baseUrl: string = "http://localhost:3000/tickets";
 

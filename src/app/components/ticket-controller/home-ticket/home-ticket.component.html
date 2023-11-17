@@ -1,1 +1,3 @@
-<p>home-ticket works!</p>
+<app-nav-bar-login *ngIf="isUserLoggedIn"></app-nav-bar-login>
+<app-list-ticket [listaTickets]="tickets" ></app-list-ticket>
+<app-footer *ngIf="isUserLoggedIn"></app-footer>
