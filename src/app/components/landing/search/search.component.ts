@@ -24,10 +24,10 @@ export class SearchComponent implements  OnInit {
 
   searchMovie()
   {
+    console.log(this.movieToSearch)
     this.movieService.getMovieToTitle(this.movieToSearch).subscribe((data : any)=>
     {
       this.movies = data['results'];
-      console.log(this.movies[2]);
       this.movieService.actualizarListaPeliculas(this.movies);
     });
   }

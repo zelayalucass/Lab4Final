@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: ()=> import("./components/showtime/showtime.module").then(m=>m.ShowtimeModule)
   },
   {
+    path:'ticket',
+    loadChildren: ()=> import("./components/ticket/ticket.module").then(m=>m.TicketModule)
+  },
+  {
     path:'cine',
     loadChildren: ()=> import("./components/cine-controller/cine-controller.module").then(m=>m.CineControllerModule)
   },

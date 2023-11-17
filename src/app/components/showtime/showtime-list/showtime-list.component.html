@@ -24,7 +24,9 @@
               <th>Pelicula</th>
               <th>Sala</th>
               <th>Horario</th>
-              <th>Acciones</th>
+              <th>Fecha</th>
+              <th>Precio</th>
+              <th class="d-flex justify-content-center">Acciones</th>
               <th></th>
           </thead>
           <tbody>
@@ -32,6 +34,8 @@
                   <td>{{item.nombrePelicula}}</td>
                   <td>{{item.sala}}</td>
                   <td>{{item.horarios}}</td>
+                  <td>{{item.fecha| date:'dd/MM/yyyy'}}</td>
+                  <td>{{item.precio}}</td>
                   <div *ngIf="isAdmin">
                     <td >
                         <button class="botonMaterial" (click)="EditCine(item)" >
@@ -44,14 +48,13 @@
                         </button>            
                     </td>
                   </div>
-                  <div *ngIf="!isAdmin" >
-                    <button class="botonMaterial">
-                        <span class="material-symbols-outlined">
+                  <div *ngIf="!isAdmin" class="d-flex justify-content-center" >
+                    <button class="botonMaterial " matTooltip="Comprar" (click)="goToAddTicket(item)">
+                        <span class="material-icons ">
                             shopping_cart
-                            </span>
+                        </span>
                     </button> 
                   </div>
-                  
               </tr>           
           </tbody>
       </table>
@@ -60,4 +63,5 @@
       </div>
   </div>
 </div>
+<app-footer />
 

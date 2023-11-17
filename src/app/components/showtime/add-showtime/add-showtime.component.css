@@ -15,7 +15,7 @@
   }
   .contenedor-principal
 {
-    padding-top: 20rem;
+    padding-top: 15rem;
     /*background-image: url('../../../../../assets/newYork.jpg');*/
     background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
     background-position: center; /* Centra la imagen en el contenedor */
@@ -32,7 +32,6 @@
 
   }
 
-  
   .custom-button {
     background-color: #2196F3;
     color: #fff;
@@ -71,6 +70,21 @@
     padding: 20px;
     text-align: center;
   }
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* WebKit browsers */
+    margin: 0; /* Removes the default margin */
+}
+
+input[type="number"] {
+    -ms-appearance: textfield; /* Internet Explorer/Edge */
+}
+
 
 label {
 display: block;
