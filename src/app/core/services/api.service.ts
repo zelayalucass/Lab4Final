@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { map, catchError, of, tap } from 'rxjs';
+import { map, catchError, of, tap, BehaviorSubject } from 'rxjs';
 import { Cinema, User } from '../Models';
 
 
@@ -11,6 +11,13 @@ import { Cinema, User } from '../Models';
 export class ApiService {
 
   private baseUrl:string = "http://localhost:3000";
+  private cineIdSubject = new BehaviorSubject<number | null>(null);
+  cineId$ = this.cineIdSubject.asObservable();
+
+  getCineActualViewCineFromSala(cineId: number) {
+    this.cineIdSubject.next(cineId);
+  }
+
   constructor(private http: HttpClient) {
    }
 
@@ -58,6 +65,7 @@ export class ApiService {
       const url = `${this.baseUrl}/users`;
       return this.http.post<boolean>(url,user);
    }
+
 
 
 

@@ -46,43 +46,67 @@
   "cines": [
     {
       "id": 1,
-      "nombre": "Smartphone",
-      "direccion": "599.99",
-      "cantidadSalas": 250
+      "nombre": "Aldrey",
+      "direccion": "Sarmiento 2023",
+      "cantidadSalas": 2
     },
     {
       "id": 2,
-      "nombre": "Laptop",
-      "direccion": "999.99",
-      "cantidadSalas": 150
+      "nombre": "Shopping los Gallegos",
+      "direccion": "Belgrano 3300",
+      "cantidadSalas": 2
     },
     {
       "id": 3,
-      "nombre": "Smart TV",
-      "direccion": "799.99",
-      "cantidadSalas": 100
-    },
-    {
-      "id": 5,
-      "nombre": "Smartwatch",
-      "direccion": "199.99",
-      "cantidadSalas": 300
-    },
-    {
-      "id": 6,
-      "nombre": "Aldrey",
-      "direccion": "Sarmiento 2023",
-      "cantidadSalas": 0
+      "nombre": "Ambassador",
+      "direccion": "Cordoba 1000",
+      "cantidadSalas": 2
     }
   ],
   "salas": [
     {
       "id": 1,
-      "idcine": 1,
+      "idCine": 1,
+      "nombreSala": "SALA 3D",
+      "nombreCine": "Aldrey",
+      "butacas": 100
+    },
+    {
+      "id": 2,
+      "idCine": 1,
       "nombreSala": "ATMOS",
       "nombreCine": "Aldrey",
+      "butacas": 100
+    },
+    {
+      "id": 3,
+      "idCine": 2,
+      "nombreSala": "SALA 3D",
+      "nombreCine": "Shopping los Gallegos",
+      "butacas": 150
+    },
+    {
+      "id": 4,
+      "idCine": 2,
+      "nombreSala": "ATMOS",
+      "nombreCine": "Shopping los Gallegos",
+      "butacas": 100
+    },
+    {
+      "id": 5,
+      "idCine": 3,
+      "nombreSala": "SALA 3D",
+      "nombreCine": "Ambassador",
       "butacas": 20
+    },
+    {
+      "id": 6,
+      "idCine": 3,
+      "nombreSala": "ATMOS",
+      "nombreCine": "Ambassador",
+      "butacas": 50
     }
+
   ],
   "showtimes": [
     {
@@ -160,5 +184,6 @@
       "fecha": "2023-11-17T03:00:00.000Z",
       "cantidadEntradas": "7"
     }
+
   ]
 }

@@ -34,6 +34,7 @@ export class CinemaService {
   }
 
   public editCinema(id: number, updatedCine: Cinema): Observable<boolean> {
+    debugger
     const url = `${this.baseUrl}/cines/${id}`;
     return this.http.put<boolean>(url, updatedCine);
   }

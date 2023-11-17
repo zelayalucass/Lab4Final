@@ -27,12 +27,12 @@
             <mat-icon _ngcontent-nyx-c63=""  id="fotoEmailicon" role="img" fontset="material-icons-outlined" class="mat-icon notranslate icono-login material-icons-outlined ">
               forward
             </mat-icon>
-            <label for="direction">Direccion</label>   
+            <label for="direccion">Direccion</label>   
             </div>
-              <input type="text" id="direction" name="direction" formControlName="direction" placeholder="Enter your direction" >  
+              <input type="text" id="direccion" name="direccion" formControlName="direccion" placeholder="Enter your direction" >  
             </div>
-        <div class="error-message" *ngIf="loginForm.get('direction')?.touched  && loginForm.get('direction')?.hasError('required')">
-          *El Email es requerido.
+        <div class="error-message" *ngIf="loginForm.get('direccion')?.touched  && loginForm.get('direccion')?.hasError('required')">
+          *la direccion es requerida.
         </div>
                    <button name="buttonnotForm" type="submit">Guardar Cambios</button>
           <button type="button" (click)="closeDialog()" >Cancelar</button>  

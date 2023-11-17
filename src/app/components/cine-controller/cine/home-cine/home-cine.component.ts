@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Cinema } from 'src/app/core/Models';
+import { Cinema, Sala } from 'src/app/core/Models';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CinemaService } from 'src/app/core/services/cinema.service';
 import {lastValueFrom} from 'rxjs'
 import { MatDialog } from '@angular/material/dialog';
 import { EditCineComponent } from '../edit-cine/edit-cine.component';
+import { SalaService } from 'src/app/core/services/sala.service';
 
 @Component({
   selector: 'app-home-cine',
@@ -15,9 +16,16 @@ import { EditCineComponent } from '../edit-cine/edit-cine.component';
 export class HomeCineComponent implements OnInit {
 
   public cines: Array<Cinema> = [];
-  isUserLoggedIn: boolean = false;
+
+
+  mostrarVistaCines = true;
   
-  constructor(private auth: AuthService, private apiCine:CinemaService, private dialog:MatDialog)
+  cambiarVista() {
+    this.mostrarVistaCines = !this.mostrarVistaCines;
+  }
+
+  isUserLoggedIn: boolean = false;
+  constructor(private auth: AuthService, private apiCine:CinemaService, private dialog:MatDialog, private sala:SalaService)
   {
     this.getCines();
   }
@@ -42,27 +50,37 @@ export class HomeCineComponent implements OnInit {
     }
   }
 
-public DeteleCine(id:number)
+public async DeteleCine(id:number)
 {
-  this.apiCine.deleteCinema(id).subscribe(
-    {
-      next: (res) => {
-        debugger
-        console.log(res);
-        
-        if(res)
-        {
-          this.getCines();
-          alert("Eliminado con exito");
-        }
-        else
-        {
-          alert("No se pudo Eliminar");
-        } 
-      },
-      error: () => alert("No se pudo Eliminar")
-    }
-  )
+  let salas4cine = this.sala.getSalaByCinema(id);
+  let data = await lastValueFrom(salas4cine);
+
+  let salas = data.map((sala:any) => new Sala(sala));
+
+  if(salas.length == 0)
+  {
+    this.apiCine.deleteCinema(id).subscribe(
+      {
+        next: (res) => {
+          debugger
+          console.log(res);
+          
+          if(res)
+          {
+            this.getCines();
+            alert("Eliminado con exito");
+          }
+          else
+          {
+            alert("No se pudo Eliminar");
+          } 
+        },
+        error: () => alert("No se pudo Eliminar")
+      }
+    )
+  }
+  else alert("No se puede eliminar el cine ya que tiene salas enlazadas");
+  
 }
 
 public EditCine(cine:Cinema)

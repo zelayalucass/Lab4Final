@@ -12,6 +12,10 @@ import { AddSalaComponent } from './sala/add-sala/add-sala.component';
 import { ListSalaComponent } from './sala/list-sala/list-sala.component';
 import { EditSalaComponent } from './sala/edit-sala/edit-sala.component';
 import { HomeSalaComponent } from './sala/home-sala/home-sala.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { HomeSalaComponent } from './sala/home-sala/home-sala.component';
         CineControllerRoutingModule,
         SharedModule,
         MatIconModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule
     ]
 })
 export class CineControllerModule { }

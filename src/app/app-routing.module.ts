@@ -23,10 +23,15 @@ const routes: Routes = [
   {
     path:'cine',
     loadChildren: ()=> import("./components/cine-controller/cine-controller.module").then(m=>m.CineControllerModule)
+    
   },
   {
     path:'user',
     loadChildren: ()=> import("./components/users/users.module").then(m=>m.UsersModule)
+  },
+  {
+    path:'ticket',
+    loadChildren: ()=> import("./components/ticket-controller/ticket-controller.module").then(m=>m.TicketControllerModule)
   },
   {
     path: '',

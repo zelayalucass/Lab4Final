@@ -5,7 +5,11 @@ import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
-    path:"landing-page",
+    path:'landing-page',
+    component:LandingComponent
+  },
+  {
+    path:'landing-page/:id',
     component:LandingComponent
   },
   {

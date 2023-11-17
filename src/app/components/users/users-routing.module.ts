@@ -1,16 +1,21 @@
+import { HomeUserComponent } from './home-user/home-user.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailsUserComponent } from './details-user/details-user.component';
+import { DetailUserComponent } from './details-user/details-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   {
-    path:"details",
-    component:DetailsUserComponent
+    path:"home",
+    component:HomeUserComponent
   },
   {
-    path:"",
-    redirectTo:"details",
-    pathMatch:"full"  
+    path:"details",
+    component:DetailUserComponent
+  },
+  {
+    path:"edit",
+    component:EditUserComponent
   }
 ];
 

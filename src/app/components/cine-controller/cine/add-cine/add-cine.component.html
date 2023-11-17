@@ -14,11 +14,14 @@
             </div>
               <input type="text" id="name" name="name" formControlName="name" placeholder="Enter your name" (blur)="ValidateName()">  
          </div>
+         <div class="error-message" *ngIf="loginForm.get('name')?.hasError('minlength')?.valueOf()">
+          *El nombre del cine debe tener MINIMO 5 caracteres.
+        </div>
          <div class="error-message" *ngIf="loginForm.get('name')?.hasError('nameExists') && !loginForm.get('name')?.hasError('required')">
           *Este Nombre NO esta disponible.
         </div>
         <div class="error-message" *ngIf="loginForm.get('name')?.touched  && loginForm.get('name')?.hasError('required')">
-          *El Nombre deL Cine es requerido.
+          *El Nombre deL cine es requerido.
         </div>
 
         
@@ -32,7 +35,7 @@
               <input type="text" id="direction" name="direction" formControlName="direction" placeholder="Enter your direction" >  
             </div>
         <div class="error-message" *ngIf="loginForm.get('direction')?.touched  && loginForm.get('direction')?.hasError('required')">
-          *El Email es requerido.
+          *La direccion es requerida.
         </div>
                    <button name="buttonnotForm" type="submit">Guardar Cambios</button>
           <button type="button" (click)="closeDialog()" >Cancelar</button>  

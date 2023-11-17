@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Cinema } from 'src/app/core/Models';
+import { lastValueFrom } from 'rxjs';
+import { Cinema, Sala } from 'src/app/core/Models';
 import { CinemaService } from 'src/app/core/services/cinema.service';
+import { SalaService } from 'src/app/core/services/sala.service';
 
 @Component({
   selector: 'app-edit-cine',
@@ -15,30 +17,79 @@ export class EditCineComponent implements OnInit {
   public loginForm!:FormGroup;
   nombreAnterior:string = '';
   @Output() userToCreate: EventEmitter<Cinema>= new EventEmitter();
+  @Output() resCineEdit : EventEmitter<boolean> = new EventEmitter();
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private api:CinemaService, private formBuilder: FormBuilder,private dialogRef: MatDialogRef<EditCineComponent>) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private api:CinemaService, private formBuilder: FormBuilder,private dialogRef: MatDialogRef<EditCineComponent>, private sala:SalaService) {}
   ngOnInit(): void {
+    debugger;
     this.cineRegister =  { ...this.data};  
     this.nombreAnterior =  `${this.cineRegister.nombre}`;
+  
     this.loginForm = this.formBuilder.group({
       name: [this.cineRegister.nombre, [Validators.required, Validators.minLength(5)]],
-        direction: [this.cineRegister.direccion, [Validators.required]]
+        direccion: [this.cineRegister.direccion, [Validators.required]]
     })};
 
 
-    public EditProduct()
+    public async EditProduct()
     {
-      this.api.editCinema(this.cineRegister.id!,this.cineRegister).subscribe(
+      if(this.loginForm.invalid) return;
+      this.cineRegister.direccion = this.loginForm.get('direccion')?.value;
+
+     /* this.api.editCinema(this.cineRegister.id!,this.cineRegister).subscribe(
         {
-          next: () => this.dialogRef.close(true),
+          next: (res) => 
+          {
+            this.dialogRef.close(true);
+            
+          },
           error: (error) => alert(error)
         }
   
-      )
+      )*/
+
+      try {
+        const res = await this.api.editCinema(this.cineRegister.id!, this.cineRegister).toPromise();
+        if(res)
+        {
+          this.dialogRef.close(true);
+          if(this.cineRegister.nombre !== this.nombreAnterior)
+          {
+            let apiResponse = this.sala.getSalaByCinema(this.cineRegister.id!);
+
+            let data = await lastValueFrom(apiResponse);
+  
+            let salas = data.map((sala:any) => new Sala(sala));
+  
+  
+            salas.forEach(element => {
+              element.nombreCine = this.cineRegister.nombre!
+              this.sala.editSala(element.id!, element).subscribe(
+                {
+                  next: () => this.dialogRef.close(true),
+                  error: (error) => alert(error)
+                }
+              )
+            });
+  
+          }
+        }
+        else alert("No se pudo editar");
+         
+      } catch (error) {
+        alert(error);
+      }
+      
+
     }
 
   closeDialog(): void {
     this.dialogRef.close();
+  }
+
+  public resEditCine(res : boolean)
+  {
+    this.resCineEdit.emit(res);
   }
 
   public async ValidateName()
