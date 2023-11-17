@@ -16,7 +16,6 @@ const routes: Routes = [
     path:"add/:id",
     component:AddShowtimeComponent
   }
-  
 ];
 
 @NgModule({

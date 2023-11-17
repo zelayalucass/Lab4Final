@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/core/Models';
 import { MovieService } from 'src/app/core/services/movie.service';
 
@@ -11,7 +12,7 @@ export class CardMovieComponent implements OnInit{
 
   moviesList : Movie[] = []
 
-constructor(private serviceMovie : MovieService)
+constructor(private serviceMovie : MovieService, private router:Router)
 {
 }
 
@@ -20,5 +21,9 @@ ngOnInit(): void {
     {
       this.moviesList = lista;
     });
+}
+
+goToDetail(id : number){
+  this.router.navigate([`/landing/detail/${id}`]);
 }
 }

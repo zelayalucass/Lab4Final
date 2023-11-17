@@ -26,10 +26,7 @@ export class AppComponent implements OnInit{
     var fechaActual = new Date().toLocaleDateString()
     var horaActual = `${new Date().getHours()}:${new Date().getMinutes()}`
     var fechaFuncion = new Date(dato.fecha).toLocaleDateString()
-    console.log(fechaActual >= fechaFuncion)
-    console.log(fechaActual >= fechaFuncion)
-
-    if ( fechaActual >= fechaFuncion &&  fechaActual >= fechaFuncion)
+    if ( fechaActual >= fechaFuncion &&  horaActual >= dato.horarios!)
     {
       this.showtimeService.deleteShowtime(dato.id!).subscribe(
         {
