@@ -106,7 +106,6 @@
       "nombreCine": "Ambassador",
       "butacas": 50
     }
-
   ],
   "showtimes": [
     {
@@ -142,7 +141,8 @@
       "nombrePelicula": "Barbie",
       "sala": 1,
       "horarios": "17:00",
-      "entradasDisponible": 15
+      "entradasDisponible": 100,
+      "precio": 400
     },
     {
       "precio": 200,
@@ -152,7 +152,7 @@
       "nombrePelicula": "A todo gas: Tokyo Race",
       "sala": 1,
       "horarios": "18:00",
-      "entradasDisponible": 13
+      "entradasDisponible": 10
     }
   ],
   "tickets": [
@@ -183,7 +183,13 @@
       "idFuncion": 6,
       "fecha": "2023-11-17T03:00:00.000Z",
       "cantidadEntradas": "7"
+    },
+    {
+      "id": 5,
+      "idUsuario": 3,
+      "idFuncion": 6,
+      "fecha": "2023-11-17T03:00:00.000Z",
+      "cantidadEntradas": "3"
     }
-
   ]
 }

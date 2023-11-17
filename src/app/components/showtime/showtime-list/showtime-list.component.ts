@@ -4,8 +4,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { ShowtimeService } from 'src/app/core/services/showtime.service';
 import { SalaService } from 'src/app/core/services/sala.service';
-import { Observable } from 'rxjs';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-showtime-list',
@@ -75,7 +73,12 @@ export class ShowtimeListComponent implements OnInit{
 
   public goToAddTicket(showtime :Showtime)
   {
-    this.router.navigate(['/ticket/add', showtime.id]);
+    if(this.isUserLoggedIn)
+    {
+      this.router.navigate(['/ticket/add', showtime.id]);
+    }else{
+      this.router.navigate(['/auth/login']);
+    }
   }
 
   public onInputChange()
