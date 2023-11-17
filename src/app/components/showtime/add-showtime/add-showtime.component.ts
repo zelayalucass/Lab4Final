@@ -86,8 +86,9 @@ export class AddShowtimeComponent implements OnInit{
       try
       {
         var fechaActual = new Date()
-        var fechaFuncion = new Date(this.showtimeRegister.fecha!)
-        
+        var fechaFuncion = new Date(this.fechaSeleccionada)
+        this.showtimeRegister.fecha = fechaFuncion.toLocaleDateString();
+
         if (fechaFuncion >= fechaActual) {
           if(this.showtimeRegister.sala != null && this.showtimeRegister.idPelicula != null && this.showtimeRegister.horarios!=null && this.showtimeRegister.precio){
             if(!this.isUpdate)
