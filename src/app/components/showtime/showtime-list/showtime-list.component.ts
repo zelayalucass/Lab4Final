@@ -4,8 +4,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { ShowtimeService } from 'src/app/core/services/showtime.service';
 import { SalaService } from 'src/app/core/services/sala.service';
-import { Observable } from 'rxjs';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-showtime-list',
