@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<!--<div class="example-container mat-elevation-z8">
     <button mat-flat-button color="primary" [routerLink]="['/']">
         <mat-icon>arrow_back</mat-icon>
       </button>
@@ -21,7 +21,7 @@
       <p>isAdmin: {{ userLogged.isAdmin ? 'Yes' : 'No' }}</p>
     </div>
   
-    <!-- Botón de Edición -->
+
   <div class="edit-button">
     <button mat-flat-button color="accent" (click)="editUser(userLogged)">
       <mat-icon>edit</mat-icon> Editar
@@ -29,4 +29,36 @@
   </div>
 
 </div>
-  
+-->
+<div class="container-principal">
+  <main>
+    <div class="container">
+      <img src="../../../../assets/avatar-659651_1280.png" alt="user" width="300px" height="300px" class="user">
+      <h4>Nombre del Usuario : {{userLogged.username}}</h4>
+      <h5>Argentina / Mar del Plata</h5>
+    
+      <p>Identificacion: {{userLogged.id}}</p>
+    
+      <div class="buttons">
+        <button class="main-btn">Editar</button>
+        <button class="main-btn second" (click)="toggleShowPassword()">Ver Pass
+          <mat-icon class="material-icons">{{ showPassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon></button>
+      </div>
+      
+      <div class="skills">
+        <h5>Datos del Usuario</h5>
+        <hr>
+        <ul>
+          <li class="html">Email : {{userLogged.email}}</li>
+          <li class="css">Password : <span *ngIf="showPassword">{{ userLogged.password }}</span>
+            <span *ngIf="!showPassword">*****</span></li>
+        </ul>
+      </div>
+    
+    
+    </div>
+  </main>
+</div>
+
+

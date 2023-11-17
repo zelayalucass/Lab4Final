@@ -44,6 +44,12 @@ export class ApiService {
    {
     return this.http.get<User[]>(`${this.baseUrl}/users?id=${id}`);
    }
+
+   public getUSersAdmin() : Observable<User[]>
+   {
+    return this.http.get<User[]>(`${this.baseUrl}/users?isAdmin=${true}`);
+   }
+
    public deleteUser(id:number) : Observable<boolean>
    {
     const url = `${this.baseUrl}/users/${id}`;

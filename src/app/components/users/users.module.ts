@@ -8,12 +8,14 @@ import { DetailUserComponent } from './details-user/details-user.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ListUsersComponent } from './list-users/list-users.component';
 
 @NgModule({
   declarations: [
     HomeUserComponent,
     DetailUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    ListUsersComponent
   ],
   imports: [
     CommonModule,
