@@ -20,6 +20,7 @@ export class AddShowtimeComponent implements OnInit{
   public viewSalas : boolean = false
   public showtimeRegister: Showtime = new Showtime();
   public horarios = this.generarHorarios();
+  public fechaSeleccionada: Date = new Date();
   
   public horarioSeleccionado: string = '';
   public loginForm!:FormGroup;
@@ -40,7 +41,6 @@ export class AddShowtimeComponent implements OnInit{
     });
 
     this.route.params.subscribe(params => {
-      
     var id = parseInt(params['id']);
       this.api.getShowtimeById(id).subscribe((data : Showtime ) => 
       {
@@ -52,6 +52,7 @@ export class AddShowtimeComponent implements OnInit{
         this.setSala(sala[0])
       })
     });
+
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
     };
 
@@ -99,7 +100,6 @@ export class AddShowtimeComponent implements OnInit{
               }
             )
           }else{
-
             this.api.editShowtime(this.showtimeRegister.id!,this.showtimeRegister).subscribe(
               {
                 next:() =>{
@@ -132,6 +132,7 @@ export class AddShowtimeComponent implements OnInit{
     cancel()
     {
       this.showtimeRegister = new Showtime();
+      this.showtimeRegister.precio = 0;
       this.salaName =  ""
       this.horarioSeleccionado = ""
     }
