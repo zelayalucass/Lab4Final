@@ -14,8 +14,8 @@ const routes: Routes = [
   },
   {
     path:'',
-    redirectTo:'landing-page',
-    pathMatch: 'full'
+    redirectTo:"landing-page",
+    pathMatch:"full"
   }
 ];
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeShowtimeComponent } from './home-showtime/home-showtime.component';
 import { AddShowtimeComponent } from './add-showtime/add-showtime.component';
+import { AuthGuard } from '../guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -10,12 +11,18 @@ const routes: Routes = [
   },
   {
     path: "add",
-    component: AddShowtimeComponent
+    component: AddShowtimeComponent,canActivate: [AuthGuard],  data: { requiredRole: 'admin' }
   },
   {
     path:"add/:id",
-    component:AddShowtimeComponent
-  }
+    component:AddShowtimeComponent,canActivate: [AuthGuard],  data: { requiredRole: 'admin' }
+  },
+  {
+    path: '',
+    redirectTo:'home',
+    pathMatch: 'full'
+  },
+  
 ];
 
 @NgModule({

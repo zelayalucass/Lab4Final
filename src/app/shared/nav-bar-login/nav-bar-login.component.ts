@@ -55,8 +55,7 @@ export class NavBarLoginComponent implements OnInit{
   }
 
   clearLocalStorage(): void {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('isAdmin');
+    this.auth.logout();
   }
 
 

@@ -29,7 +29,7 @@ export class ShowtimeListComponent implements OnInit{
 
   public NavigateToAdd()
   {
-    this.router.navigate(['showtime', 'add']);
+    this.router.navigate(['showtimeAdmin', 'add']);
   }
 
   public getFunciones()
@@ -77,7 +77,7 @@ export class ShowtimeListComponent implements OnInit{
 
   public EditCine(showtime :Showtime)
   {
-    this.router.navigate(['/showtime/add', showtime.id]);
+    this.router.navigate(['/showtimeAdmin/add', showtime.id]);
   }
 
   public goToAddTicket(showtime :Showtime)

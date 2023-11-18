@@ -20,7 +20,12 @@ const routes: Routes = [
   {
     path:"add/:id",
     component:AddTicketComponent
-  }
+  },
+  {
+    path: '',
+    redirectTo:'home',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

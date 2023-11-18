@@ -2,9 +2,9 @@
   "users": [
     {
       "id": 0,
-      "username": "pepe",
+      "username": "pepe1",
       "email": "test@test.com",
-      "password": "test",
+      "password": "test1",
       "isAdmin": false
     },
     {
@@ -131,22 +131,12 @@
     {
       "precio": 1500,
       "id": 3,
-      "fecha": "20/11/2023",
+      "fecha": "21/11/2023",
       "idPelicula": 149,
       "nombrePelicula": "Akira",
       "sala": 4,
       "horarios": "19:00",
-      "entradasDisponible": 90
-    },
-    {
-      "precio": 1500,
-      "id": 4,
-      "fecha": "19/11/2023",
-      "idPelicula": 678512,
-      "nombrePelicula": "Sound of Freedom",
-      "sala": 1,
-      "horarios": "22:00",
-      "entradasDisponible": 88
+      "entradasDisponible": 100
     }
   ],
   "tickets": [

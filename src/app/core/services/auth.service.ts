@@ -1,14 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { User } from '../Models';
-import { lastValueFrom } from 'rxjs';
+import { Observable, catchError, lastValueFrom, map, of, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private api:ApiService) { }
+  private url: string = 'http://localhost:3000/users';
+  private user?: User;
+  get currentUser(): User | undefined {
+    if (!this.user) return undefined
+    //structuredClone(this.user)
+    return { ...this.user };
+  }
+  constructor(private api:ApiService, private router:Router, private http:HttpClient) { }
 
   public async checkAuth(email:string, password:string):Promise<boolean>
   {
@@ -46,6 +55,52 @@ export class AuthService {
 
   }
 
+  
+
+  public async verificarUserAndPassGuard(email:string, password:string)
+  {
+    let users:User[] = [];
+
+    try
+    {
+      let apiResponse = this.api.getUsers().subscribe(users => {
+
+        users.find(u => {
+          if(u.password === password && u.email === email)
+          {
+            this.user = u;
+            this.router.navigate(['/landing'])
+          }
+        });
+      });
+   
+    }catch(error)
+    {
+      console.log(error);
+    }
+
+  }
+
+  checkStatusAutenticacion(): Observable<boolean> {
+    const token = localStorage.getItem('userId')
+    if (!token) {
+      return of(false)
+    }
+    return this.http.get<User>(`${this.url}/${token}`)
+      .pipe(
+        tap(u => this.user = u),
+        map(u => !!u),
+        catchError(err => of(false))
+      )
+  }
+
+     
+  logout() {
+    this.user = undefined;
+    localStorage.clear()
+  }
+
+
 public async getUser4Identification(id:number): Promise<User> 
 {
 
@@ -67,6 +122,9 @@ public async getUser4Identification(id:number): Promise<User>
 
   public isUserIdInLocalStorage(): boolean {
     return !!localStorage.getItem('userId');
+  }
+  public typeUser(): string {
+    return localStorage.getItem('isAdmin')!;
   }
   public async GetLastIdentification():Promise<number>
   {

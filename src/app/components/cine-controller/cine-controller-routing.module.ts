@@ -13,6 +13,11 @@ const routes: Routes = [
   {
     path: 'home-sala',
     component: HomeSalaComponent
+  },
+  {
+    path: '',
+    redirectTo:'home-cine',
+    pathMatch: 'full'
   }
 
 ];

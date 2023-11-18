@@ -22,7 +22,12 @@ const routes: Routes = [
   {
     path:"list",
     component:ListUsersComponent
-  }
+  },
+  {
+    path: '',
+    redirectTo:'details',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
