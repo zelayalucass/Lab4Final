@@ -216,3 +216,8 @@ color: var(--dt-text-color-active-button);
 {
    background-color: var(--dt-status-away-color);
 }
+
+.check
+{
+    cursor: default;
+}

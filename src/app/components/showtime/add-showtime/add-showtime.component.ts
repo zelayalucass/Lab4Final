@@ -122,7 +122,7 @@ export class AddShowtimeComponent implements OnInit{
             alert("¡ Rellene todos los campos !");
           }
         }else{
-          alert("¡ No puede crear funciones posteriores a la fecha actual !");
+          alert("¡ No puede crear funciones anteriores a la fecha actual !");
         }
       }catch(error)
       { 
