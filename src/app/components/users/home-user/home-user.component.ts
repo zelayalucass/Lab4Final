@@ -19,7 +19,7 @@ export class HomeUserComponent implements OnInit {
   }
   public EditUser(user: User)
   {
-      const dialogResult = this.dialog.open(EditUserComponent, {data : user, height: '450px', width:'460px'})
+      const dialogResult = this.dialog.open(EditUserComponent, {data : user, height: '480px', width:'400px'})
   
       dialogResult.afterClosed().subscribe(result => this.router.navigate(['/user/home']).then(() => {
         // Recargar la página después de la redirección para asegurar una carga limpia

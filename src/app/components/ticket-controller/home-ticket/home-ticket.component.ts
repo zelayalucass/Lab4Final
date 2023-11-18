@@ -36,6 +36,5 @@ public async getTickets()
     {
       console.log(error);
     }
-}
-
+  }
 }

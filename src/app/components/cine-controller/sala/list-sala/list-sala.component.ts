@@ -17,6 +17,7 @@ export class ListSalaComponent implements OnInit{
 
   isLoadingResults = true;
   cineId: number | null;
+  public funcionBuscada : string = '';
 
   ngOnInit(): void {
     this.api.cineId$.subscribe((cine) => {
@@ -90,6 +91,21 @@ export class ListSalaComponent implements OnInit{
       console.log(error);
       
     }
+  }
+
+  public onInputChange()
+  {
+    // Filtra las funciones que contienen la palabra buscada
+    if(this.funcionBuscada == ""){
+      this.getSalasByIdCine()
+    }else
+    {
+      this.listaSalas = this.listaSalas.filter(sala => {
+        // Convierte la función a cadena y busca la palabra
+        return sala.nombreSala!.toLowerCase().includes(this.funcionBuscada.toLowerCase());
+        });
+    }
+    
   }
 }
 
