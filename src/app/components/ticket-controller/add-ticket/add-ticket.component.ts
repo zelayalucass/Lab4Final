@@ -91,6 +91,7 @@ export class AddTicketComponent implements OnInit{
                 {
                   next:() =>{
                     alert("¡ Ticket adquirido con exito !");
+                    this.gotToInicio();
                   },
                   error: (error) => {
                     console.log(error);
@@ -106,7 +107,7 @@ export class AddTicketComponent implements OnInit{
           },
           error: () =>  alert("Error al obtener el ticket")
         }
-      )
+      )      
     }else{
       alert("Cantidad a comprar no valida");
     }

@@ -116,17 +116,71 @@
       "nombrePelicula": "Fast & Furious X",
       "sala": 3,
       "horarios": "18:00",
-      "entradasDisponible": 150
+      "entradasDisponible": 100
+    },
+    {
+      "precio": 1500,
+      "id": 2,
+      "fecha": "18/11/2023",
+      "idPelicula": 283566,
+      "nombrePelicula": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "sala": 6,
+      "horarios": "21:00",
+      "entradasDisponible": 40
+    },
+    {
+      "precio": 1500,
+      "id": 3,
+      "fecha": "20/11/2023",
+      "idPelicula": 149,
+      "nombrePelicula": "Akira",
+      "sala": 4,
+      "horarios": "19:00",
+      "entradasDisponible": 90
+    },
+    {
+      "precio": 1500,
+      "id": 4,
+      "fecha": "19/11/2023",
+      "idPelicula": 678512,
+      "nombrePelicula": "Sound of Freedom",
+      "sala": 1,
+      "horarios": "22:00",
+      "entradasDisponible": 88
     }
   ],
   "tickets": [
     {
-      "nombrePelicula": "A todo gas: Tokyo Race",
+      "nombrePelicula": "Akira",
       "id": 1,
       "idUsuario": 3,
-      "idFuncion": 1,
+      "idFuncion": 3,
+      "fecha": "15/11/2023",
+      "cantidadEntradas": 10
+    },
+    {
+      "nombrePelicula": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "id": 2,
+      "idUsuario": 3,
+      "idFuncion": 2,
+      "fecha": "18/11/2023",
+      "cantidadEntradas": 10
+    },
+    {
+      "nombrePelicula": "Sound of Freedom",
+      "id": 3,
+      "idUsuario": 3,
+      "idFuncion": 4,
       "fecha": "19/11/2023",
-      "cantidadEntradas": 50
+      "cantidadEntradas": 10
+    },
+    {
+      "nombrePelicula": "Sound of Freedom",
+      "id": 5,
+      "idUsuario": 0,
+      "idFuncion": 4,
+      "fecha": "17/11/2023",
+      "cantidadEntradas": 2
     }
   ]
 }
