@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: ()=> import("./components/showtime/showtime.module").then(m=>m.ShowtimeModule), canActivate: [AuthGuard],  data: { requiredRole: 'user' },
   },
   {
+    path:'showtimeLanding',
+    loadChildren: ()=> import("./components/showtime/showtime.module").then(m=>m.ShowtimeModule)
+  },
+  {
     path:'showtimeAdmin',
     loadChildren: ()=> import("./components/showtime/showtime.module").then(m=>m.ShowtimeModule), canActivate: [AuthGuard],  data: { requiredRole: 'admin' },
   },

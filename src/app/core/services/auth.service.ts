@@ -123,6 +123,9 @@ public async getUser4Identification(id:number): Promise<User>
   public isUserIdInLocalStorage(): boolean {
     return !!localStorage.getItem('userId');
   }
+  public typeUser(): string {
+    return localStorage.getItem('isAdmin')!;
+  }
   public async GetLastIdentification():Promise<number>
   {
 

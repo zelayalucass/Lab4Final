@@ -97,6 +97,7 @@ export class AddShowtimeComponent implements OnInit{
                 {
                   next:() =>{
                     alert("Funcion creado con exito");
+                    this.cancel();
                   },
                   error: (error) => {
                     console.log(error);
@@ -108,7 +109,12 @@ export class AddShowtimeComponent implements OnInit{
               this.api.editShowtime(this.showtimeRegister.id!,this.showtimeRegister).subscribe(
                 {
                   next:() =>{
-                    alert("Funcion modificada con exito");
+                    {
+                      alert("Funcion modificada con exito");
+                      this.cancel();
+                    }
+                    
+                    
                   },
                   error: (error) => {
                     console.log(error);
@@ -138,7 +144,7 @@ export class AddShowtimeComponent implements OnInit{
 
     cancel()
     {
-      this.navegador.navigate(["/showtime/home"])
+      this.navegador.navigate(["/showtimeAdmin/home"])
     }
 
 }
