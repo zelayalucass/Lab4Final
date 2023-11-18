@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { ShowtimeService } from 'src/app/core/services/showtime.service';
 import { SalaService } from 'src/app/core/services/sala.service';
+import { TicketService } from 'src/app/core/services/ticket.service';
 
 @Component({
   selector: 'app-showtime-list',
@@ -18,7 +19,7 @@ export class ShowtimeListComponent implements OnInit{
   listShows : Showtime[] = []
   public funcionBuscada : string = '';
 
-  constructor(private auth: AuthService, private router:Router, private showtimeService : ShowtimeService, private salaService : SalaService) {}
+  constructor(private auth: AuthService, private router:Router, private showtimeService : ShowtimeService, private ticketService : TicketService) {}
 
   ngOnInit(): void {
     this.isAdmin = localStorage.getItem('isAdmin') == "true" ? true : false;
@@ -40,22 +41,33 @@ export class ShowtimeListComponent implements OnInit{
 
   public DeleteShowtime(id:number)
   {
-    this.showtimeService.deleteShowtime(id).subscribe(
+    var existeTicket = false;
+    this.ticketService.getTicketsByIdFuncion(id).subscribe((data :any) => {
+      existeTicket = data[0] != null ? true : false;  
+      console.log(data)
+      if(!existeTicket)
       {
-        next: (res) => {
-          if(res)
+        this.showtimeService.deleteShowtime(id).subscribe(
           {
-            this.getFunciones()
-            alert("Eliminado con exito");
+            next: (res) => {
+              if(res)
+              {
+                this.getFunciones()
+                alert("Eliminado con exito");
+              }
+              else
+              {
+                alert("No se pudo Eliminar");
+              } 
+            },
+            error: () => alert("No se pudo Eliminar")
           }
-          else
-          {
-            alert("No se pudo Eliminar");
-          } 
-        },
-        error: () => alert("No se pudo Eliminar")
+        )
+      }else{
+        alert("Existen tickets, no puede eliminar esta funcion");
       }
-    )
+    })
+      
   }
 
   public CountList() : number
