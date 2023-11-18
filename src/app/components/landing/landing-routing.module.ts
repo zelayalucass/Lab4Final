@@ -13,7 +13,7 @@ const routes: Routes = [
     component:LandingComponent
   },
   {
-    path:"",
+    path:'',
     redirectTo:"landing-page",
     pathMatch:"full"
   }

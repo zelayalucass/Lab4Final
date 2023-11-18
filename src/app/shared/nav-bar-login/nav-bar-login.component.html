@@ -13,11 +13,10 @@
         </div>
         <ng-container  *ngIf="isAdmin; else userLinks"> 
             <a href="">Inicio</a>
-
-            <a href="/showtime/home">ABM Funciones</a>
             <a href="/cine/home-cine">Administrar Cines</a>
-            <a href="/showtime/home">ABM Funciones</a>
-            <a href="/user/list">Ver Usuarios</a>
+            <a href="/showtimeAdmin/home">ABM Funciones</a>
+            <a href="/admin/list">Ver Usuarios</a>
+            <a href="/admin/home">Perfil</a>
         </ng-container>
         <!--User-->
         <ng-template #userLinks>
