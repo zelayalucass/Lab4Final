@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 import { Showtime, Ticket } from 'src/app/core/Models';
 import { ApiService } from 'src/app/core/services/api.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { ShowtimeService } from 'src/app/core/services/showtime.service';
 import { TicketService } from 'src/app/core/services/ticket.service';
 
@@ -12,30 +14,25 @@ import { TicketService } from 'src/app/core/services/ticket.service';
   styleUrls: ['./list-ticket.component.css']
 })
 export class ListTicketComponent implements OnInit{
-  isUserLoggedIn: any;
-  auth: any;
+  isUserLoggedIn: boolean = false;
   currentDate: Date = new Date();
-  idUser: any;
+  idUser: number = 0;
+  isLoadingResults = true;
   
+  listaTickets:Array<Ticket> = [];
 
-  ngOnInit(): void {
+  constructor(public ticketService:TicketService, public showtimeService:ShowtimeService, private auth:AuthService, private router: Router) {}
+
+   ngOnInit(): void {
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
-    this.idUser = localStorage.getItem('idUser') == "true" ? true : false;
+    this.idUser = parseInt(localStorage.getItem('userId')!);
+
     this.getTickets();
     setInterval(() => {
       this.currentDate = new Date();
     }, 1000);
   }
 
-  constructor(private api:ApiService, private dialog: MatDialog, public ticketService:TicketService, public showtimeService:ShowtimeService) 
-  {
-    this.currentDate = new Date();    
-   }
-
-  @Input() listaTickets:Array<Ticket> = [];
-  @Output() ticketToEdit: EventEmitter<Ticket> = new EventEmitter();
-
-  isLoadingResults = true;
 
   public CountList() : number
   {
@@ -59,7 +56,7 @@ export class ListTicketComponent implements OnInit{
     return dateOnly.getTime();
   }
   
-  compareDates(itemFecha: Date | null): boolean {
+  compareDates(itemFecha: string | null): boolean {
     if (itemFecha === null) {
       return false; // Otra acción apropiada si la fecha es nula
     }
@@ -75,7 +72,7 @@ export class ListTicketComponent implements OnInit{
     }
 }
 
-  public async getTickets()
+  public getTickets()
   {
     try
     {
@@ -114,7 +111,6 @@ export class ListTicketComponent implements OnInit{
           next: (res) => {
             if(res)
             {
-              this.ticketService.getTickets
               console.log("Eliminado con exito");
             }
             else
@@ -125,7 +121,16 @@ export class ListTicketComponent implements OnInit{
           error: () => console.log("No se pudo Eliminar")
         }
       );
-      this.getTickets();
     }
+    this.recargarComponente()
+  }
+  recargarComponente() {
+    // Obtén la ruta actual
+    const currentUrl = this.router.url;
+
+    // Navega a sí mismo para recargar el componente
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }
