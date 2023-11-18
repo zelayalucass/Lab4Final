@@ -27,6 +27,12 @@ export class TicketService {
     const url = `${this.baseUrl}?idUsuario=${idUser}`;
     return this.http.get<Ticket>(url);
   }
+  
+  public getTicketsByIdFuncion(idFuncion: number): Observable<Ticket>
+  {
+    const url = `${this.baseUrl}?idFuncion=${idFuncion}`;
+    return this.http.get<Ticket>(url);
+  }
 
   public deleteTicket(id: number): Observable<boolean> {
     const url = `${this.baseUrl}/${id}`;
