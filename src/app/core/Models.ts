@@ -88,10 +88,13 @@ export class Cinema implements ICinema {
     }
 }
  export class Ticket implements ITicket {
+    map(arg0: (product: any) => Ticket): Ticket[] {
+      throw new Error('Method not implemented.');
+    }
     id: number | null;
     idUsuario: number | null;
     idFuncion: number | null;
-    fecha: Date | null;
+    fecha: string | null;
     cantidadEntradas: number | null;
     nombrePelicula: string | null;
 
@@ -112,13 +115,13 @@ export class Showtime implements IShowtime {
     sala: number | null;
     horarios: string | null;
     entradasDisponible: number | null;
-    fecha : Date | null
+    fecha : string | null
     precio : number | null
     
     constructor(showtime?: Showtime) {
         this.precio = showtime?.precio == undefined ? null : showtime.precio;
         this.id = showtime?.id == undefined ? null : showtime.id;
-        this.fecha = showtime?.fecha == undefined ? null : showtime.fecha
+        this.fecha = showtime?.fecha == undefined ? "" : showtime.fecha
         this.idPelicula = showtime?.idPelicula == undefined ? null : showtime.idPelicula;
         this.nombrePelicula = showtime?.nombrePelicula == undefined ? null : showtime.nombrePelicula;
         this.sala = showtime?.sala == undefined ? null : showtime.sala;

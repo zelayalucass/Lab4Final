@@ -22,7 +22,6 @@ export class ShowtimeListComponent implements OnInit{
 
   ngOnInit(): void {
     this.isAdmin = localStorage.getItem('isAdmin') == "true" ? true : false;
-    console.log(this.isAdmin)
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
     this.getFunciones()
   }
@@ -44,8 +43,6 @@ export class ShowtimeListComponent implements OnInit{
     this.showtimeService.deleteShowtime(id).subscribe(
       {
         next: (res) => {
-          console.log(res)
-
           if(res)
           {
             this.getFunciones()
@@ -73,12 +70,29 @@ export class ShowtimeListComponent implements OnInit{
 
   public goToAddTicket(showtime :Showtime)
   {
-    if(this.isUserLoggedIn)
+    var fechaActual = new Date().toLocaleDateString()
+    var horaActual = `${new Date().getHours()}:${new Date().getMinutes()}`
+   
+
+    if ( fechaActual <= showtime.fecha!) { //VALIDACION PARA NO COMPRAR TICKETS DE FUNCIONES QUE YA PASARON
+      if(this.isUserLoggedIn)
+      {
+        this.router.navigate(['/ticket/add', showtime.id]);
+      }else{
+        this.router.navigate(['/auth/login']);
+      }  
+    }else if ( fechaActual == showtime.fecha && horaActual <= showtime.horarios! )
     {
-      this.router.navigate(['/ticket/add', showtime.id]);
+      if(this.isUserLoggedIn)
+      {
+        this.router.navigate(['/ticket/add', showtime.id]);
+      }else{
+        this.router.navigate(['/auth/login']);
+      }  
     }else{
-      this.router.navigate(['/auth/login']);
+      alert("¡ La funcion ya se realizo !")
     }
+    
   }
 
   public onInputChange()

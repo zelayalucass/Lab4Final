@@ -19,13 +19,15 @@ import { FilterComponent } from './filter/filter.component';
 import { AuthModule } from '../auth/auth.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { DetailComponent } from './detail/detail.component';
 @NgModule({
     declarations: [
         LandingComponent,
         CarruselComponent,
         CardMovieComponent,
         SearchComponent,
-        FilterComponent
+        FilterComponent,
+        DetailComponent
     ],
     imports: [
         CommonModule,

@@ -1,0 +1,43 @@
+<div class="contenedor-principal">
+    <div class="row w-100 centrar">
+        <div class="col-lg-6 col-md-6 col-sm-12 centrar">
+            <mat-card class="example-card">
+                <mat-card-header>
+                <div class="row centrar w-100">
+                        <mat-card-title class="centrar">
+                          <h1 style="font-size: 40px;">
+                              {{movie.title}}
+                          </h1>
+                      </mat-card-title>
+                </div>
+                <button mat-mini-fab color="primary" (click)="goToHome()" >
+                    <mat-icon>home</mat-icon>
+                </button>
+                </mat-card-header>
+                <div class="row w-100 centrar">
+                    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" style="height: 400px; width: 500px;" alt="Photo of a Shiba Inu">
+                </div>
+                <mat-card-content>
+                <b style="font-size: 20px;">
+                    <p>
+                        {{movie.overview}}
+                      </p>
+                      <p>
+                        Lenguaje : {{movie.original_language}}
+                      </p>
+                      <p>
+                        Popularidad : {{movie.popularity}}
+                      </p>
+                      <p>
+                        Estreno : {{movie.release_date | date:'dd/MM/yyyy' }}
+                      </p>
+                      <p>
+                        Puntuacion : {{movie.vote_average }}
+                      </p>
+                </b>
+                  
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+</div>

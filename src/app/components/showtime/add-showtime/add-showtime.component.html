@@ -56,7 +56,7 @@
                         <div class="col-lg-12 col-md-6 col-sm-12">
                             <mat-form-field class="w-100">
                                 <mat-label>Horario</mat-label>
-                                <mat-select [(value)]="horarioSeleccionado" (selectionChange)="setHorario()">
+                                <mat-select [(ngModel)]="horarioSeleccionado" (selectionChange)="setHorario()">
                                     <mat-option *ngFor="let horario of horarios" [value]="horario.value">
                                       {{ horario.viewValue }}
                                     </mat-option>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-lg-12 col-md-6 col-sm-12">
                             <mat-form-field class="w-50">
-                                <input matInput [matDatepicker]="datepicker"  placeholder="Selecciona una fecha" [(ngModel)]="showtimeRegister.fecha!">
+                                <input matInput [matDatepicker]="datepicker"  placeholder="Selecciona una fecha" [(ngModel)]="fechaSeleccionada!">
                                 <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
                                 <mat-datepicker #datepicker></mat-datepicker>
                             </mat-form-field>

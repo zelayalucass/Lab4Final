@@ -14,28 +14,11 @@ export class HomeTicketComponent implements OnInit{
   isUserLoggedIn: boolean = false;
   public tickets: Array<Ticket> = [];
     
-  constructor(private auth: AuthService, private apiTicket:TicketService, private dialog:MatDialog)
-  {
-    this.getTickets();
-  }
+  constructor(private auth: AuthService, private apiTicket:TicketService, private dialog:MatDialog){}
 
 
   ngOnInit(): void {
     this.isUserLoggedIn = this.auth.isUserIdInLocalStorage();
-}
-
-public async getTickets()
-{
-  try
-  {
-      let apiResponde = this.apiTicket.getTickets();
-      let data = await lastValueFrom(apiResponde);
-      this.tickets = data.map((ticket : any) => new Ticket(ticket));
-  }
-  catch(error)
-    {
-      console.log(error);
-    }
 }
 
 }

@@ -18,12 +18,12 @@ export class FilterComponent implements OnInit {
 
   constructor(private movieService : MovieService)
   {
-    /*
+    
     this.movieService.getAllGenres().subscribe((data : any )=>
     {
       this.genreList = data['genres'];
     })
-    this.InitializeYears()*/
+    this.InitializeYears()
   }
 
 ngOnInit(): void {

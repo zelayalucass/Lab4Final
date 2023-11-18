@@ -85,38 +85,45 @@ export class AddShowtimeComponent implements OnInit{
     {
       try
       {
-        if(this.showtimeRegister.sala != null && this.showtimeRegister.idPelicula != null && this.showtimeRegister.horarios!=null){
-          if(!this.isUpdate)
-          {
-            this.api.addShowtime(this.showtimeRegister).subscribe(
-              {
-                next:() =>{
-                  alert("Funcion creado con exito");
-                },
-                error: (error) => {
-                  console.log(error);
-                  alert("No se pudo crear la funcion");
+        var fechaActual = new Date()
+        var fechaFuncion = new Date(this.fechaSeleccionada)
+        this.showtimeRegister.fecha = fechaFuncion.toLocaleDateString();
+
+        if (fechaFuncion >= fechaActual) {
+          if(this.showtimeRegister.sala != null && this.showtimeRegister.idPelicula != null && this.showtimeRegister.horarios!=null && this.showtimeRegister.precio){
+            if(!this.isUpdate)
+            {
+              this.api.addShowtime(this.showtimeRegister).subscribe(
+                {
+                  next:() =>{
+                    alert("Funcion creado con exito");
+                  },
+                  error: (error) => {
+                    console.log(error);
+                    alert("No se pudo crear la funcion");
+                  }
                 }
-              }
-            )
+              )
+            }else{
+              this.api.editShowtime(this.showtimeRegister.id!,this.showtimeRegister).subscribe(
+                {
+                  next:() =>{
+                    alert("Funcion modificada con exito");
+                  },
+                  error: (error) => {
+                    console.log(error);
+                    alert("No se modificar la funcion");
+                  }
+                }
+              )
+            }
+            
           }else{
-            this.api.editShowtime(this.showtimeRegister.id!,this.showtimeRegister).subscribe(
-              {
-                next:() =>{
-                  alert("Funcion modificada con exito");
-                },
-                error: (error) => {
-                  console.log(error);
-                  alert("No se modificar la funcion");
-                }
-              }
-            )
+            alert("¡ Rellene todos los campos !");
           }
-          
         }else{
-          alert("Rellene todos los campos ");
+          alert("¡ No puede crear funciones posteriores a la fecha actual !");
         }
-        
       }catch(error)
       { 
         console.log(error);   
