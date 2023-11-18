@@ -22,6 +22,12 @@ export class TicketService {
     return this.http.get<Ticket>(url);
   }
 
+  public getTicketsByUser(idUser: number): Observable<Ticket>
+  {
+    const url = `${this.baseUrl}?idUsuario=${idUser}`;
+    return this.http.get<Ticket>(url);
+  }
+
   public deleteTicket(id: number): Observable<boolean> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<boolean>(url).pipe(

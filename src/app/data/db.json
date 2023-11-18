@@ -125,7 +125,7 @@
       "nombrePelicula": "Jackie Chan: Fast, Funny and Furious",
       "sala": 1,
       "horarios": "23:00",
-      "entradasDisponible": 100,
+      "entradasDisponible": 89,
       "precio": 800,
       "fecha": "2023-11-20T03:00:00.000Z"
     },
@@ -138,72 +138,24 @@
       "sala": 3,
       "horarios": "19:00",
       "entradasDisponible": 150
-
-    },
-    {
-      "id": 5,
-      "fecha": "2023-11-12T03:00:00.000Z",
-      "idPelicula": 346698,
-      "nombrePelicula": "Barbie",
-      "sala": 1,
-      "horarios": "17:00",
-      "entradasDisponible": 100,
-      "precio": 400
-    },
-    {
-      "precio": 200,
-      "id": 6,
-      "fecha": "2023-11-17T03:00:00.000Z",
-      "idPelicula": 9615,
-      "nombrePelicula": "A todo gas: Tokyo Race",
-      "sala": 1,
-      "horarios": "18:00",
-      "entradasDisponible": 7
     }
   ],
   "tickets": [
     {
+      "nombrePelicula": "Jackie Chan: Fast, Funny and Furious",
       "id": 1,
       "idUsuario": 3,
-      "idFuncion": 4,
-      "fecha": "2023-11-15T03:00:00.000Z",
-      "cantidadEntradas": "3"
+      "idFuncion": 3,
+      "fecha": "2023-11-20T03:00:00.000Z",
+      "cantidadEntradas": 3
     },
     {
+      "nombrePelicula": "Jackie Chan: Fast, Funny and Furious",
       "id": 2,
       "idUsuario": 3,
-      "idFuncion": 4,
-      "fecha": "2023-11-15T03:00:00.000Z",
-      "cantidadEntradas": "4"
-    },
-    {
-      "id": 3,
-      "idUsuario": 3,
-      "idFuncion": 5,
-      "fecha": "2023-11-12T03:00:00.000Z",
-      "cantidadEntradas": "5"
-    },
-    {
-      "id": 4,
-      "idUsuario": 3,
-      "idFuncion": 6,
-      "fecha": "2023-11-17T03:00:00.000Z",
-      "cantidadEntradas": "7"
-    },
-    {
-      "id": 5,
-      "idUsuario": 3,
-      "idFuncion": 6,
-      "fecha": "2023-11-17T03:00:00.000Z",
-      "cantidadEntradas": "3"
-    },
-    {
-      "nombrePelicula": "A todo gas: Tokyo Race",
-      "id": 6,
-      "idUsuario": 3,
-      "idFuncion": 6,
-      "fecha": "2023-11-17T03:00:00.000Z",
-      "cantidadEntradas": 3
+      "idFuncion": 3,
+      "fecha": "2023-11-20T03:00:00.000Z",
+      "cantidadEntradas": 5
     }
   ]
 }

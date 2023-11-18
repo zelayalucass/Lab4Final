@@ -88,6 +88,9 @@ export class Cinema implements ICinema {
     }
 }
  export class Ticket implements ITicket {
+    map(arg0: (product: any) => Ticket): Ticket[] {
+      throw new Error('Method not implemented.');
+    }
     id: number | null;
     idUsuario: number | null;
     idFuncion: number | null;
