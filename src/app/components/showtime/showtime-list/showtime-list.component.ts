@@ -43,8 +43,6 @@ export class ShowtimeListComponent implements OnInit{
     this.showtimeService.deleteShowtime(id).subscribe(
       {
         next: (res) => {
-          console.log(res)
-
           if(res)
           {
             this.getFunciones()
@@ -74,9 +72,17 @@ export class ShowtimeListComponent implements OnInit{
   {
     var fechaActual = new Date().toLocaleDateString()
     var horaActual = `${new Date().getHours()}:${new Date().getMinutes()}`
-    var fechaFuncion = new Date(showtime.fecha).toLocaleDateString()
+   
 
-    if ( fechaActual <= fechaFuncion && horaActual <= showtime.horarios! ) { //VALIDACION PARA NO COMPRAR TICKETS DE FUNCIONES QUE YA PASARON
+    if ( fechaActual <= showtime.fecha!) { //VALIDACION PARA NO COMPRAR TICKETS DE FUNCIONES QUE YA PASARON
+      if(this.isUserLoggedIn)
+      {
+        this.router.navigate(['/ticket/add', showtime.id]);
+      }else{
+        this.router.navigate(['/auth/login']);
+      }  
+    }else if ( fechaActual == showtime.fecha && horaActual <= showtime.horarios! )
+    {
       if(this.isUserLoggedIn)
       {
         this.router.navigate(['/ticket/add', showtime.id]);
@@ -86,6 +92,7 @@ export class ShowtimeListComponent implements OnInit{
     }else{
       alert("¡ La funcion ya se realizo !")
     }
+    
   }
 
   public onInputChange()

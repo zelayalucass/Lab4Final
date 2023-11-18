@@ -109,53 +109,24 @@
   ],
   "showtimes": [
     {
-      "idFuncion": null,
-      "idPelicula": 1192293,
-      "nombrePelicula": "Fast and the Furious: Diesel Refueled",
-      "sala": 1,
+      "precio": 123,
+      "id": 1,
+      "fecha": "19/11/2023",
+      "idPelicula": 9615,
+      "nombrePelicula": "A todo gas: Tokyo Race",
+      "sala": 4,
       "horarios": "18:00",
-      "id": 2,
-      "entradasDisponible": 100,
-      "precio": 400,
-      "fecha": "2023-11-18T03:00:00.000Z"
-    },
-    {
-      "id": 3,
-      "idPelicula": 64833,
-      "nombrePelicula": "Jackie Chan: Fast, Funny and Furious",
-      "sala": 1,
-      "horarios": "23:00",
-      "entradasDisponible": 89,
-      "precio": 800,
-      "fecha": "2023-11-20T03:00:00.000Z"
-    },
-    {
-      "precio": 800,
-      "id": 4,
-      "fecha": "2023-11-22T03:00:00.000Z",
-      "idPelicula": 9799,
-      "nombrePelicula": "A todo gas",
-      "sala": 3,
-      "horarios": "19:00",
-      "entradasDisponible": 150
+      "entradasDisponible": 50
     }
   ],
   "tickets": [
     {
-      "nombrePelicula": "Jackie Chan: Fast, Funny and Furious",
+      "nombrePelicula": "A todo gas: Tokyo Race",
       "id": 1,
       "idUsuario": 3,
-      "idFuncion": 3,
-      "fecha": "2023-11-20T03:00:00.000Z",
-      "cantidadEntradas": 3
-    },
-    {
-      "nombrePelicula": "Jackie Chan: Fast, Funny and Furious",
-      "id": 2,
-      "idUsuario": 3,
-      "idFuncion": 3,
-      "fecha": "2023-11-20T03:00:00.000Z",
-      "cantidadEntradas": 5
+      "idFuncion": 1,
+      "fecha": "19/11/2023",
+      "cantidadEntradas": 50
     }
   ]
 }
